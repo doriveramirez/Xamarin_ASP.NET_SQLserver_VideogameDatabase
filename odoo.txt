@@ -1,0 +1,3 @@
+Módulos: proyecto, facturacion, empleados, tablero
+
+Jefe proyectos, analistas, programadores 

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MVVM.View.PersonaPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="{Binding Id}"/>
+                <Label Text="Nombre"/>
+                <Entry Text="{Binding Nombre}"/>
+                <Label Text="Número de juegos publicados"/>
+                <Entry Text="{Binding NumeroJuegosPublicados}" Keyboard="Numeric"/>
+                <Button Text="Guardar" Command="{Binding GuardarCommand}"/>
+                <Button Text="Modificar" Command="{Binding ModificarCommand}"/>
+                <Button Text="Eliminar" Command="{Binding EliminarCommand}"/>
+                <Button Text="Limpiar" Command="{Binding LimpiarCommand}"/>
+                <Button Text="Ir" Command="{Binding IrCommand}"/>
+                <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+                <ListView x:Name="LvPersonas" ItemsSource="{Binding Distribuidoras}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Nombre}" Detail="{Binding NumeroJuegosPublicados}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
