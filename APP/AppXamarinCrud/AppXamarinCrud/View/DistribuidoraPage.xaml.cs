@@ -19,7 +19,7 @@ namespace MVVM.View
         {
             InitializeComponent();
             BindingContext = contexto;
-            //LvDistribuidora.ItemSelected += LvDistribuidoras_ItemSelected;
+            LvDistribuidora.ItemSelected += LvDistribuidoras_ItemSelected;
         }
 
         private void LvDistribuidoras_ItemSelected(object sender, SelectedItemChangedEventArgs e)

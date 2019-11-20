@@ -34,7 +34,7 @@ E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud\obj\Debug\netstandard2
 E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud\obj\Debug\netstandard2.0\AppXamarinCrud.dll
 E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud\obj\Debug\netstandard2.0\ref\AppXamarinCrud.dll
 E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud\obj\Debug\netstandard2.0\AppXamarinCrud.pdb
-E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud\obj\Debug\netstandard2.0\AppXamarinCrud.csprojAssemblyReference.cache
 E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud\obj\Debug\netstandard2.0\View\DetallePage.xaml.g.cs
 E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud\obj\Debug\netstandard2.0\View\DistribuidoraPage.xaml.g.cs
 E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud\obj\Debug\netstandard2.0\XamlC.stamp
+E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud\obj\Debug\netstandard2.0\AppXamarinCrud.csprojAssemblyReference.cache

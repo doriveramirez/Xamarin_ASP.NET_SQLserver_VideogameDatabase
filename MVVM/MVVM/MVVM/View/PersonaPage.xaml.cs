@@ -19,22 +19,23 @@ namespace MVVM.View
         {
             InitializeComponent();
             BindingContext = contexto;
-            //LvPersonas.ItemSelected += LvPersonas_ItemSelected;
+            LvPersonas.ItemSelected += LvPersonas_ItemSelected;
         }
 
-        //private void LvPersonas_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        //{
-        //    if (e.SelectedItem != null)
-        //    {
-        //        Distribuidora distribuidora = (Distribuidora)e.SelectedItem;
-        //        if (contexto.IrBool)
-        //        {
-        //            Navigation.PushAsync(new DetallePage(distribuidora));
-        //        }
-        //        contexto.Nombre = distribuidora.Nombre;
-        //        contexto.NumeroJuegosPublicados = distribuidora.NumeroJuegosPublicados;
-        //        contexto.Id = distribuidora.Id;
-        //    }
-        //}
+        private void LvPersonas_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem != null)
+            {
+                PersonaModel modelo = (PersonaModel)e.SelectedItem;
+                if (contexto.IrBool)
+                {
+                    Navigation.PushAsync(new DetallePage(modelo));
+                }
+                contexto.Nombre = modelo.Nombre;
+                contexto.Apellido = modelo.Apellido;
+                contexto.Edad = modelo.Edad;
+                contexto.Id = modelo.Id;
+            }
+        }
     }
 }

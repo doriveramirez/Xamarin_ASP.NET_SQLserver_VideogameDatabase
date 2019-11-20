@@ -13,22 +13,15 @@ namespace MVVM.ViewModel
 {
     public class DistribuidoraViewModel: Distribuidora
     {
-        public Task<ObservableCollection<Distribuidora>> distribuidoras { get; set; }
-
-        Conexion conexion = new Conexion();
+        public Task<ObservableCollection<Distribuidora>> Distribuidoras { get; set; }
 
         Distribuidora modelo;
 
-        DistribuidoraService servicio;
+        DistribuidoraService servicio = new DistribuidoraService();
 
         public DistribuidoraViewModel()
         {
-            Empezar();
-        }
-
-        private void Empezar()
-        {
-            distribuidoras = conexion.ObtenerDistribuidora();
+            Distribuidoras = servicio.Consultar();
             GuardarCommand = new Command(async () => await Guardar(), () => !IsBusy);
             ModificarCommand = new Command(async () => await Modificar(), () => !IsBusy);
             EliminarCommand = new Command(async () => await Eliminar(), () => !IsBusy);
@@ -51,15 +44,15 @@ namespace MVVM.ViewModel
         private async Task Guardar()
         {
             IsBusy = true;
-            Guid IdPersona = Guid.NewGuid();
+            Guid idDistribuidora = Guid.NewGuid();
             modelo = new Distribuidora()
             {
                 Nombre = Nombre,
                 NumeroJuegosPublicados = NumeroJuegosPublicados,
                 Imagen = Imagen,
-                Id = IdPersona.ToString()
+                Id = idDistribuidora.ToString()
             };
-            servicio.Guardar(modelo);
+            await servicio.Guardar(modelo);
             await Task.Delay(2000);
             IsBusy = false;
         }

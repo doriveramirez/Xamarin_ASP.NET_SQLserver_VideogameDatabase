@@ -19,7 +19,7 @@
                 <Button Text="Limpiar" Command="{Binding LimpiarCommand}"/>
                 <Button Text="Ir" Command="{Binding IrCommand}"/>
                 <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
-                <ListView x:Name="LvPersonas" ItemsSource="{Binding Distribuidoras}">
+                <ListView x:Name="LvDistribuidora" ItemsSource="{Binding Distribuidoras}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextCell Text="{Binding Nombre}" Detail="{Binding NumeroJuegosPublicados}"/>

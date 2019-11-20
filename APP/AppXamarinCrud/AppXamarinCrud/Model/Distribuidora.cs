@@ -11,19 +11,64 @@ using Xamarin.Forms;
 namespace MVVM.Model
 {
 
-    public partial class Distribuidora
+    public partial class Distribuidora : INotifyPropertyChanged
     {
-        [JsonProperty("Id")]
-        public string Id { get; set; }
 
-        [JsonProperty("Nombre")]
-        public string Nombre { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        [JsonProperty("NumeroJuegosPublicados")]
-        public int NumeroJuegosPublicados { get; set; }
+        public void OnPropertyChanged([CallerMemberName]string nombre = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nombre));
+        }
 
-        [JsonProperty("Imagen")]
-        public Image Imagen { get; set; }
+        private string id;
+
+        public string Id
+        {
+            get { return id; }
+            set
+            {
+                id = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string nombre;
+
+        public string Nombre
+        {
+            get { return nombre; }
+            set
+            {
+                nombre = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int numeroJuegosPublicados;
+
+        public int NumeroJuegosPublicados
+        {
+            get { return numeroJuegosPublicados; }
+            set
+            {
+                numeroJuegosPublicados = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        private Image imagen;
+
+        public Image Imagen
+        {
+            get { return imagen; }
+            set
+            {
+                imagen = value;
+                OnPropertyChanged();
+            }
+        }
 
         private bool isBusy = false;
 
@@ -37,16 +82,6 @@ namespace MVVM.Model
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void OnPropertyChanged([CallerMemberName]string nombre = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nombre));
-        }
-    }
-
-    public partial class Distribuidora
-    {
         public static Distribuidora[] FromJson(string json) => JsonConvert.DeserializeObject<Distribuidora[]>(json, AppXamarinCrud.Converter.Settings);
     }
 
@@ -67,78 +102,6 @@ namespace MVVM.Model
             },
         };
     }
-
-    
-
-    //public class Distribuidora : INotifyPropertyChanged
-    //{
-
-    //    public event PropertyChangedEventHandler PropertyChanged;
-
-    //    public void OnPropertyChanged([CallerMemberName]string nombre = "")
-    //    {
-    //        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nombre));
-    //    }
-
-    //    private bool isBusy = false;
-
-    //    public bool IsBusy
-    //    {
-    //        get { return isBusy = false; }
-    //        set
-    //        {
-    //            isBusy = value;
-    //            OnPropertyChanged();
-    //        }
-    //    }
-
-    //    private string id;
-
-    //    public string Id
-    //    {
-    //        get { return id; }
-    //        set
-    //        {
-    //            id = value;
-    //            OnPropertyChanged();
-    //        }
-    //    }
-
-    //    private string nombre;
-
-    //    public string Nombre
-    //    {
-    //        get { return nombre; }
-    //        set
-    //        {
-    //            nombre = value;
-    //            OnPropertyChanged();
-    //        }
-    //    }
-
-    //    private int numeroJuegosPublicados;
-
-    //    public int NumeroJuegosPublicados
-    //    {
-    //        get { return numeroJuegosPublicados; }
-    //        set
-    //        {
-    //            numeroJuegosPublicados = value;
-    //            OnPropertyChanged();
-    //        }
-    //    }
-
-
-    //    private Image image;
-
-    //    public Image Image
-    //    {
-    //        get { return image; }
-    //        set { 
-    //            image = value;
-    //            OnPropertyChanged();
-    //        }
-    //    }
 
     //}
 }
