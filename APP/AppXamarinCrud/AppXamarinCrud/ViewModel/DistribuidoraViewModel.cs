@@ -1,6 +1,7 @@
 ﻿using MVVM.Model;
 using MVVM.Service;
 using MVVM.View;
+using Newtonsoft.Json;
 //using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,13 @@ namespace MVVM.ViewModel
 {
     public class DistribuidoraViewModel: Distribuidora
     {
-        public Task<ObservableCollection<Distribuidora>> Distribuidoras { get; set; }
+        private Task<ObservableCollection<Distribuidora>> DistribuidorasTask { get; set; }
+        private ObservableCollection<Distribuidora> DistribuidorasAux { get; set; }
+        public ObservableCollection<Distribuidora> Distribuidoras { get; set; }
+
+        public ObservableCollection<Distribuidora> Cosas { get; set; }
+
+        //public Task<ObservableCollection<Distribuidora>> Distribuidoras { get; set; }
 
         Distribuidora modelo;
 
@@ -21,12 +28,23 @@ namespace MVVM.ViewModel
 
         public DistribuidoraViewModel()
         {
-            Distribuidoras = servicio.Consultar();
+            ListViewAsync();
             GuardarCommand = new Command(async () => await Guardar(), () => !IsBusy);
             ModificarCommand = new Command(async () => await Modificar(), () => !IsBusy);
             EliminarCommand = new Command(async () => await Eliminar(), () => !IsBusy);
             LimpiarCommand = new Command(Limpiar, () => !IsBusy);
             IrCommand = new Command(Ir, () => !IsBusy);
+        }
+
+        private async Task ListViewAsync()
+        {
+            Distribuidoras = new ObservableCollection<Distribuidora>();
+            DistribuidorasTask = servicio.Consultar();
+            DistribuidorasAux = await DistribuidorasTask;
+            for (int i = 0; i < DistribuidorasAux.Count; i++)
+            {
+                Distribuidoras.Add(DistribuidorasAux[i]);
+            }
         }
 
         public bool IrBool { get; set; }
@@ -52,6 +70,7 @@ namespace MVVM.ViewModel
                 Imagen = Imagen,
                 Id = idDistribuidora.ToString()
             };
+            Console.WriteLine(modelo.Id + " _ " + modelo.NumeroJuegosPublicados + " _ " + modelo.Nombre + " _ " + modelo.Imagen);
             await servicio.Guardar(modelo);
             await Task.Delay(2000);
             IsBusy = false;

@@ -14,11 +14,11 @@ namespace MVVM.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DistribuidoraPage : ContentPage
     {
-        DistribuidoraViewModel contexto = new DistribuidoraViewModel();
+        DistribuidoraViewModel Contexto = new DistribuidoraViewModel();
         public DistribuidoraPage()
         {
             InitializeComponent();
-            BindingContext = contexto;
+            BindingContext = Contexto;
             LvDistribuidora.ItemSelected += LvDistribuidoras_ItemSelected;
         }
 
@@ -27,14 +27,14 @@ namespace MVVM.View
             if (e.SelectedItem != null)
             {
                 Distribuidora modelo = (Distribuidora)e.SelectedItem;
-                if (contexto.IrBool)
+                if (Contexto.IrBool)
                 {
                     Navigation.PushAsync(new DetallePage(modelo));
                 }
-                contexto.Nombre = modelo.Nombre;
-                contexto.NumeroJuegosPublicados = modelo.NumeroJuegosPublicados;
-                contexto.Imagen = modelo.Imagen;
-                contexto.Id = modelo.Id;
+                Contexto.Nombre = modelo.Nombre;
+                Contexto.NumeroJuegosPublicados = modelo.NumeroJuegosPublicados;
+                Contexto.Imagen = modelo.Imagen;
+                Contexto.Id = modelo.Id;
             }
         }
     }

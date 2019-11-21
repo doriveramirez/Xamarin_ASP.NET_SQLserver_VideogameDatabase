@@ -41,10 +41,11 @@ namespace MVVM.Service
                         Distribuidoras = JsonConvert.DeserializeObject<ObservableCollection<Distribuidora>>(result);
                         for (int i = 0; i < Distribuidoras.Count; i++)
                         {
-                            Console.WriteLine(string.Concat(Distribuidoras[i].Id, " _ ", Distribuidoras[i].Nombre, " _ ", Distribuidoras[i].NumeroJuegosPublicados, " _ ", Distribuidoras[i].Imagen, " _ "));
+                            Console.WriteLine(string.Concat(Distribuidoras[i].Id, " tibu_ ", Distribuidoras[i].Nombre, " _ ", Distribuidoras[i].NumeroJuegosPublicados, " _ ", Distribuidoras[i].Imagen, " _ "));
                         }
                     }
                 }
+                Console.WriteLine("tibu2");
                 return Distribuidoras;
             }
             catch (Exception ex)
@@ -69,7 +70,7 @@ namespace MVVM.Service
                     if (response.IsSuccessStatusCode)
                     {
                         var result = JsonConvert.SerializeObject(modelo);
-                        Console.WriteLine(string.Concat(modelo.Id, " _ ", modelo.Nombre, " _ ", modelo.NumeroJuegosPublicados, " _ ", modelo.Imagen, " _ "));
+                        Console.WriteLine(string.Concat("Ha funcionado", modelo.Id, " _ ", modelo.Nombre, " _ ", modelo.NumeroJuegosPublicados, " _ ", modelo.Imagen, " _ "));
                         await client.PostAsync(apiUrl, new StringContent(result));
                         Distribuidoras.Add(modelo);
                     }
