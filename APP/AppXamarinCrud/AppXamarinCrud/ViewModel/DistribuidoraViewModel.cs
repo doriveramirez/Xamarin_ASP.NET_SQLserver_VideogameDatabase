@@ -18,10 +18,6 @@ namespace MVVM.ViewModel
         private ObservableCollection<Distribuidora> DistribuidorasAux { get; set; }
         public ObservableCollection<Distribuidora> Distribuidoras { get; set; }
 
-        public ObservableCollection<Distribuidora> Cosas { get; set; }
-
-        //public Task<ObservableCollection<Distribuidora>> Distribuidoras { get; set; }
-
         Distribuidora modelo;
 
         DistribuidoraService servicio = new DistribuidoraService();
@@ -70,8 +66,11 @@ namespace MVVM.ViewModel
                 Imagen = Imagen,
                 Id = idDistribuidora.ToString()
             };
-            Console.WriteLine(modelo.Id + " _ " + modelo.NumeroJuegosPublicados + " _ " + modelo.Nombre + " _ " + modelo.Imagen);
-            await servicio.Guardar(modelo);
+            var sent = await servicio.Guardar(modelo);
+            if (sent)
+            {
+                Distribuidoras.Add(modelo);
+            }
             await Task.Delay(2000);
             IsBusy = false;
         }
@@ -86,7 +85,27 @@ namespace MVVM.ViewModel
                 Imagen = Imagen,
                 Id = Id
             };
-            servicio.Modificar(modelo);
+            var sent = await servicio.Modificar(modelo);
+            Distribuidora remove = new Distribuidora();
+            if (sent)
+            {
+                Distribuidora modify = new Distribuidora()
+                {
+                    Nombre = Nombre,
+                    NumeroJuegosPublicados = NumeroJuegosPublicados,
+                    Imagen = Imagen,
+                    Id = modelo.Id
+                };
+                for (int i = 0; i < Distribuidoras.Count; i++)
+                {
+                    if (Distribuidoras[i].Id.Equals(Id))
+                    {
+                        remove = Distribuidoras[i];
+                    }
+                }
+                Distribuidoras.Remove(remove);
+                Distribuidoras.Add(modify);
+            }
             await Task.Delay(2000);
             IsBusy = false;
         }
@@ -94,7 +113,20 @@ namespace MVVM.ViewModel
         private async Task Eliminar()
         {
             IsBusy = true;
-            servicio.Eliminar(Id);
+            var sent = await servicio.Eliminar(Id);
+            Distribuidora remove = new Distribuidora();
+            if (sent)
+            {
+                for (int i = 0; i < Distribuidoras.Count; i++)
+                {
+                    if (Distribuidoras[i].Id.Equals(Id))
+                    {
+                        remove = Distribuidoras[i];
+
+                    }
+                }
+                Distribuidoras.Remove(remove);
+            }
             await Task.Delay(2000);
             IsBusy = false;
         }
@@ -112,7 +144,8 @@ namespace MVVM.ViewModel
             if (IrBool == false)
             {
                 IrBool = true;
-            } else
+            }
+            else
             {
                 IrBool = false;
             }

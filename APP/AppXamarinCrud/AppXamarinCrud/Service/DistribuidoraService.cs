@@ -22,81 +22,143 @@ namespace MVVM.Service
                 Distribuidoras = new ObservableCollection<Distribuidora>();
             }
         }
-        
-        public async System.Threading.Tasks.Task<ObservableCollection<Distribuidora>> Consultar(){
+
+        public async System.Threading.Tasks.Task<ObservableCollection<Distribuidora>> Consultar()
+        {
             try
             {
-                using (HttpClient client = new HttpClient())
+                HttpClient client;
+                using (client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri(apiUrl);
-                    client.DefaultRequestHeaders.Accept.Clear();
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", ConfigurationManager.AppSettings["token"].ToString());
-                    client.Timeout = TimeSpan.FromMinutes(10);
-                    client.Timeout = new TimeSpan(0, 0, 0, 0, -1);
+                    client = CreateClient();
                     HttpResponseMessage response = await client.GetAsync(apiUrl);
                     if (response.IsSuccessStatusCode)
                     {
                         var result = await response.Content.ReadAsStringAsync();
                         Distribuidoras = JsonConvert.DeserializeObject<ObservableCollection<Distribuidora>>(result);
-                        for (int i = 0; i < Distribuidoras.Count; i++)
-                        {
-                            Console.WriteLine(string.Concat(Distribuidoras[i].Id, " tibu_ ", Distribuidoras[i].Nombre, " _ ", Distribuidoras[i].NumeroJuegosPublicados, " _ ", Distribuidoras[i].Imagen, " _ "));
-                        }
                     }
                 }
-                Console.WriteLine("tibu2");
                 return Distribuidoras;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
         }
 
-        public async System.Threading.Tasks.Task Guardar(Distribuidora modelo)
+        public async System.Threading.Tasks.Task<bool> Guardar(Distribuidora modelo)
         {
+            bool sent = false;
             try
             {
-                using (HttpClient client = new HttpClient())
+                HttpClient client;
+                using (client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri(apiUrl);
+                    client = CreateClient();
+                    var send = Newtonsoft.Json.JsonConvert.SerializeObject(modelo,
+                            Newtonsoft.Json.Formatting.None,
+                            new JsonSerializerSettings
+                            {
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "");
+                    request.Content = new StringContent(send, Encoding.UTF8, "application/json");//CONTENT-TYPE header
+                    HttpResponseMessage response = await client.SendAsync(request);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        sent = true;
+                    }
+                }
+                return sent;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async System.Threading.Tasks.Task<bool> Modificar(Distribuidora modelo)
+        {
+            bool sent = false;
+            try
+            {
+                HttpClient client;
+                using (client = new HttpClient())
+                {
+                    //client = CreateClient();
+                    //var uri = new Uri(apiUrl + "/" + modelo.Id);
+                    //var json = JsonConvert.SerializeObject(modelo);
+                    //var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    //HttpResponseMessage response = null;
+                    //response = await client.PutAsync(uri, content);
+                    //Console.WriteLine("hola: " + uri.ToString());
+                    //Console.WriteLine("hola2: " + content.ReadAsStringAsync().Result);
+                    //if (response.IsSuccessStatusCode)
+                    //{
+                    //    Debug.WriteLine(@"\tTodoItem successfully saved.");
+                    //    sent = true;
+                    //}
+                    client.BaseAddress = new Uri(apiUrl + "/" + modelo.Id);
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", ConfigurationManager.AppSettings["token"].ToString());
                     client.Timeout = TimeSpan.FromMinutes(10);
                     client.Timeout = new TimeSpan(0, 0, 0, 0, -1);
-                    HttpResponseMessage response = await client.GetAsync(apiUrl);
+                    var send = Newtonsoft.Json.JsonConvert.SerializeObject(modelo,
+                            Newtonsoft.Json.Formatting.None,
+                            new JsonSerializerSettings
+                            {
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put, "");
+                    request.Content = new StringContent(send, Encoding.UTF8, "application/json");//CONTENT-TYPE header
+                    HttpResponseMessage response = await client.SendAsync(request);
                     if (response.IsSuccessStatusCode)
                     {
-                        var result = JsonConvert.SerializeObject(modelo);
-                        Console.WriteLine(string.Concat("Ha funcionado", modelo.Id, " _ ", modelo.Nombre, " _ ", modelo.NumeroJuegosPublicados, " _ ", modelo.Imagen, " _ "));
-                        await client.PostAsync(apiUrl, new StringContent(result));
-                        Distribuidoras.Add(modelo);
+                        sent = true;
                     }
                 }
+                return sent;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
         }
 
-        public void Modificar(Distribuidora modelo)
+        public async System.Threading.Tasks.Task<bool> Eliminar(string idDistribuidora)
         {
-            for (int i = 0; i < Distribuidoras.Count; i++)
+            bool sent = false;
+            try
             {
-                if (Distribuidoras[i].Id == modelo.Id)
+                HttpClient client;
+                using (client = new HttpClient())
                 {
-                    Distribuidoras[i] = modelo;
+                    client = CreateClient();
+                    HttpResponseMessage response = await client.DeleteAsync(apiUrl + "/" + idDistribuidora);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        sent = true;
+                    }
                 }
+                return sent;
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
 
-        public void Eliminar(string idDistribuidora)
+        private HttpClient CreateClient()
         {
-            Distribuidora model = Distribuidoras.FirstOrDefault(d => d.Id == idDistribuidora);
-            Distribuidoras.Remove(model);
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(apiUrl);
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", ConfigurationManager.AppSettings["token"].ToString());
+            client.Timeout = TimeSpan.FromMinutes(10);
+            client.Timeout = new TimeSpan(0, 0, 0, 0, -1);
+            return client;
         }
 
     }
