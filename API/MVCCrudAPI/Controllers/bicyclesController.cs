@@ -12,21 +12,21 @@ using MVCCrudAPI.Models;
 
 namespace MVCCrudAPI.Controllers
 {
-    public class BicyclesController : ApiController
+    public class bicyclesController : ApiController
     {
-        private bicyclesEntities1 db = new bicyclesEntities1();
+        private bicyclesEntities db = new bicyclesEntities();
 
-        // GET: api/Bicycles
-        public IQueryable<Bicycles> GetBicycles()
+        // GET: api/bicycles
+        public IQueryable<bicycles> Getbicycles()
         {
-            return db.Bicycles;
+            return db.bicycles;
         }
 
-        // GET: api/Bicycles/5
-        [ResponseType(typeof(Bicycles))]
-        public IHttpActionResult GetBicycles(int id)
+        // GET: api/bicycles/5
+        [ResponseType(typeof(bicycles))]
+        public IHttpActionResult Getbicycles(int id)
         {
-            Bicycles bicycles = db.Bicycles.Find(id);
+            bicycles bicycles = db.bicycles.Find(id);
             if (bicycles == null)
             {
                 return NotFound();
@@ -35,16 +35,16 @@ namespace MVCCrudAPI.Controllers
             return Ok(bicycles);
         }
 
-        // PUT: api/Bicycles/5
+        // PUT: api/bicycles/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutBicycles(int id, Bicycles bicycles)
+        public IHttpActionResult Putbicycles(int id, bicycles bicycles)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != bicycles.ID)
+            if (id != bicycles.id)
             {
                 return BadRequest();
             }
@@ -57,7 +57,7 @@ namespace MVCCrudAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!BicyclesExists(id))
+                if (!bicyclesExists(id))
                 {
                     return NotFound();
                 }
@@ -70,32 +70,32 @@ namespace MVCCrudAPI.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Bicycles
-        [ResponseType(typeof(Bicycles))]
-        public IHttpActionResult PostBicycles(Bicycles bicycles)
+        // POST: api/bicycles
+        [ResponseType(typeof(bicycles))]
+        public IHttpActionResult Postbicycles(bicycles bicycles)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Bicycles.Add(bicycles);
+            db.bicycles.Add(bicycles);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = bicycles.ID }, bicycles);
+            return CreatedAtRoute("DefaultApi", new { id = bicycles.id }, bicycles);
         }
 
-        // DELETE: api/Bicycles/5
-        [ResponseType(typeof(Bicycles))]
-        public IHttpActionResult DeleteBicycles(int id)
+        // DELETE: api/bicycles/5
+        [ResponseType(typeof(bicycles))]
+        public IHttpActionResult Deletebicycles(int id)
         {
-            Bicycles bicycles = db.Bicycles.Find(id);
+            bicycles bicycles = db.bicycles.Find(id);
             if (bicycles == null)
             {
                 return NotFound();
             }
 
-            db.Bicycles.Remove(bicycles);
+            db.bicycles.Remove(bicycles);
             db.SaveChanges();
 
             return Ok(bicycles);
@@ -110,9 +110,9 @@ namespace MVCCrudAPI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool BicyclesExists(int id)
+        private bool bicyclesExists(int id)
         {
-            return db.Bicycles.Count(e => e.ID == id) > 0;
+            return db.bicycles.Count(e => e.id == id) > 0;
         }
     }
 }

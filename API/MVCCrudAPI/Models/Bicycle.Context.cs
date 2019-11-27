@@ -13,10 +13,10 @@ namespace MVCCrudAPI.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class bicyclesEntities1 : DbContext
+    public partial class bicyclesEntities : DbContext
     {
-        public bicyclesEntities1()
-            : base("name=bicyclesEntities1")
+        public bicyclesEntities()
+            : base("name=bicyclesEntities")
         {
         }
     
@@ -25,11 +25,7 @@ namespace MVCCrudAPI.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Bicycles> Bicycles { get; set; }
-        public virtual DbSet<BranchOffices> BranchOffices { get; set; }
-        public virtual DbSet<Stocks> Stocks { get; set; }
+        public virtual DbSet<bicycles> bicycles { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-
-        public System.Data.Entity.DbSet<MVCCrudAPI.Models.Distribuidora> Distribuidoras { get; set; }
     }
 }

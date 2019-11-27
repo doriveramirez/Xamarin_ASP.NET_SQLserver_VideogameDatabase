@@ -12,19 +12,10 @@ namespace MVCCrudAPI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Bicycles
+    public partial class bicycles
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Bicycles()
-        {
-            this.Stocks = new HashSet<Stocks>();
-        }
-    
-        public int ID { get; set; }
-        public string Model { get; set; }
-        public Nullable<int> Year { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Stocks> Stocks { get; set; }
+        public int id { get; set; }
+        public string model { get; set; }
+        public Nullable<int> year { get; set; }
     }
 }

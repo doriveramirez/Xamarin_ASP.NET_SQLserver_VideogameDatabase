@@ -229,7 +229,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PublicacionesEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PublicacionesEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Company" EntityType="Self.Company" />
           <EntitySet Name="Distribuidora" EntityType="Self.Distribuidora" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
@@ -253,7 +253,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PublicacionesModelStoreContainer" CdmEntityContainer="PublicacionesEntities1">
+        <EntityContainerMapping StorageEntityContainer="PublicacionesModelStoreContainer" CdmEntityContainer="PublicacionesEntities">
           <EntitySetMapping Name="Company">
             <EntityTypeMapping TypeName="PublicacionesModel.Company">
               <MappingFragment StoreEntitySet="Company">

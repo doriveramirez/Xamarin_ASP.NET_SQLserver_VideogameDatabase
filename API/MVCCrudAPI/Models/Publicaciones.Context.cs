@@ -13,10 +13,10 @@ namespace MVCCrudAPI.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PublicacionesEntities1 : DbContext
+    public partial class PublicacionesEntities : DbContext
     {
-        public PublicacionesEntities1()
-            : base("name=PublicacionesEntities1")
+        public PublicacionesEntities()
+            : base("name=PublicacionesEntities")
         {
         }
     
