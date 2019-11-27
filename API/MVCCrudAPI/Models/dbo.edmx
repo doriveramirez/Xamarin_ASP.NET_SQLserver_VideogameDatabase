@@ -19,8 +19,8 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="nchar" MaxLength="38" Nullable="false" />
-          <Property Name="Nombre" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id" Type="nchar" MaxLength="36" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="NumeroJuegosPublicados" Type="int" Nullable="false" />
           <Property Name="Imagen" Type="image" />
         </EntityType>
@@ -57,7 +57,7 @@
           <Property Name="VentasGenerados" Type="int" />
           <Property Name="NumeroPlataformasDisponibles" Type="int" />
           <Property Name="UsuarioID" Type="nchar" MaxLength="38" />
-          <Property Name="DistribuidoraID" Type="nchar" MaxLength="38" />
+          <Property Name="DistribuidoraID" Type="nchar" MaxLength="36" />
           <Property Name="Imagen" Type="image" />
         </EntityType>
         <Association Name="FK_Usuario_Company">
@@ -141,8 +141,8 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="38" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="String" MaxLength="36" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NumeroJuegosPublicados" Type="Int32" Nullable="false" />
           <Property Name="Imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Videojuego" Relationship="Self.FK_Videojuego_Distribuidora" FromRole="Distribuidora" ToRole="Videojuego" />
@@ -182,7 +182,7 @@
           <Property Name="VentasGenerados" Type="Int32" />
           <Property Name="NumeroPlataformasDisponibles" Type="Int32" />
           <Property Name="UsuarioID" Type="String" MaxLength="38" FixedLength="true" Unicode="true" />
-          <Property Name="DistribuidoraID" Type="String" MaxLength="38" FixedLength="true" Unicode="true" />
+          <Property Name="DistribuidoraID" Type="String" MaxLength="36" FixedLength="true" Unicode="true" />
           <Property Name="Imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Distribuidora" Relationship="Self.FK_Videojuego_Distribuidora" FromRole="Videojuego" ToRole="Distribuidora" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK_Videojuego_Usuario" FromRole="Videojuego" ToRole="Usuario" />
@@ -229,7 +229,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PublicacionEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PublicacionesEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Company" EntityType="Self.Company" />
           <EntitySet Name="Distribuidora" EntityType="Self.Distribuidora" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
@@ -253,7 +253,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PublicacionesModelStoreContainer" CdmEntityContainer="PublicacionEntities">
+        <EntityContainerMapping StorageEntityContainer="PublicacionesModelStoreContainer" CdmEntityContainer="PublicacionesEntities1">
           <EntitySetMapping Name="Company">
             <EntityTypeMapping TypeName="PublicacionesModel.Company">
               <MappingFragment StoreEntitySet="Company">

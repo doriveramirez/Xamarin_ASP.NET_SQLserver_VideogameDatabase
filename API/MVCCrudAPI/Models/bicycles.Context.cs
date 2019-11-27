@@ -29,5 +29,7 @@ namespace MVCCrudAPI.Models
         public virtual DbSet<BranchOffices> BranchOffices { get; set; }
         public virtual DbSet<Stocks> Stocks { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+
+        public System.Data.Entity.DbSet<MVCCrudAPI.Models.Distribuidora> Distribuidoras { get; set; }
     }
 }

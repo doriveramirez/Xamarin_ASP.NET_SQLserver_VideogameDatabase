@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -66,10 +67,18 @@ namespace MVVM.ViewModel
                 Imagen = Imagen,
                 Id = idDistribuidora.ToString()
             };
-            var sent = await servicio.Guardar(modelo);
-            if (sent)
+            Console.WriteLine("hola" + modelo.Nombre + "_");
+            if (string.IsNullOrEmpty(modelo.Nombre))
             {
-                Distribuidoras.Add(modelo);
+                await Application.Current.MainPage.DisplayAlert("Error", "El nombre no puede ser nulo", "Aceptar");
+            } else
+            {
+                var sent = await servicio.Guardar(modelo);
+                if (sent)
+                {
+                    Distribuidoras.Add(modelo);
+                    Limpiar();
+                }
             }
             await Task.Delay(2000);
             IsBusy = false;
@@ -86,25 +95,16 @@ namespace MVVM.ViewModel
                 Id = Id
             };
             var sent = await servicio.Modificar(modelo);
-            Distribuidora remove = new Distribuidora();
             if (sent)
             {
-                Distribuidora modify = new Distribuidora()
+                var item = Distribuidoras.FirstOrDefault(i => i.Id == modelo.Id);
+                if (item != null)
                 {
-                    Nombre = Nombre,
-                    NumeroJuegosPublicados = NumeroJuegosPublicados,
-                    Imagen = Imagen,
-                    Id = modelo.Id
-                };
-                for (int i = 0; i < Distribuidoras.Count; i++)
-                {
-                    if (Distribuidoras[i].Id.Equals(Id))
-                    {
-                        remove = Distribuidoras[i];
-                    }
+                    item.Nombre = modelo.Nombre;
+                    item.NumeroJuegosPublicados = modelo.NumeroJuegosPublicados;
+                    item.Imagen = modelo.Imagen;
                 }
-                Distribuidoras.Remove(remove);
-                Distribuidoras.Add(modify);
+                Limpiar();
             }
             await Task.Delay(2000);
             IsBusy = false;
@@ -113,19 +113,20 @@ namespace MVVM.ViewModel
         private async Task Eliminar()
         {
             IsBusy = true;
-            var sent = await servicio.Eliminar(Id);
-            Distribuidora remove = new Distribuidora();
+            modelo = new Distribuidora()
+            {
+                Nombre = Nombre,
+                NumeroJuegosPublicados = NumeroJuegosPublicados,
+                Imagen = Imagen,
+                Id = Id
+            };
+            var sent = await servicio.Eliminar(modelo.Id);
             if (sent)
             {
-                for (int i = 0; i < Distribuidoras.Count; i++)
-                {
-                    if (Distribuidoras[i].Id.Equals(Id))
-                    {
-                        remove = Distribuidoras[i];
-
-                    }
-                }
-                Distribuidoras.Remove(remove);
+                var item = Distribuidoras.FirstOrDefault(i => i.Id == modelo.Id);
+                Console.WriteLine(item.Nombre);
+                Distribuidoras.Remove(item);
+                Limpiar();
             }
             await Task.Delay(2000);
             IsBusy = false;

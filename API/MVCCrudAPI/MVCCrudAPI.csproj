@@ -194,37 +194,37 @@
       <DependentUpon>bicycles.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Company.cs">
-      <DependentUpon>db.tt</DependentUpon>
+      <DependentUpon>dbo.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\db.Context.cs">
+    <Compile Include="Models\dbo.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>db.Context.tt</DependentUpon>
+      <DependentUpon>dbo.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\db.cs">
+    <Compile Include="Models\dbo.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>db.tt</DependentUpon>
+      <DependentUpon>dbo.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\db.Designer.cs">
+    <Compile Include="Models\dbo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>db.edmx</DependentUpon>
+      <DependentUpon>dbo.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Distribuidora.cs">
-      <DependentUpon>db.tt</DependentUpon>
+      <DependentUpon>dbo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Stocks.cs">
       <DependentUpon>bicycles.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>bicycles.tt</DependentUpon>
+      <DependentUpon>dbo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuario.cs">
-      <DependentUpon>db.tt</DependentUpon>
+      <DependentUpon>dbo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Videojuego.cs">
-      <DependentUpon>db.tt</DependentUpon>
+      <DependentUpon>dbo.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -247,15 +247,15 @@
       <DependentUpon>bicycles.edmx</DependentUpon>
       <LastGenOutput>bicycles1.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\db.Context.tt">
+    <Content Include="Models\dbo.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>db.edmx</DependentUpon>
-      <LastGenOutput>db.Context.cs</LastGenOutput>
+      <DependentUpon>dbo.edmx</DependentUpon>
+      <LastGenOutput>dbo.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\db.tt">
+    <Content Include="Models\dbo.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>db.edmx</DependentUpon>
-      <LastGenOutput>db.cs</LastGenOutput>
+      <DependentUpon>dbo.edmx</DependentUpon>
+      <LastGenOutput>dbo.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -278,19 +278,19 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <EntityDeploy Include="Models\db.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>db.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\db.edmx.diagram">
-      <DependentUpon>db.edmx</DependentUpon>
-    </Content>
     <EntityDeploy Include="Models\bicycles.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>bicycles.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Models\bicycles.edmx.diagram">
       <DependentUpon>bicycles.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\dbo.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>dbo.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\dbo.edmx.diagram">
+      <DependentUpon>dbo.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
