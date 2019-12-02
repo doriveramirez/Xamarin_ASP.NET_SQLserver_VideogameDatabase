@@ -42,3 +42,4 @@ E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud\bin\Debug\netstandard2
 E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud\bin\Debug\netstandard2.0\Mono.Android.pdb
 E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud\bin\Debug\netstandard2.0\Mono.Android.xml
 E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud\obj\Debug\netstandard2.0\AppXamarinCrud.csproj.CopyComplete
+E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud\obj\Debug\netstandard2.0\View\Main.xaml.g.cs

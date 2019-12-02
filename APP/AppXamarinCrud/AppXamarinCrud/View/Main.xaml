@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="AppXamarinCrud.View.Main"
+             BackgroundImage="background.jpg">
+    <ContentPage.Content>
+        <StackLayout>
+            <Image  Source="E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud\resources\Videogames.jpg" />
+            <Button Text="Videojuegos" Command="{Binding VideogamesButton}"/>
+            <Button Text="Plataformas" Command="{Binding PlatformsButton}"/>
+            <Button Text="Distribuidoras" Command="{Binding DistributorsButton}"/>
+            <Button Text="Compañías" Command="{Binding CompaniesButton}"/>
+            <Button Text="Análisis" Command="{Binding ReviewsButton}"/>
+            <Button Text="Usuarios" Command="{Binding UsersButton}"/>
+            <Button Text="Opciones" Command="{Binding OptionsButton}"/>
+            <Button Text="Salir" Command="{Binding ExitButton}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
