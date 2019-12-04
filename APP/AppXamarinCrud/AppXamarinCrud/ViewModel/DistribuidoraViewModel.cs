@@ -1,4 +1,5 @@
-﻿using MVVM.Model;
+﻿using AppXamarinCrud.View;
+using MVVM.Model;
 using MVVM.Service;
 using MVVM.View;
 using Newtonsoft.Json;
@@ -31,6 +32,7 @@ namespace MVVM.ViewModel
             EliminarCommand = new Command(async () => await Eliminar(), () => !IsBusy);
             LimpiarCommand = new Command(Limpiar, () => !IsBusy);
             IrCommand = new Command(Ir, () => !IsBusy);
+            VolverCommand = new Command(Volver, () => !IsBusy);
         }
 
         private async Task ListViewAsync()
@@ -55,6 +57,8 @@ namespace MVVM.ViewModel
         public Command LimpiarCommand { get; set; }
 
         public Command IrCommand { get; set; }
+
+        public Command VolverCommand { get; set; }
 
         private async Task Guardar()
         {
@@ -150,6 +154,11 @@ namespace MVVM.ViewModel
             {
                 IrBool = false;
             }
+        }
+
+        private void Volver()
+        {
+            Application.Current.MainPage = new NavigationPage(new Main());
         }
 
     }

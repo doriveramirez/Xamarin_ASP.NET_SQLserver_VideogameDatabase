@@ -1,4 +1,5 @@
-﻿using MVVM.View;
+﻿using AppXamarinCrud.Service;
+using MVVM.View;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,6 +9,8 @@ namespace AppXamarinCrud.ViewModel
 {
     class MainViewModel
     {
+
+        MainService service = new MainService();
 
         public MainViewModel()
         {
@@ -31,7 +34,7 @@ namespace AppXamarinCrud.ViewModel
         }
         private void Distributors()
         {
-            OptionSelected("Distributors");
+            service.OptionSelected("Distributors");
         }
         private void Companies()
         {
@@ -51,20 +54,7 @@ namespace AppXamarinCrud.ViewModel
         }
         private void Exit()
         {
-            OptionSelected("Exit");
-        }
-
-        private void OptionSelected(string goTo)
-        {
-            switch (goTo)
-            {
-                case "Distributors":
-                    Application.Current.MainPage = new NavigationPage(new DistribuidoraPage());
-                    break;
-                case "Exit":
-                    Android.OS.Process.KillProcess(Android.OS.Process.MyPid());
-                    break;
-            }
+            service.OptionSelected("Exit");
         }
 
         public Command VideogamesButton { get; set; }

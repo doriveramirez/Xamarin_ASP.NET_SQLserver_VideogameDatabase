@@ -15,6 +15,7 @@ namespace MVVM.View
     public partial class DistribuidoraPage : ContentPage
     {
         DistribuidoraViewModel Contexto = new DistribuidoraViewModel();
+
         public DistribuidoraPage()
         {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace MVVM.View
                 Distribuidora modelo = (Distribuidora)e.SelectedItem;
                 if (Contexto.IrBool)
                 {
+                    ((ListView)sender).SelectedItem = null;
                     Navigation.PushAsync(new DetallePage(modelo));
                 }
                 Contexto.Nombre = modelo.Nombre;

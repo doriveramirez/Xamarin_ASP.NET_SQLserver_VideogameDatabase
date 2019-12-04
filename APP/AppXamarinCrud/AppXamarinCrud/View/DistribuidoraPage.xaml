@@ -9,15 +9,15 @@
         <ScrollView>
             <StackLayout>
                 <Label Text="{Binding Id}"/>
-                <Label Text="Nombre"/>
-                <Entry Text="{Binding Nombre}"/>
-                <Label Text="Número de juegos publicados"/>
-                <Entry Text="{Binding NumeroJuegosPublicados}" Keyboard="Numeric"/>
-                <Button Text="Guardar" Command="{Binding GuardarCommand}"/>
-                <Button Text="Modificar" Command="{Binding ModificarCommand}"/>
-                <Button Text="Eliminar" Command="{Binding EliminarCommand}"/>
-                <Button Text="Limpiar" Command="{Binding LimpiarCommand}"/>
-                <Button Text="Ir" Command="{Binding IrCommand}"/>
+                <Entry Placeholder="Nombre" Text="{Binding Nombre}"/>
+                <Entry Placeholder="Número de juegos publicados" Text="{Binding NumeroJuegosPublicados}" Keyboard="Numeric"/>
+                <Label Text="Imagen"/>
+                <Button Text="Guardar" Command="{Binding GuardarCommand}" HeightRequest="40"/>
+                <Button Text="Modificar" Command="{Binding ModificarCommand}" HeightRequest="40"/>
+                <Button Text="Eliminar" Command="{Binding EliminarCommand}" HeightRequest="40"/>
+                <Button Text="Limpiar" Command="{Binding LimpiarCommand}" HeightRequest="40"/>
+                <Button Text="Ir" Command="{Binding IrCommand}" HeightRequest="40"/>
+                <Button Text="Back" Command="{Binding VolverCommand}" HeightRequest="40"/>
                 <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
                 <ListView x:Name="LvDistribuidora" ItemsSource="{Binding Distribuidoras}">
                     <ListView.ItemTemplate>

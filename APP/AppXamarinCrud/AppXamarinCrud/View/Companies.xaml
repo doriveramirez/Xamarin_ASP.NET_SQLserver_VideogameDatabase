@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="AppXamarinCrud.View.Companies">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding Id}"/>
+            <Entry Placeholder="Nombre del videojuego" Text="{Binding Name}"/>
+            <DatePicker Date="{Binding FoundationDate}"/>
+            <Label Text="Imagen"/>
+            <Button Text="Guardar" Command="{Binding SaveCommand}" HeightRequest="40"/>
+            <Button Text="Modificar" Command="{Binding ModifyCommand}" HeightRequest="40"/>
+            <Button Text="Eliminar" Command="{Binding DeleteCommand}" HeightRequest="40"/>
+            <Button Text="Limpiar" Command="{Binding CleanCommand}" HeightRequest="40"/>
+            <Button Text="Ir" Command="{Binding GoCommand}" HeightRequest="40"/>
+            <Button Text="Back" Command="{Binding BackCommand}" HeightRequest="40"/>
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+            <ListView x:Name="LvCompanies" ItemsSource="{Binding Companies}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Name}" Detail="{Binding asd}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

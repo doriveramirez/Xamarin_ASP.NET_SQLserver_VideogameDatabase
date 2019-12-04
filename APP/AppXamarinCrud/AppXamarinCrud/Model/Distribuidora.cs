@@ -85,23 +85,4 @@ namespace MVVM.Model
         public static Distribuidora[] FromJson(string json) => JsonConvert.DeserializeObject<Distribuidora[]>(json, AppXamarinCrud.Converter.Settings);
     }
 
-    public static class Serialize
-    {
-        public static string ToJson(this Distribuidora[] self) => JsonConvert.SerializeObject(self, AppXamarinCrud.Converter.Settings);
-    }
-
-    internal static class Converter
-    {
-        public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
-        {
-            MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-            DateParseHandling = DateParseHandling.None,
-            Converters =
-            {
-                new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
-            },
-        };
-    }
-
-    //}
 }
