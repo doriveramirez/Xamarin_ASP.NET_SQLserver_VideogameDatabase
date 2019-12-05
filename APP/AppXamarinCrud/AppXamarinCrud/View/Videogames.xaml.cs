@@ -21,6 +21,7 @@ namespace AppXamarinCrud.View
         public Videogames()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
             BindingContext = Context;
             LvVideogames.ItemSelected += LvVideogames_ItemSelected;
         }

@@ -18,6 +18,7 @@ namespace AppXamarinCrud.View
         public Main()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
             BindingContext = Context;
         }
     }

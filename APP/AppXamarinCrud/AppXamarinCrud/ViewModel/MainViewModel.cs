@@ -26,11 +26,11 @@ namespace AppXamarinCrud.ViewModel
 
         private void Videogames()
         {
-
+            service.OptionSelected("Videogames");
         }
         private void Platforms()
         {
-
+            service.OptionSelected("Platforms");
         }
         private void Distributors()
         {
@@ -38,19 +38,19 @@ namespace AppXamarinCrud.ViewModel
         }
         private void Companies()
         {
-
+            service.OptionSelected("Companies");
         }
         private void Reviews()
         {
-
+            service.OptionSelected("Reviews");
         }
         private void Users()
         {
-
+            service.OptionSelected("Users");
         }
         private void Options()
         {
-
+            service.OptionSelected("Options");
         }
         private void Exit()
         {

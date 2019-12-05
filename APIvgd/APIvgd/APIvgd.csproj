@@ -375,11 +375,11 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>61450</DevelopmentServerPort>
+          <DevelopmentServerPort>51325</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://192.168.103.68:44317/</IISUrl>
+          <IISUrl>http://192.168.103.68:40089/</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>https://192.168.103.68:44317/</IISAppRootUrl>
+          <IISAppRootUrl>http://192.168.103.68:40089/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -157,7 +157,7 @@ namespace MVVM.ViewModel
         private void Clean()
         {
             Name = "";
-            ReleaseDate = new DateTime(0000, 00, 00); ;
+            ReleaseDate = DateTime.Now;
             SoldUnits = 0;
             UserID = "";
             DistributorID = "";

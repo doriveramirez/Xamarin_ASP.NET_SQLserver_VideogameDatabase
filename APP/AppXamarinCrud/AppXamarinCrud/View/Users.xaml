@@ -5,12 +5,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="AppXamarinCrud.View.Users">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Entry">
+                <Setter Property="HorizontalOptions" Value="Fill" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="BackgroundColor" Value="Yellow" />
+                <Setter Property="FontAttributes" Value="Italic" />
+                <Setter Property="TextColor" Value="Blue" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
             <Label Text="{Binding Id}"/>
             <Entry Placeholder="Nombre" Text="{Binding Name}"/>
             <DatePicker Date="{Binding Birthday}"/>
-            <Entry Placeholder="Dni" Text="{Binding Dni}"/>
+            <Entry Placeholder="Dni" Text="{Binding Dni}" />
             <Entry Placeholder="Nombre de usuario" Text="{Binding Username}"/>
             <Entry Placeholder="Contraseña" Text="{Binding Password}" IsPassword="True"/>
             <Entry Placeholder="Número de juegos publicados" Text="{Binding NumberOfGamesPublished}" Keyboard="Numeric"/>

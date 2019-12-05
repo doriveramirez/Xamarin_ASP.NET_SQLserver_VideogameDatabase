@@ -21,6 +21,7 @@ namespace AppXamarinCrud.View
         public Users()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
             BindingContext = Context;
             LvUsers.ItemSelected += LvUsers_ItemSelected;
         }
@@ -35,9 +36,13 @@ namespace AppXamarinCrud.View
                     ((ListView)sender).SelectedItem = null;
                     //Navigation.PushAsync(new DetallePage(model));
                 }
-                Context.Nombre = model.Name;
-                Context.NumeroJuegosPublicados = model.NumeroJuegosPublicados;
-                Context.Imagen = model.Imagen;
+                Context.Name = model.Name;
+                Context.Birthday = model.Birthday;
+                Context.Dni = model.Dni;
+                Context.Password = model.Password;
+                Context.Username = model.Username;
+                Context.CompanyID = model.CompanyID;
+                Context.Picture = model.Picture;
                 Context.Id = model.Id;
             }
         }

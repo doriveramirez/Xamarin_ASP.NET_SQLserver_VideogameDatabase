@@ -21,6 +21,7 @@ namespace AppXamarinCrud.View
         public Reviews()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
             BindingContext = Context;
             LvReviews.ItemSelected += LvReviews_ItemSelected;
         }
@@ -35,9 +36,11 @@ namespace AppXamarinCrud.View
                     ((ListView)sender).SelectedItem = null;
                     //Navigation.PushAsync(new DetallePage(model));
                 }
-                Context.Nombre = model.Name;
-                Context.NumeroJuegosPublicados = model.NumeroJuegosPublicados;
-                Context.Imagen = model.Imagen;
+                Context.Played = model.Played;
+                Context.Mark = model.Mark;
+                Context.Description = model.Description;
+                Context.UserID = model.UserID;
+                Context.VideogameID = model.VideogameID;
                 Context.Id = model.Id;
             }
         }

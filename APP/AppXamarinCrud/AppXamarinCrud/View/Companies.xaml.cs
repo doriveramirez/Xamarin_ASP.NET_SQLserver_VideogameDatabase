@@ -21,6 +21,7 @@ namespace AppXamarinCrud.View
         public Companies()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
             BindingContext = Context;
             LvCompanies.ItemSelected += LvCompanies_ItemSelected;
         }
@@ -35,9 +36,9 @@ namespace AppXamarinCrud.View
                     ((ListView)sender).SelectedItem = null;
                     //Navigation.PushAsync(new DetallePage(model));
                 }
-                Context.Nombre = model.Name;
-                Context.NumeroJuegosPublicados = model.NumeroJuegosPublicados;
-                Context.Imagen = model.Imagen;
+                Context.Name = model.Name;
+                Context.FoundationDate = model.FoundationDate;
+                Context.Picture = model.Picture;
                 Context.Id = model.Id;
             }
         }

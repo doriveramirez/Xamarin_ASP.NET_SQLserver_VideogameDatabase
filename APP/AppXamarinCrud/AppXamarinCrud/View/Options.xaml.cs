@@ -15,6 +15,7 @@ namespace AppXamarinCrud.View
         public Options()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }

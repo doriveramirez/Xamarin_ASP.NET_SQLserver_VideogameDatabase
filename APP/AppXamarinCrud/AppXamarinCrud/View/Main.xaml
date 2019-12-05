@@ -8,15 +8,52 @@
              BackgroundImage="background.jpg">
     <ContentPage.Content>
         <StackLayout>
-            <Image  Source="E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud\resources\Videogames.jpg" />
-            <Button Text="Videojuegos" Command="{Binding VideogamesButton}"/>
-            <Button Text="Plataformas" Command="{Binding PlatformsButton}"/>
-            <Button Text="Distribuidoras" Command="{Binding DistributorsButton}"/>
-            <Button Text="Compañías" Command="{Binding CompaniesButton}"/>
-            <Button Text="Análisis" Command="{Binding ReviewsButton}"/>
-            <Button Text="Usuarios" Command="{Binding UsersButton}"/>
-            <Button Text="Opciones" Command="{Binding OptionsButton}"/>
-            <Button Text="Salir" Command="{Binding ExitButton}"/>
+            <Frame Grid.Row="1" HasShadow="True" CornerRadius="10" Margin="35,10,35,10" Padding="5" HeightRequest="150">
+                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Image Source="Videogames.jpg"/>
+                </Grid>
+            </Frame>
+            
+            <Frame Grid.Row="1" HasShadow="True" CornerRadius="10" Margin="125,0,125,0" Padding="0" HeightRequest="50">
+                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Button Text="Videojuegos" BackgroundColor="White" Command="{Binding VideogamesButton}" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
+                </Grid>
+            </Frame>
+            <Frame Grid.Row="1" HasShadow="True" CornerRadius="10" Margin="125,0,125,0" Padding="0" HeightRequest="50">
+                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Button Text="Plataformas" BackgroundColor="White" Command="{Binding PlatformsButton}" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
+                </Grid>
+            </Frame>
+            <Frame Grid.Row="1" HasShadow="True" CornerRadius="10" Margin="125,0,125,0" Padding="0" HeightRequest="50">
+                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Button Text="Distribuidoras" BackgroundColor="White" Command="{Binding DistributorsButton}" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
+                </Grid>
+            </Frame>
+            <Frame Grid.Row="1" HasShadow="True" CornerRadius="10" Margin="125,0,125,0" Padding="0" HeightRequest="50">
+                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Button Text="Compañías" BackgroundColor="White" Command="{Binding CompaniesButton}" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
+                </Grid>
+            </Frame>
+            <Frame Grid.Row="1" HasShadow="True" CornerRadius="10" Margin="125,0,125,0" Padding="0" HeightRequest="50">
+                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Button Text="Análisis" BackgroundColor="White" Command="{Binding ReviewsButton}" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
+                </Grid>
+            </Frame>
+            <Frame Grid.Row="1" HasShadow="True" CornerRadius="10" Margin="125,0,125,0" Padding="0" HeightRequest="50">
+                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Button Text="Usuarios" BackgroundColor="White" Command="{Binding UsersButton}" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
+                </Grid>
+            </Frame>
+            <Frame Grid.Row="1" HasShadow="True" CornerRadius="10" Margin="125,0,125,0" Padding="0" HeightRequest="50">
+                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Button Text="Opciones" BackgroundColor="White" Command="{Binding OptionsButton}" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
+                </Grid>
+            </Frame>
+            <Frame Grid.Row="1" HasShadow="True" CornerRadius="10" Margin="125,0,125,0" Padding="0" HeightRequest="50">
+                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Button Text="Salir" BackgroundColor="White" Command="{Binding ExitButton}" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
+                </Grid>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

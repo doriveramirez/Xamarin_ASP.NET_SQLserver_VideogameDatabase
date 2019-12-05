@@ -19,6 +19,7 @@ namespace MVVM.View
         public DistribuidoraPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
             BindingContext = Contexto;
             LvDistribuidora.ItemSelected += LvDistribuidoras_ItemSelected;
         }
@@ -38,6 +39,11 @@ namespace MVVM.View
                 Contexto.Imagen = modelo.Imagen;
                 Contexto.Id = modelo.Id;
             }
+        }
+
+        private void ImageButton_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }
