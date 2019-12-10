@@ -164,9 +164,15 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\bicyclesController.cs" />
+    <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\DistribuidorasController.cs" />
+    <Compile Include="Controllers\DistributorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PlatformsController.cs" />
+    <Compile Include="Controllers\ReviewsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\VideogamesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -189,10 +195,10 @@
       <DependentUpon>Bicycle.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Company.cs">
-      <DependentUpon>Publicaciones.tt</DependentUpon>
+      <DependentUpon>VideogamesDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Distribuidora.cs">
-      <DependentUpon>Publicaciones.tt</DependentUpon>
+      <DependentUpon>VideogamesDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -212,6 +218,9 @@
     <Compile Include="Models\MSreplication_options.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Platforms.cs">
+      <DependentUpon>VideogamesDatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Publicaciones.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -227,6 +236,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Publicaciones.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Review.cs">
+      <DependentUpon>VideogamesDatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\spt_fallback_db.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -240,13 +252,28 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>Publicaciones.tt</DependentUpon>
+      <DependentUpon>VideogamesDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuario.cs">
-      <DependentUpon>Publicaciones.tt</DependentUpon>
+      <DependentUpon>VideogamesDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VideogamesDatabase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VideogamesDatabase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VideogamesDatabase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VideogamesDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VideogamesDatabase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VideogamesDatabase.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Videojuego.cs">
-      <DependentUpon>Publicaciones.tt</DependentUpon>
+      <DependentUpon>VideogamesDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -289,6 +316,16 @@
       <DependentUpon>Publicaciones.edmx</DependentUpon>
       <LastGenOutput>Publicaciones.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\VideogamesDatabase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>VideogamesDatabase.edmx</DependentUpon>
+      <LastGenOutput>VideogamesDatabase.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\VideogamesDatabase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>VideogamesDatabase.edmx</DependentUpon>
+      <LastGenOutput>VideogamesDatabase.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -330,6 +367,13 @@
     </EntityDeploy>
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\VideogamesDatabase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>VideogamesDatabase.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\VideogamesDatabase.edmx.diagram">
+      <DependentUpon>VideogamesDatabase.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

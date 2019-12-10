@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace MVVM.Service
 {
@@ -40,6 +41,54 @@ namespace MVVM.Service
                     }
                 }
                 return Videogames;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async System.Threading.Tasks.Task<ObservableCollection<User>> ConsultUser()
+        {
+            ObservableCollection<User> Users = new ObservableCollection<User>();
+            try
+            {
+                HttpClient client;
+                using (client = new HttpClient())
+                {
+                    client = CreateClient();
+                    HttpResponseMessage response = await client.GetAsync("http://192.168.103.68:40089/api/Users");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var result = await response.Content.ReadAsStringAsync();
+                        Users = JsonConvert.DeserializeObject<ObservableCollection<User>>(result);
+                    }
+                }
+                return Users;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<ObservableCollection<Distributor>> ConsultDistributor()
+        {
+            ObservableCollection<Distributor> Distributors = new ObservableCollection<Distributor>();
+            try
+            {
+                HttpClient client;
+                using (client = new HttpClient())
+                {
+                    client = CreateClient();
+                    HttpResponseMessage response = await client.GetAsync("http://192.168.103.68:40089/api/Distributors");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var result = await response.Content.ReadAsStringAsync();
+                        Distributors = JsonConvert.DeserializeObject<ObservableCollection<Distributor>>(result);
+                    }
+                }
+                return Distributors;
             }
             catch (Exception)
             {

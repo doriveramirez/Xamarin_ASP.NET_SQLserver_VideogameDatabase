@@ -20,7 +20,7 @@ namespace AppXamarinCrud.Service
                     Application.Current.MainPage = new NavigationPage(new Platforms());
                     break;
                 case "Distributors":
-                    Application.Current.MainPage = new NavigationPage(new DistribuidoraPage());
+                    Application.Current.MainPage = new NavigationPage(new Distributors());
                     break;
                 case "Companies":
                     Application.Current.MainPage = new NavigationPage(new Companies());

@@ -20,6 +20,13 @@ namespace MVVM.ViewModel
         private Task<ObservableCollection<Videogame>> VideogamesTask { get; set; }
         private ObservableCollection<Videogame> VideogamesAux { get; set; }
         public ObservableCollection<Videogame> Videogames { get; set; }
+        private Task<ObservableCollection<User>> UsersTask { get; set; }
+        private ObservableCollection<User> UsersAux { get; set; }
+        public ObservableCollection<User> Users { get; set; }
+
+        private Task<ObservableCollection<Distributor>> DistributorsTask { get; set; }
+        private ObservableCollection<Distributor> DistributorsAux { get; set; }
+        public ObservableCollection<Distributor> Distributors { get; set; }
 
         Videogame model;
 
@@ -45,6 +52,27 @@ namespace MVVM.ViewModel
             {
                 Videogames.Add(VideogamesAux[i]);
             }
+            Users = new ObservableCollection<User>();
+            UsersTask = servicio.ConsultUser();
+            UsersAux = await UsersTask;
+            for (int i = 0; i < UsersAux.Count; i++)
+            {
+                Console.WriteLine(UsersAux[i].Dni);
+                Users.Add(UsersAux[i]);
+            }
+            Distributors = new ObservableCollection<Distributor>();
+            DistributorsTask = servicio.ConsultDistributor();
+            DistributorsAux = await DistributorsTask;
+            for (int i = 0; i < DistributorsAux.Count; i++)
+            {
+                Console.WriteLine(DistributorsAux[i].Name);
+                Distributors.Add(DistributorsAux[i]);
+            }
+            //var Users = servicio.ConsultUser();
+            //for (int i = 0; i < Users.Count; i++)
+            //{
+            //    Videogames.Add(VideogamesAux[i]);
+            //}
         }
 
         public bool GoBool { get; set; }

@@ -26,10 +26,10 @@
             </StackLayout>
             <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
                 <Label Text="Plataformas disponibles" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center"/>
-                <Picker Title="" />
-                <Picker Title="" />
+                <Picker Title="Selecciona un usuario" ItemsSource="{Binding Users}" SelectedItem="{Binding Dni}"/>
             </StackLayout>
             <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
+                <Picker Title="Selecciona un distribuidor" ItemsSource="{Binding Distributors}" SelectedItem="{Binding Name}" />
                 <Label Text="Imagen" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
                 <Entry Placeholder="Descripción" Text="{Binding Description}"/>
             </StackLayout>

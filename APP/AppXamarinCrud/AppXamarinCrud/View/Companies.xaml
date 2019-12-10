@@ -23,7 +23,7 @@
                 <Entry Placeholder="Nombre" Text="{Binding Name}" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center"/>
             </StackLayout>
             <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
-                <DatePicker Date="{Binding ReleaseDate}" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
+                <DatePicker Date="{Binding FoundationDate}" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
             </StackLayout>
             <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
                 <Label Text="Imagen" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
@@ -95,7 +95,7 @@
                                 <Label Text="{Binding Name}" TextColor="#757575" FontSize="12" VerticalOptions="Center" Margin="20,0"/>
                                 <Image Grid.Column="1" Source="{Binding Picture}" WidthRequest="38" HeightRequest="38" HorizontalOptions="Center" VerticalOptions="Center"/>
                                 <StackLayout Grid.Column="2" Orientation="Horizontal" Margin="20,0" HorizontalOptions="End" VerticalOptions="Center">
-                                    <Label Text="{Binding ReleaseDate}" TextColor="Black" FontSize="25" FontAttributes="Bold" VerticalOptions="Center"/>
+                                    <Label Text="{Binding FoundationDate}" TextColor="Black" FontSize="25" FontAttributes="Bold" VerticalOptions="Center"/>
                                 </StackLayout>
                             </Grid>
                         </Frame>
