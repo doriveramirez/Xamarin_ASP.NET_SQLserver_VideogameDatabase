@@ -18,9 +18,9 @@
             <Label Text="Distribuidoras" FontSize="22" VerticalOptions="Center" TextColor="White"/>
             <Image Source="distributor.png" WidthRequest="63" HeightRequest="65" HorizontalOptions="Start" VerticalOptions="Center" />
         </StackLayout>
-        <StackLayout Orientation="Vertical" Margin="0,20" HorizontalOptions="Center" VerticalOptions="Center">
+        <StackLayout Spacing="25" Orientation="Vertical" Margin="0,20" HorizontalOptions="Center" VerticalOptions="Center">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <Entry Placeholder="Nombre" Text="{Binding Nombre}" TextColor="White" FontSize="70" FontAttributes="Bold" VerticalOptions="Center"/>
+                <Entry Placeholder="Nombre" Text="{Binding Nombre}" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center"/>
             </StackLayout>
             <Entry Placeholder="Número de juegos publicados" Text="{Binding NumeroJuegosPublicados}" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
             <Label Text="Imagen" TextColor="White" FontSize="12" HorizontalOptions="Center"/>

@@ -49,3 +49,4 @@ E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud\obj\Debug\netstandard2
 E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud\obj\Debug\netstandard2.0\View\Reviews.xaml.g.cs
 E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud\obj\Debug\netstandard2.0\View\Users.xaml.g.cs
 E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud\obj\Debug\netstandard2.0\View\Distributors.xaml.g.cs
+E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud\obj\Debug\netstandard2.0\AppXamarinCrud.csprojAssemblyReference.cache

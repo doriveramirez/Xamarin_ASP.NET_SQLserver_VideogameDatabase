@@ -1282,3 +1282,6 @@ E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\r
 E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\res\drawable\videogames.jpg
 E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\res\drawable\videogames_icon.jpg
 E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\res\drawable\platforms.png
+E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\res\drawable\company.jpg
+E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\res\drawable\reviews.png
+E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\res\drawable\users.png

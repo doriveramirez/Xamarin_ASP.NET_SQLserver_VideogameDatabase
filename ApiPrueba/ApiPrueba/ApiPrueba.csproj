@@ -189,6 +189,9 @@
     <Compile Include="Models\Distributor.cs">
       <DependentUpon>db.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Distributors.cs">
+      <DependentUpon>vgd.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Platform.cs">
       <DependentUpon>db.tt</DependentUpon>
     </Compile>
@@ -200,6 +203,21 @@
     </Compile>
     <Compile Include="Models\Usr.cs">
       <DependentUpon>db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vgd.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>vgd.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vgd.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>vgd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vgd.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>vgd.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\VideoGame.cs">
       <DependentUpon>db.tt</DependentUpon>
@@ -224,6 +242,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>db.edmx</DependentUpon>
       <LastGenOutput>db.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\vgd.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>vgd.edmx</DependentUpon>
+      <LastGenOutput>vgd.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\vgd.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>vgd.edmx</DependentUpon>
+      <LastGenOutput>vgd.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -252,6 +280,13 @@
     </EntityDeploy>
     <Content Include="Models\db.edmx.diagram">
       <DependentUpon>db.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\vgd.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>vgd.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\vgd.edmx.diagram">
+      <DependentUpon>vgd.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

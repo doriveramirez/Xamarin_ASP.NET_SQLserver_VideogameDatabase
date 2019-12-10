@@ -14,42 +14,42 @@ namespace ApiPrueba.Controllers
 {
     public class DistributorsController : ApiController
     {
-        private VideoGamesDatabaseEntities db = new VideoGamesDatabaseEntities();
+        private vgdEntities db = new vgdEntities();
 
         // GET: api/Distributors
-        public IQueryable<Distributor> GetDistributor()
+        public IQueryable<Distributors> GetDistributors()
         {
-            return db.Distributor;
+            return db.Distributors;
         }
 
         // GET: api/Distributors/5
-        [ResponseType(typeof(Distributor))]
-        public IHttpActionResult GetDistributor(string id)
+        [ResponseType(typeof(Distributors))]
+        public IHttpActionResult GetDistributors(string id)
         {
-            Distributor distributor = db.Distributor.Find(id);
-            if (distributor == null)
+            Distributors distributors = db.Distributors.Find(id);
+            if (distributors == null)
             {
                 return NotFound();
             }
 
-            return Ok(distributor);
+            return Ok(distributors);
         }
 
         // PUT: api/Distributors/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutDistributor(string id, Distributor distributor)
+        public IHttpActionResult PutDistributors(string id, Distributors distributors)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != distributor.Id)
+            if (id != distributors.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(distributor).State = EntityState.Modified;
+            db.Entry(distributors).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace ApiPrueba.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!DistributorExists(id))
+                if (!DistributorsExists(id))
                 {
                     return NotFound();
                 }
@@ -71,15 +71,15 @@ namespace ApiPrueba.Controllers
         }
 
         // POST: api/Distributors
-        [ResponseType(typeof(Distributor))]
-        public IHttpActionResult PostDistributor(Distributor distributor)
+        [ResponseType(typeof(Distributors))]
+        public IHttpActionResult PostDistributors(Distributors distributors)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Distributor.Add(distributor);
+            db.Distributors.Add(distributors);
 
             try
             {
@@ -87,7 +87,7 @@ namespace ApiPrueba.Controllers
             }
             catch (DbUpdateException)
             {
-                if (DistributorExists(distributor.Id))
+                if (DistributorsExists(distributors.Id))
                 {
                     return Conflict();
                 }
@@ -97,23 +97,23 @@ namespace ApiPrueba.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = distributor.Id }, distributor);
+            return CreatedAtRoute("DefaultApi", new { id = distributors.Id }, distributors);
         }
 
         // DELETE: api/Distributors/5
-        [ResponseType(typeof(Distributor))]
-        public IHttpActionResult DeleteDistributor(string id)
+        [ResponseType(typeof(Distributors))]
+        public IHttpActionResult DeleteDistributors(string id)
         {
-            Distributor distributor = db.Distributor.Find(id);
-            if (distributor == null)
+            Distributors distributors = db.Distributors.Find(id);
+            if (distributors == null)
             {
                 return NotFound();
             }
 
-            db.Distributor.Remove(distributor);
+            db.Distributors.Remove(distributors);
             db.SaveChanges();
 
-            return Ok(distributor);
+            return Ok(distributors);
         }
 
         protected override void Dispose(bool disposing)
@@ -125,9 +125,9 @@ namespace ApiPrueba.Controllers
             base.Dispose(disposing);
         }
 
-        private bool DistributorExists(string id)
+        private bool DistributorsExists(string id)
         {
-            return db.Distributor.Count(e => e.Id == id) > 0;
+            return db.Distributors.Count(e => e.Id == id) > 0;
         }
     }
 }

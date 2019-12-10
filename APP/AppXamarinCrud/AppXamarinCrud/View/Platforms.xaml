@@ -15,7 +15,7 @@
         <Image Source="overlay.png" Aspect="Fill" HeightRequest="300" VerticalOptions="StartAndExpand"/>
         <StackLayout Orientation="Horizontal" Spacing="60" HorizontalOptions="Start" VerticalOptions="Start" Margin="20,10">
             <ImageButton Command="{Binding BackCommand}" Source="back.png" WidthRequest="23" HeightRequest="25" HorizontalOptions="Start" VerticalOptions="Center" />
-            <Label Text="Videojuegos" FontSize="22" VerticalOptions="Center" TextColor="White"/>
+            <Label Text="Plataformas" FontSize="22" VerticalOptions="Center" TextColor="White"/>
             <Image Source="platforms.png" WidthRequest="63" HeightRequest="65" HorizontalOptions="Start" VerticalOptions="Center" />
         </StackLayout>
         <StackLayout Spacing="25" Orientation="Vertical" Margin="0,90" HorizontalOptions="Center" VerticalOptions="Center">
@@ -105,29 +105,4 @@
             </ListView.ItemTemplate>
         </ListView>
     </Grid>
-    <!--<ContentPage.Content>
-        <StackLayout>
-            <Label Text="{Binding Id}"/>
-            <Entry Placeholder="Nombre de la plataforma" Text="{Binding Name}"/>
-            <DatePicker Date="{Binding ReleaseDate}"/>
-            <Entry Placeholder="Número de unidades vendidas" Text="{Binding SoldUnits}" Keyboard="Numeric"/>
-            <Entry Placeholder="Descripción" Text="{Binding Description}"/>
-            <Label Text="Imagen"/>
-            <Entry Placeholder="Autor" Text="{Binding Author}"/>
-            <Button Text="Guardar" Command="{Binding SaveCommand}" HeightRequest="40"/>
-            <Button Text="Modificar" Command="{Binding ModifyCommand}" HeightRequest="40"/>
-            <Button Text="Eliminar" Command="{Binding DeleteCommand}" HeightRequest="40"/>
-            <Button Text="Limpiar" Command="{Binding CleanCommand}" HeightRequest="40"/>
-            <Button Text="Ir" Command="{Binding GoCommand}" HeightRequest="40"/>
-            <Button Text="Back" Command="{Binding BackCommand}" HeightRequest="40"/>
-            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
-            <ListView x:Name="LvPlatforms" ItemsSource="{Binding Platforms}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Text="{Binding Name}" Detail="{Binding test}"/>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
-    </ContentPage.Content>-->
 </ContentPage>
