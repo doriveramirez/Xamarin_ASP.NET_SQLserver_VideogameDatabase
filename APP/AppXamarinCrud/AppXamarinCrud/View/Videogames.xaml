@@ -25,13 +25,17 @@
                 <Entry  Text="{Binding SoldUnits}" Keyboard="Numeric" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center"/>
             </StackLayout>
             <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
-                <Label Text="Plataformas disponibles" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center"/>
-                <Picker Title="Selecciona un usuario" ItemsSource="{Binding Users}" SelectedItem="{Binding Dni}"/>
+                <Label Text="Plat. disp." TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center"/>
+                <Picker Title="Set user" ItemsSource="{Binding Users}" ItemDisplayBinding="{Binding Dni}"/>
+                <Button Command="{Binding ChangeUserIDCommand}" HeightRequest="10" WidthRequest="30"/>
+                <Entry Placeholder="UserID" Text="{Binding UserID}" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
+                <Label Text="Imagen" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
             </StackLayout>
             <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
-                <Picker Title="Selecciona un distribuidor" ItemsSource="{Binding Distributors}" SelectedItem="{Binding Name}" />
-                <Label Text="Imagen" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
-                <Entry Placeholder="Descripción" Text="{Binding Description}"/>
+                <Picker Title="Set distributor" ItemsSource="{Binding Distributors}" SelectedItem="{Binding Name}" />
+                <Button Command="{Binding ChangeDistributorIDCommand}" HeightRequest="10" WidthRequest="30"/>
+                <Entry Placeholder="DistributorID" Text="{Binding DistributorID}" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
+                <Entry Placeholder="Descripción" Text="{Binding Description}" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
             </StackLayout>
         </StackLayout>
         <Frame Grid.Row="1" HasShadow="True" CornerRadius="10" Margin="20,-40,20,0" Padding="0" HeightRequest="120" VerticalOptions="Start">

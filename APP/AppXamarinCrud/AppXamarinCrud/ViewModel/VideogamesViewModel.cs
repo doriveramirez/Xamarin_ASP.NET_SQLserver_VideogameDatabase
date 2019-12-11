@@ -20,9 +20,10 @@ namespace MVVM.ViewModel
         private Task<ObservableCollection<Videogame>> VideogamesTask { get; set; }
         private ObservableCollection<Videogame> VideogamesAux { get; set; }
         public ObservableCollection<Videogame> Videogames { get; set; }
+
         private Task<ObservableCollection<User>> UsersTask { get; set; }
         private ObservableCollection<User> UsersAux { get; set; }
-        public ObservableCollection<User> Users { get; set; }
+        public List<User> Users { get; set; }
 
         private Task<ObservableCollection<Distributor>> DistributorsTask { get; set; }
         private ObservableCollection<Distributor> DistributorsAux { get; set; }
@@ -41,6 +42,8 @@ namespace MVVM.ViewModel
             CleanCommand = new Command(Clean, () => !IsBusy);
             GoCommand = new Command(Go, () => !IsBusy);
             BackCommand = new Command(Back, () => !IsBusy);
+            ChangeUserIDCommand = new Command(ChangeUserID, () => !IsBusy);
+            ChangeDistributorIDCommand = new Command(ChangeDistributorID, () => !IsBusy);
         }
 
         private async Task ListViewAsync()
@@ -52,7 +55,7 @@ namespace MVVM.ViewModel
             {
                 Videogames.Add(VideogamesAux[i]);
             }
-            Users = new ObservableCollection<User>();
+            Users = new List<User>();
             UsersTask = servicio.ConsultUser();
             UsersAux = await UsersTask;
             for (int i = 0; i < UsersAux.Count; i++)
@@ -68,11 +71,6 @@ namespace MVVM.ViewModel
                 Console.WriteLine(DistributorsAux[i].Name);
                 Distributors.Add(DistributorsAux[i]);
             }
-            //var Users = servicio.ConsultUser();
-            //for (int i = 0; i < Users.Count; i++)
-            //{
-            //    Videogames.Add(VideogamesAux[i]);
-            //}
         }
 
         public bool GoBool { get; set; }
@@ -88,6 +86,15 @@ namespace MVVM.ViewModel
         public Command GoCommand { get; set; }
 
         public Command BackCommand { get; set; }
+
+        public Command ChangeUserIDCommand { get; set; }
+
+        public Command ChangeDistributorIDCommand { get; set; }
+
+        private int UsersID = 0;
+        private int DistributorsID = 0;
+        private bool UserRotate = false;
+        private bool DistributorRotate = false;
 
         private async Task Save()
         {
@@ -209,6 +216,33 @@ namespace MVVM.ViewModel
         private void Back()
         {
             Application.Current.MainPage = new NavigationPage(new Main());
+        }
+
+        private void ChangeUserID()
+        {
+            UserID = Users[UsersID].Id;
+            if (UsersID + 1 >= Users.Count)
+            {
+                UsersID = 0;
+            }
+            else
+            {
+                UsersID++;
+            }
+        }
+
+        private void ChangeDistributorID()
+        {
+            Console.WriteLine(DistributorsID);
+            DistributorID = Distributors[DistributorsID].Id;
+            if (DistributorsID + 1 >= Distributors.Count)
+            {
+                DistributorsID = 0;
+            }
+            else
+            {
+                DistributorsID++;
+            }
         }
 
     }

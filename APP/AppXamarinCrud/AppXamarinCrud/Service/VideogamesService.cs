@@ -15,6 +15,9 @@ namespace MVVM.Service
     public class VideogamesService
     {
         public ObservableCollection<Videogame> Videogames { get; set; }
+        public ObservableCollection<User> Users { get; set; }
+        public ObservableCollection<Distributor> Distributors { get; set; }
+
         private const string apiUrl = "http://192.168.103.68:40089/api/Videogames";
 
         public VideogamesService()
@@ -22,6 +25,14 @@ namespace MVVM.Service
             if (Videogames == null)
             {
                 Videogames = new ObservableCollection<Videogame>();
+            }
+            if (Users == null)
+            {
+                Users = new ObservableCollection<User>();
+            }
+            if (Distributors == null)
+            {
+                Distributors = new ObservableCollection<Distributor>();
             }
         }
 
@@ -50,7 +61,6 @@ namespace MVVM.Service
 
         public async System.Threading.Tasks.Task<ObservableCollection<User>> ConsultUser()
         {
-            ObservableCollection<User> Users = new ObservableCollection<User>();
             try
             {
                 HttpClient client;
@@ -74,7 +84,6 @@ namespace MVVM.Service
 
         public async Task<ObservableCollection<Distributor>> ConsultDistributor()
         {
-            ObservableCollection<Distributor> Distributors = new ObservableCollection<Distributor>();
             try
             {
                 HttpClient client;
