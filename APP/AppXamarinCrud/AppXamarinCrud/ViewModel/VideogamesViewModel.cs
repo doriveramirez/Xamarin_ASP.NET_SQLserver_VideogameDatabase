@@ -60,7 +60,6 @@ namespace MVVM.ViewModel
             UsersAux = await UsersTask;
             for (int i = 0; i < UsersAux.Count; i++)
             {
-                Console.WriteLine(UsersAux[i].Dni);
                 Users.Add(UsersAux[i]);
             }
             Distributors = new ObservableCollection<Distributor>();
@@ -68,7 +67,6 @@ namespace MVVM.ViewModel
             DistributorsAux = await DistributorsTask;
             for (int i = 0; i < DistributorsAux.Count; i++)
             {
-                Console.WriteLine(DistributorsAux[i].Name);
                 Distributors.Add(DistributorsAux[i]);
             }
         }
@@ -93,8 +91,6 @@ namespace MVVM.ViewModel
 
         private int UsersID = 0;
         private int DistributorsID = 0;
-        private bool UserRotate = false;
-        private bool DistributorRotate = false;
 
         private async Task Save()
         {
@@ -220,28 +216,58 @@ namespace MVVM.ViewModel
 
         private void ChangeUserID()
         {
-            UserID = Users[UsersID].Id;
-            if (UsersID + 1 >= Users.Count)
+            if(UserID == Users[UsersID].Id)
             {
-                UsersID = 0;
+                if (UsersID + 1 >= Users.Count)
+                {
+                    UsersID = 0;
+                }
+                else
+                {
+                    UsersID++;
+                }
+                UserID = Users[UsersID].Id;
             }
             else
             {
-                UsersID++;
+                UserID = Users[UsersID].Id;
+                if (UsersID + 1 >= Users.Count)
+                {
+                    UsersID = 0;
+                }
+                else
+                {
+                    UsersID++;
+                }
             }
+            
         }
 
         private void ChangeDistributorID()
         {
-            Console.WriteLine(DistributorsID);
-            DistributorID = Distributors[DistributorsID].Id;
-            if (DistributorsID + 1 >= Distributors.Count)
+            if (DistributorID == Distributors[DistributorsID].Id)
             {
-                DistributorsID = 0;
+                if (DistributorsID + 1 >= Distributors.Count)
+                {
+                    DistributorsID = 0;
+                }
+                else
+                {
+                    DistributorsID++;
+                }
+                DistributorID = Distributors[DistributorsID].Id;
             }
             else
             {
-                DistributorsID++;
+                DistributorID = Distributors[DistributorsID].Id;
+                if (DistributorsID + 1 >= Distributors.Count)
+                {
+                    DistributorsID = 0;
+                }
+                else
+                {
+                    DistributorsID++;
+                }
             }
         }
 
