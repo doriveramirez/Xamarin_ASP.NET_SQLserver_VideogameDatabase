@@ -21,6 +21,10 @@ namespace MVVM.ViewModel
         private ObservableCollection<User> UsersAux { get; set; }
         public ObservableCollection<User> Users { get; set; }
 
+        private Task<ObservableCollection<Company>> CompaniesTask { get; set; }
+        private ObservableCollection<Company> CompaniesAux { get; set; }
+        public List<Company> Companies { get; set; }
+
         User model;
 
         UsersService servicio = new UsersService();
@@ -34,6 +38,7 @@ namespace MVVM.ViewModel
             CleanCommand = new Command(Clean, () => !IsBusy);
             GoCommand = new Command(Go, () => !IsBusy);
             BackCommand = new Command(Back, () => !IsBusy);
+            ChangeCompanyIDCommand = new Command(ChangeCompanyID, () => !IsBusy);
         }
 
         private async Task ListViewAsync()
@@ -44,6 +49,13 @@ namespace MVVM.ViewModel
             for (int i = 0; i < UsersAux.Count; i++)
             {
                 Users.Add(UsersAux[i]);
+            }
+            Companies = new List<Company>();
+            CompaniesTask = servicio.ConsultCompany();
+            CompaniesAux = await CompaniesTask;
+            for (int i = 0; i < CompaniesAux.Count; i++)
+            {
+                Companies.Add(CompaniesAux[i]);
             }
         }
 
@@ -60,6 +72,10 @@ namespace MVVM.ViewModel
         public Command GoCommand { get; set; }
 
         public Command BackCommand { get; set; }
+
+        public Command ChangeCompanyIDCommand { get; set; }
+
+        private int CompaniesID = 0;
 
         private async Task Save()
         {
@@ -155,7 +171,7 @@ namespace MVVM.ViewModel
         private void Clean()
         {
             Name = "";
-            Birthday = new DateTime(0000, 00, 00);
+            Birthday = new DateTime(1900, 01, 01);
             Dni = "";
             Password = "";
             Username = "";
@@ -179,6 +195,34 @@ namespace MVVM.ViewModel
         private void Back()
         {
             Application.Current.MainPage = new NavigationPage(new Main());
+        }
+
+        private void ChangeCompanyID()
+        {
+            if (CompanyID == Companies[CompaniesID].Id)
+            {
+                if (CompaniesID + 1 >= Companies.Count)
+                {
+                    CompaniesID = 0;
+                }
+                else
+                {
+                    CompaniesID++;
+                }
+                CompanyID = Companies[CompaniesID].Id;
+            }
+            else
+            {
+                CompanyID = Companies[CompaniesID].Id;
+                if (CompaniesID + 1 >= Companies.Count)
+                {
+                    CompaniesID = 0;
+                }
+                else
+                {
+                    CompaniesID++;
+                }
+            }
         }
 
     }

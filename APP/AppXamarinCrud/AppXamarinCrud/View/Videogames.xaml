@@ -12,7 +12,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Image Source="overlay.png" Aspect="Fill" HeightRequest="300" VerticalOptions="StartAndExpand"/>
+        <Image Source="overlayVideogames.png" Aspect="Fill" HeightRequest="300" VerticalOptions="StartAndExpand"/>
         <StackLayout Orientation="Horizontal" Spacing="60" HorizontalOptions="Start" VerticalOptions="Start" Margin="20,10">
             <ImageButton Command="{Binding BackCommand}" Source="back.png" WidthRequest="23" HeightRequest="25" HorizontalOptions="Start" VerticalOptions="Center" />
             <Label Text="Videojuegos" FontSize="22" VerticalOptions="Center" TextColor="White"/>
@@ -20,22 +20,22 @@
         </StackLayout>
         <StackLayout Spacing="25" Orientation="Vertical" Margin="0,90" HorizontalOptions="Center" VerticalOptions="Center">
             <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
-                <Entry Placeholder="Nombre" Text="{Binding Name}" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center"/>
+                <Entry Placeholder="Nombre" Text="{Binding Name}" PlaceholderColor="WhiteSmoke" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center"/>
                 <DatePicker Date="{Binding ReleaseDate}" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
                 <Entry  Text="{Binding SoldUnits}" Keyboard="Numeric" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center"/>
             </StackLayout>
             <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
                 <Label Text="Plat. disp." TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center"/>
-                <Picker Title="Set user" ItemsSource="{Binding Users}" ItemDisplayBinding="{Binding Dni}"/>
+                <!--<Picker Title="Set user" ItemsSource="{Binding Users}" ItemDisplayBinding="{Binding Dni}"/>-->
                 <Button Command="{Binding ChangeUserIDCommand}" HeightRequest="10" WidthRequest="30"/>
-                <Entry Placeholder="UserID" Text="{Binding UserID}" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
+                <Entry Placeholder="UserID" Text="{Binding UserID}" PlaceholderColor="WhiteSmoke" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
                 <Label Text="Imagen" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
             </StackLayout>
             <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
-                <Picker Title="Set distributor" ItemsSource="{Binding Distributors}" SelectedItem="{Binding Name}" />
+                <!--<Picker Title="Set distributor" ItemsSource="{Binding Distributors}" SelectedItem="{Binding Name}" />-->
                 <Button Command="{Binding ChangeDistributorIDCommand}" HeightRequest="10" WidthRequest="30"/>
-                <Entry Placeholder="DistributorID" Text="{Binding DistributorID}" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
-                <Entry Placeholder="Descripción" Text="{Binding Description}" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
+                <Entry Placeholder="DistributorID" Text="{Binding DistributorID}" PlaceholderColor="WhiteSmoke" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
+                <Entry Placeholder="Descripción" Text="{Binding Description}" PlaceholderColor="WhiteSmoke" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
             </StackLayout>
         </StackLayout>
         <Frame Grid.Row="1" HasShadow="True" CornerRadius="10" Margin="20,-40,20,0" Padding="0" HeightRequest="120" VerticalOptions="Start">
@@ -102,7 +102,7 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Label Text="{Binding Name}" TextColor="#757575" FontSize="12" VerticalOptions="Center" Margin="20,0"/>
-                                <Image Grid.Column="1" Source="{Binding Icon}" WidthRequest="38" HeightRequest="38" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Image Grid.Column="1" Source="{Binding Picture}" WidthRequest="38" HeightRequest="38" HorizontalOptions="Center" VerticalOptions="Center"/>
                                 <StackLayout Grid.Column="2" Orientation="Horizontal" Margin="20,0" HorizontalOptions="End" VerticalOptions="Center">
                                     <Label Text="{Binding ReleaseDate}" TextColor="Black" FontSize="25" FontAttributes="Bold" VerticalOptions="Center"/>
                                 </StackLayout>

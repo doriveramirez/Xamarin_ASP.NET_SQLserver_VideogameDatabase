@@ -1285,3 +1285,13 @@ E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\r
 E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\res\drawable\company.jpg
 E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\res\drawable\reviews.png
 E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\res\drawable\users.png
+E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\res\drawable\options.png
+E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\res\drawable\overlayvideogames.png
+E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\res\drawable\overlayplatforms.png
+E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\res\drawable\overlaydistributors.png
+E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\res\drawable\overlaycompanies.png
+E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\res\drawable\overlayreviews.png
+E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\res\drawable\overlayusers.png
+E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\res\drawable\overlayoptions.png
+E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\res\drawable\register.png
+E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\res\drawable\login.png

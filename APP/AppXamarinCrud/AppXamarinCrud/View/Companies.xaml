@@ -12,7 +12,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Image Source="overlay.png" Aspect="Fill" HeightRequest="300" VerticalOptions="StartAndExpand"/>
+        <Image Source="overlayCompanies.png" Aspect="Fill" HeightRequest="300" VerticalOptions="StartAndExpand"/>
         <StackLayout Orientation="Horizontal" Spacing="60" HorizontalOptions="Start" VerticalOptions="Start" Margin="20,10">
             <ImageButton Command="{Binding BackCommand}" Source="back.png" WidthRequest="23" HeightRequest="25" HorizontalOptions="Start" VerticalOptions="Center" />
             <Label Text="Compañías" FontSize="22" VerticalOptions="Center" TextColor="White"/>

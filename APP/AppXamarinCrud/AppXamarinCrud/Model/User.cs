@@ -49,7 +49,9 @@ namespace AppXamarinCrud.Model
         public DateTime Birthday
         {
             get { return birthday; }
-            set { birthday = value; }
+            set { birthday = value;
+                OnPropertyChanged();
+            }
         }
 
         private string dni;
@@ -57,7 +59,9 @@ namespace AppXamarinCrud.Model
         public string Dni
         {
             get { return dni; }
-            set { dni = value; }
+            set { dni = value;
+                OnPropertyChanged();
+            }
         }
 
         private string password;
@@ -65,7 +69,9 @@ namespace AppXamarinCrud.Model
         public string Password
         {
             get { return password; }
-            set { password = value; }
+            set { password = value;
+                OnPropertyChanged();
+            }
         }
 
         private string username;
@@ -73,7 +79,9 @@ namespace AppXamarinCrud.Model
         public string Username
         {
             get { return username; }
-            set { username = value; }
+            set { username = value;
+                OnPropertyChanged();
+            }
         }
 
         private string companyID;
@@ -81,7 +89,9 @@ namespace AppXamarinCrud.Model
         public string CompanyID
         {
             get { return companyID; }
-            set { companyID = value; }
+            set { companyID = value;
+                OnPropertyChanged();
+            }
         }
 
         private Image picture;

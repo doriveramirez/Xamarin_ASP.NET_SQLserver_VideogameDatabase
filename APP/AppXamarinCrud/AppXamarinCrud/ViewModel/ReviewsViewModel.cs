@@ -21,6 +21,14 @@ namespace MVVM.ViewModel
         private ObservableCollection<Review> ReviewsAux { get; set; }
         public ObservableCollection<Review> Reviews { get; set; }
 
+        private Task<ObservableCollection<User>> UsersTask { get; set; }
+        private ObservableCollection<User> UsersAux { get; set; }
+        public ObservableCollection<User> Users { get; set; }
+
+        private Task<ObservableCollection<Videogame>> VideogamesTask { get; set; }
+        private ObservableCollection<Videogame> VideogamesAux { get; set; }
+        public ObservableCollection<Videogame> Videogames { get; set; }
+
         Review model;
 
         ReviewsService servicio = new ReviewsService();
@@ -34,6 +42,8 @@ namespace MVVM.ViewModel
             CleanCommand = new Command(Clean, () => !IsBusy);
             GoCommand = new Command(Go, () => !IsBusy);
             BackCommand = new Command(Back, () => !IsBusy);
+            ChangeVideogameIDCommand = new Command(ChangeVideogameID, () => !IsBusy);
+            ChangeUserIDCommand = new Command(ChangeUserID, () => !IsBusy);
         }
 
         private async Task ListViewAsync()
@@ -45,6 +55,23 @@ namespace MVVM.ViewModel
             {
                 Reviews.Add(ReviewsAux[i]);
             }
+            Videogames = new ObservableCollection<Videogame>();
+            VideogamesTask = servicio.ConsultVideogame();
+            VideogamesAux = await VideogamesTask;
+            for (int i = 0; i < VideogamesAux.Count; i++)
+            {
+                Console.WriteLine("hola" + VideogamesAux[i].Name);
+                Videogames.Add(VideogamesAux[i]);
+            }
+            Users = new ObservableCollection<User>();
+            UsersTask = servicio.ConsultUser();
+            UsersAux = await UsersTask;
+            for (int i = 0; i < UsersAux.Count; i++)
+            {
+                Console.WriteLine("hola" + UsersAux[i].Dni);
+                Users.Add(UsersAux[i]);
+            }
+            Console.WriteLine("adios");
         }
 
         public bool GoBool { get; set; }
@@ -60,6 +87,14 @@ namespace MVVM.ViewModel
         public Command GoCommand { get; set; }
 
         public Command BackCommand { get; set; }
+
+        public Command ChangeUserIDCommand { get; set; }
+
+        public Command ChangeVideogameIDCommand { get; set; }
+
+        private int UsersID = 0;
+
+        private int VideogamesID = 0;
 
         private async Task Save()
         {
@@ -163,6 +198,61 @@ namespace MVVM.ViewModel
         private void Back()
         {
             Application.Current.MainPage = new NavigationPage(new Main());
+        }
+
+        private void ChangeUserID()
+        {
+            if (UserID == Users[UsersID].Id)
+            {
+                if (UsersID + 1 >= Users.Count)
+                {
+                    UsersID = 0;
+                }
+                else
+                {
+                    UsersID++;
+                }
+                UserID = Users[UsersID].Id;
+            }
+            else
+            {
+                UserID = Users[UsersID].Id;
+                if (UsersID + 1 >= Users.Count)
+                {
+                    UsersID = 0;
+                }
+                else
+                {
+                    UsersID++;
+                }
+            }
+        }
+        private void ChangeVideogameID()
+        {
+            if (VideogameID == Videogames[VideogamesID].Id)
+            {
+                if (VideogamesID + 1 >= Videogames.Count)
+                {
+                    VideogamesID = 0;
+                }
+                else
+                {
+                    VideogamesID++;
+                }
+                VideogameID = Videogames[VideogamesID].Id;
+            }
+            else
+            {
+                VideogameID = Videogames[VideogamesID].Id;
+                if (VideogamesID + 1 >= Videogames.Count)
+                {
+                    VideogamesID = 0;
+                }
+                else
+                {
+                    VideogamesID++;
+                }
+            }
         }
 
     }

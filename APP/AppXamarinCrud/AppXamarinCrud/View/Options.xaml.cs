@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVVM.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,10 +13,12 @@ namespace AppXamarinCrud.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Options : ContentPage
     {
+        OptionsViewModel Context = new OptionsViewModel();
         public Options()
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+            BindingContext = Context;
         }
     }
 }

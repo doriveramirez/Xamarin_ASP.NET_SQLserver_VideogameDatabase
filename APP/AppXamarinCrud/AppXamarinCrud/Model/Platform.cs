@@ -49,7 +49,9 @@ namespace AppXamarinCrud.Model
         public DateTime ReleaseDate
         {
             get { return releaseDate; }
-            set { releaseDate = value; }
+            set { releaseDate = value;
+                OnPropertyChanged();
+            }
         }
 
         private int soldUnits;
@@ -57,7 +59,9 @@ namespace AppXamarinCrud.Model
         public int SoldUnits
         {
             get { return soldUnits; }
-            set { soldUnits = value; }
+            set { soldUnits = value;
+                OnPropertyChanged();
+            }
         }
 
         private string description;
@@ -65,7 +69,9 @@ namespace AppXamarinCrud.Model
         public string Description
         {
             get { return description; }
-            set { description = value; }
+            set { description = value;
+                OnPropertyChanged();
+            }
         }
 
 
@@ -86,7 +92,9 @@ namespace AppXamarinCrud.Model
         public string Author
         {
             get { return author; }
-            set { author = value; }
+            set { author = value;
+                OnPropertyChanged();
+            }
         }
 
         private bool isBusy = false;

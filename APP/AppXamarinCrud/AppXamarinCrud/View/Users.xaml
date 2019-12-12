@@ -12,7 +12,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Image Source="overlay.png" Aspect="Fill" HeightRequest="300" VerticalOptions="StartAndExpand"/>
+        <Image Source="overlayUsers.png" Aspect="Fill" HeightRequest="300" VerticalOptions="StartAndExpand"/>
         <StackLayout Orientation="Horizontal" Spacing="60" HorizontalOptions="Start" VerticalOptions="Start" Margin="20,10">
             <ImageButton Command="{Binding BackCommand}" Source="back.png" WidthRequest="23" HeightRequest="25" HorizontalOptions="Start" VerticalOptions="Center" />
             <Label Text="Usuarios" FontSize="22" VerticalOptions="Center" TextColor="White"/>
@@ -20,16 +20,18 @@
         </StackLayout>
         <StackLayout Spacing="25" Orientation="Vertical" Margin="0,90" HorizontalOptions="Center" VerticalOptions="Center">
             <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
-                <Entry Placeholder="Nombre" Text="{Binding Name}" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
+                <Entry Placeholder="Nombre" Text="{Binding Name}" PlaceholderColor="WhiteSmoke" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
                 <DatePicker Date="{Binding Birthday}" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
-                <Entry Placeholder="Dni" Text="{Binding Dni}" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
+                <Entry Placeholder="Dni" Text="{Binding Dni}" PlaceholderColor="WhiteSmoke" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
             </StackLayout>
             <StackLayout Spacing="10" Orientation="Horizontal" HorizontalOptions="Center">
-                <Entry Placeholder="Nombre de usuario" Text="{Binding Username}" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
-                <Entry Placeholder="Contraseña" Text="{Binding Password}" IsPassword="True" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
+                <Entry Placeholder="Nombre de usuario" Text="{Binding Username}" PlaceholderColor="WhiteSmoke" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
+                <Entry Placeholder="Contraseña" Text="{Binding Password}" PlaceholderColor="WhiteSmoke" IsPassword="True" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
             </StackLayout>
             <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
-                <Picker Title="" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
+                <!--<Picker Title="" TextColor="White" FontSize="12" HorizontalOptions="Center"/>-->
+                <Button Command="{Binding ChangeCompanyIDCommand}" HeightRequest="10" WidthRequest="30"/>
+                <Entry Placeholder="CompanyID" Text="{Binding CompanyID}" PlaceholderColor="WhiteSmoke" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
                 <Label Text="Imagen" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
             </StackLayout>
         </StackLayout>

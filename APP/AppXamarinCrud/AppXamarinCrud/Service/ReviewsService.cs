@@ -14,6 +14,10 @@ namespace MVVM.Service
     public class ReviewsService
     {
         public ObservableCollection<Review> Reviews { get; set; }
+        public ObservableCollection<User> Users { get; set; }
+        public ObservableCollection<Videogame> Videogames { get; set; }
+
+
         private const string apiUrl = "http://192.168.103.68:40089/api/Reviews";
 
         public ReviewsService()
@@ -21,6 +25,14 @@ namespace MVVM.Service
             if (Reviews == null)
             {
                 Reviews = new ObservableCollection<Review>();
+            }
+            if (Users == null)
+            {
+                Users = new ObservableCollection<User>();
+            }
+            if (Videogames == null)
+            {
+                Videogames = new ObservableCollection<Videogame>();
             }
         }
 
@@ -40,6 +52,52 @@ namespace MVVM.Service
                     }
                 }
                 return Reviews;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async System.Threading.Tasks.Task<ObservableCollection<User>> ConsultUser()
+        {
+            try
+            {
+                HttpClient client;
+                using (client = new HttpClient())
+                {
+                    client = CreateClient();
+                    HttpResponseMessage response = await client.GetAsync("http://192.168.103.68:40089/api/Users");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var result = await response.Content.ReadAsStringAsync();
+                        Users = JsonConvert.DeserializeObject<ObservableCollection<User>>(result);
+                    }
+                }
+                return Users;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async System.Threading.Tasks.Task<ObservableCollection<Videogame>> ConsultVideogame()
+        {
+            try
+            {
+                HttpClient client;
+                using (client = new HttpClient())
+                {
+                    client = CreateClient();
+                    HttpResponseMessage response = await client.GetAsync("http://192.168.103.68:40089/api/Videogames");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var result = await response.Content.ReadAsStringAsync();
+                        Videogames = JsonConvert.DeserializeObject<ObservableCollection<Videogame>>(result);
+                    }
+                }
+                return Videogames;
             }
             catch (Exception)
             {

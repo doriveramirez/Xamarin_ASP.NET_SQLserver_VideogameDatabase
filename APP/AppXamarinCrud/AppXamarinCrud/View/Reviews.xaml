@@ -12,7 +12,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Image Source="overlay.png" Aspect="Fill" HeightRequest="300" VerticalOptions="StartAndExpand"/>
+        <Image Source="overlayReviews.png" Aspect="Fill" HeightRequest="300" VerticalOptions="StartAndExpand"/>
         <StackLayout Orientation="Horizontal" Spacing="60" HorizontalOptions="Start" VerticalOptions="Start" Margin="20,10">
             <ImageButton Command="{Binding BackCommand}" Source="back.png" WidthRequest="23" HeightRequest="25" HorizontalOptions="Start" VerticalOptions="Center" />
             <Label Text="Análisis" FontSize="22" VerticalOptions="Center" TextColor="White"/>
@@ -25,12 +25,14 @@
                 <Entry Placeholder="Nota" Text="{Binding Mark}" Keyboard="Numeric" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center"/>
             </StackLayout>
             <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
-                <Entry Placeholder="Nombre de la plataforma" Text="{Binding Name}" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center"/>
-                <Entry Placeholder="Descripción" Text="{Binding Description}" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center"/>
+                <Entry Placeholder="Nombre de la plataforma" Text="{Binding Name}" PlaceholderColor="WhiteSmoke" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center"/>
+                <Entry Placeholder="Descripción" Text="{Binding Description}" PlaceholderColor="WhiteSmoke" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center"/>
             </StackLayout>
             <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
-                <Picker Title="" />
-                <Picker Title="" />
+                <Button Command="{Binding ChangeUserIDCommand}" HeightRequest="10" WidthRequest="30"/>
+                <Entry Placeholder="UserID" Text="{Binding UserID}" PlaceholderColor="WhiteSmoke" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
+                <Button Command="{Binding ChangeVideogameIDCommand}" HeightRequest="10" WidthRequest="30"/>
+                <Entry Placeholder="VideogameID" Text="{Binding VideogameID}" PlaceholderColor="WhiteSmoke" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
             </StackLayout>
         </StackLayout>
         <Frame Grid.Row="1" HasShadow="True" CornerRadius="10" Margin="20,-40,20,0" Padding="0" HeightRequest="120" VerticalOptions="Start">

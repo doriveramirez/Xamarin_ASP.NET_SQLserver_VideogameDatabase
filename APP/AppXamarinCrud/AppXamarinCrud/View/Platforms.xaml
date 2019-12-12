@@ -12,7 +12,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Image Source="overlay.png" Aspect="Fill" HeightRequest="300" VerticalOptions="StartAndExpand"/>
+        <Image Source="overlayPlatforms.png" Aspect="Fill" HeightRequest="300" VerticalOptions="StartAndExpand"/>
         <StackLayout Orientation="Horizontal" Spacing="60" HorizontalOptions="Start" VerticalOptions="Start" Margin="20,10">
             <ImageButton Command="{Binding BackCommand}" Source="back.png" WidthRequest="23" HeightRequest="25" HorizontalOptions="Start" VerticalOptions="Center" />
             <Label Text="Plataformas" FontSize="22" VerticalOptions="Center" TextColor="White"/>
@@ -20,14 +20,14 @@
         </StackLayout>
         <StackLayout Spacing="25" Orientation="Vertical" Margin="0,90" HorizontalOptions="Center" VerticalOptions="Center">
             <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
-                <Entry Placeholder="Nombre" Text="{Binding Name}" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center"/>
+                <Entry Placeholder="Nombre" PlaceholderColor="WhiteSmoke" Text="{Binding Name}" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center"/>
                 <DatePicker Date="{Binding ReleaseDate}" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
                 <Entry  Text="{Binding SoldUnits}" Keyboard="Numeric" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center"/>
             </StackLayout>
             <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
-                <Entry Placeholder="Descripción" Text="{Binding Description}" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center"/>
+                <Entry Placeholder="Descripción" PlaceholderColor="WhiteSmoke" Text="{Binding Description}" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center"/>
                 <Label Text="Imagen" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
-                <Entry Placeholder="Autor" Text="{Binding Author}"/>
+                <Entry Placeholder="Autor" PlaceholderColor="WhiteSmoke" Text="{Binding Author}"/>
             </StackLayout>
         </StackLayout>
         <Frame Grid.Row="1" HasShadow="True" CornerRadius="10" Margin="20,-40,20,0" Padding="0" HeightRequest="120" VerticalOptions="Start">

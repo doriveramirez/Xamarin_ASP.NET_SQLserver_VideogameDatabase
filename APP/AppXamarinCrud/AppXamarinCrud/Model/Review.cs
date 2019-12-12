@@ -37,7 +37,9 @@ namespace AppXamarinCrud.Model
         public bool Played
         {
             get { return played; }
-            set { played = value; }
+            set { played = value;
+                OnPropertyChanged();
+            }
         }
 
         private int mark;
@@ -57,7 +59,9 @@ namespace AppXamarinCrud.Model
         public string Description
         {
             get { return description; }
-            set { description = value; }
+            set { description = value;
+                OnPropertyChanged();
+            }
         }
 
         private string userID;
@@ -65,7 +69,9 @@ namespace AppXamarinCrud.Model
         public string UserID
         {
             get { return userID; }
-            set { userID = value; }
+            set { userID = value;
+                OnPropertyChanged();
+            }
         }
 
         private string videogameID;
@@ -73,7 +79,9 @@ namespace AppXamarinCrud.Model
         public string VideogameID
         {
             get { return videogameID; }
-            set { videogameID = value; }
+            set { videogameID = value;
+                OnPropertyChanged();
+            }
         }
 
         private bool isBusy = false;

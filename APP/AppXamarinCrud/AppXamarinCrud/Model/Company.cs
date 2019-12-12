@@ -49,7 +49,9 @@ namespace AppXamarinCrud.Model
         public DateTime FoundationDate
         {
             get { return foundationDate; }
-            set { foundationDate = value; }
+            set { foundationDate = value;
+                OnPropertyChanged();
+            }
         }
 
         private Image picture;

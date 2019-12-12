@@ -8,12 +8,15 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace MVVM.Service
 {
     public class UsersService
     {
         public ObservableCollection<User> Users { get; set; }
+        public ObservableCollection<Company> Companies { get; set; }
+
         private const string apiUrl = "http://192.168.103.68:40089/api/Users";
 
         public UsersService()
@@ -21,6 +24,10 @@ namespace MVVM.Service
             if (Users == null)
             {
                 Users = new ObservableCollection<User>();
+            }
+            if (Companies == null)
+            {
+                Companies = new ObservableCollection<Company>();
             }
         }
 
@@ -40,6 +47,29 @@ namespace MVVM.Service
                     }
                 }
                 return Users;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async System.Threading.Tasks.Task<ObservableCollection<Company>> ConsultCompany()
+        {
+            try
+            {
+                HttpClient client;
+                using (client = new HttpClient())
+                {
+                    client = CreateClient();
+                    HttpResponseMessage response = await client.GetAsync("http://192.168.103.68:40089/api/Companies");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var result = await response.Content.ReadAsStringAsync();
+                        Companies = JsonConvert.DeserializeObject<ObservableCollection<Company>>(result);
+                    }
+                }
+                return Companies;
             }
             catch (Exception)
             {
