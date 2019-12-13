@@ -26,10 +26,9 @@ First you will need to install [Visual Studio 2019](https://visualstudio.microso
 
 Next, you have to install the dependencies:
 
-
-```
 ![alt](https://image.prntscr.com/image/J0otTId-Si27uL_5k6he-Q.png)
-```
+![alt](https://image.prntscr.com/image/AE3TpbdgQBS037kfULCuqw.png)
+![alt](https://image.prntscr.com/image/OBkDjPTFSOOecgEI6w_lhg.png)
 
 And repeat
 
