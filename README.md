@@ -20,74 +20,41 @@ What things you need to install the software and how to install them
 •	ORM: Entity Framework
 ```
 
-### Installing
+### Installing the application
 
 First you will need to install [Visual Studio 2019](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&rel=16)
 
 Next, you have to install the dependencies:
 
 ![alt](https://image.prntscr.com/image/J0otTId-Si27uL_5k6he-Q.png)
+Choose install more tools and then
 ![alt](https://image.prntscr.com/image/AE3TpbdgQBS037kfULCuqw.png)
 ![alt](https://image.prntscr.com/image/OBkDjPTFSOOecgEI6w_lhg.png)
 
-And repeat
+Now you can open the xamarin application, selecting open an existing solution
 
-```
-until finished
-```
+![alt](https://image.prntscr.com/image/xgCtEBFhRBOaXaZzAAqKAA.png)
 
-End with an example of getting some data out of the system or using it for a little demo
+Once you have opened the file, you will need to create an android emulator if you don't have it
+![alt](https://image.prntscr.com/image/IbnVgQIZR1qClZFLg8VB4A.png)
 
-## Running the tests
+And then you will be able to run the application
 
-Explain how to run the automated tests for this system
+### Installing the server
 
-### Break down into end to end tests
+First you will need to install [SQL server](https://go.microsoft.com/fwlink/?linkid=853016)
 
-Explain what these tests test and why
+Next, you have to install the management studio [SQL server Management Studio](https://aka.ms/ssmsfullsetup)
 
-```
-Give an example
-```
+Once you have installed it, you will need to connect to Database Engine, and then add a new query.
+Drag and drop the "VideogamesDB.sql" file that is on the "Inicio folder" in the SQL server Management Studio and execute it.
+![alt](https://image.prntscr.com/image/4z4gVjFsTX_HGp-nXTOCgg.png)
 
-### And coding style tests
+Now, you have to modify two files in the API folder.
+API\.vs\MVCCrudAPI\config\applicationhost.config
+![alt](https://image.prntscr.com/image/BCL5juW2RB2BWeA1m09Q3g.png)
 
-Explain what these tests test and why
+API\MVCCrudAPI\MVCCrudAPI.csproj
+![alt](https://image.prntscr.com/image/93KAFOj6T16GiorKyca6Zg.png)
 
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+Now you are able to run the server.
