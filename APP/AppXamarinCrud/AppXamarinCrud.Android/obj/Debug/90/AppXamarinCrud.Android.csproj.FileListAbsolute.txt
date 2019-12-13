@@ -1295,3 +1295,6 @@ E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\r
 E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\res\drawable\overlayoptions.png
 E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\res\drawable\register.png
 E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\res\drawable\login.png
+E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\res\drawable\google.png
+E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\res\drawable\password.jpg
+E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\res\drawable\username.png

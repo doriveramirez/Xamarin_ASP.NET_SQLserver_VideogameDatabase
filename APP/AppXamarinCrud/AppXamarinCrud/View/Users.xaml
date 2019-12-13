@@ -19,21 +19,27 @@
             <Image Source="users.png" WidthRequest="63" HeightRequest="65" HorizontalOptions="Start" VerticalOptions="Center" />
         </StackLayout>
         <StackLayout Spacing="25" Orientation="Vertical" Margin="0,90" HorizontalOptions="Center" VerticalOptions="Center">
-            <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
-                <Entry Placeholder="Nombre" Text="{Binding Name}" PlaceholderColor="WhiteSmoke" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
-                <DatePicker Date="{Binding Birthday}" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
-                <Entry Placeholder="Dni" Text="{Binding Dni}" PlaceholderColor="WhiteSmoke" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
-            </StackLayout>
-            <StackLayout Spacing="10" Orientation="Horizontal" HorizontalOptions="Center">
-                <Entry Placeholder="Nombre de usuario" Text="{Binding Username}" PlaceholderColor="WhiteSmoke" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
-                <Entry Placeholder="Contraseña" Text="{Binding Password}" PlaceholderColor="WhiteSmoke" IsPassword="True" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
-            </StackLayout>
-            <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
-                <!--<Picker Title="" TextColor="White" FontSize="12" HorizontalOptions="Center"/>-->
-                <Button Command="{Binding ChangeCompanyIDCommand}" HeightRequest="10" WidthRequest="30"/>
-                <Entry Placeholder="CompanyID" Text="{Binding CompanyID}" PlaceholderColor="WhiteSmoke" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
-                <Label Text="Imagen" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
-            </StackLayout>
+            <Frame Grid.Row="0" BackgroundColor="PaleVioletRed" BorderColor="WhiteSmoke" HasShadow="True" CornerRadius="10" Margin="0,0,0,0" Padding="0" HeightRequest="45" WidthRequest="350" VerticalOptions="Start">
+                <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
+                    <Entry Placeholder="Nombre" Text="{Binding Name}" PlaceholderColor="WhiteSmoke" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
+                    <DatePicker Date="{Binding Birthday}" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
+                    <Entry Placeholder="Dni" Text="{Binding Dni}" PlaceholderColor="WhiteSmoke" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
+                </StackLayout>
+            </Frame>
+            <Frame Grid.Row="0" BackgroundColor="PaleVioletRed" BorderColor="WhiteSmoke" HasShadow="True" CornerRadius="10" Margin="0,0,0,0" Padding="0" HeightRequest="45" WidthRequest="350" VerticalOptions="Start">
+                <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
+                    <Entry Placeholder="Nombre de usuario" Text="{Binding Username}" PlaceholderColor="WhiteSmoke" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
+                    <Entry Placeholder="Contraseña" Text="{Binding Password}" PlaceholderColor="WhiteSmoke" IsPassword="True" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
+                </StackLayout>
+            </Frame>
+            <Frame Grid.Row="0" BackgroundColor="PaleVioletRed" BorderColor="WhiteSmoke" HasShadow="True" CornerRadius="10" Margin="0,0,0,0" Padding="0" HeightRequest="45" WidthRequest="350" VerticalOptions="Start">
+                <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
+                    <!--<Picker Title="" TextColor="White" FontSize="12" HorizontalOptions="Center"/>-->
+                    <Button Command="{Binding ChangeCompanyIDCommand}" HeightRequest="10" WidthRequest="30"/>
+                    <Entry Placeholder="CompanyID" Text="{Binding CompanyID}" PlaceholderColor="WhiteSmoke" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
+                    <Label Text="Imagen" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
+                </StackLayout>
+            </Frame>
         </StackLayout>
         <Frame Grid.Row="1" HasShadow="True" CornerRadius="10" Margin="20,-40,20,0" Padding="0" HeightRequest="120" VerticalOptions="Start">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">

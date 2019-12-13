@@ -20,8 +20,8 @@
                 <Label Text="Opciones" FontSize="22" VerticalOptions="Center" TextColor="White"/>
                 <Image Source="options.png" WidthRequest="63" HeightRequest="65" HorizontalOptions="Start" VerticalOptions="Center" />
             </StackLayout>
-            <StackLayout Spacing="25" Orientation="Vertical" Margin="0,90" HorizontalOptions="Center" VerticalOptions="Center">
-                <StackLayout Spacing="30" Margin="0,40" Orientation="Horizontal" HorizontalOptions="Center">
+            <StackLayout Spacing="0" Orientation="Vertical" Margin="0,90" HorizontalOptions="Center" VerticalOptions="Center">
+                <StackLayout Spacing="50" Margin="0,40" Orientation="Horizontal" HorizontalOptions="Center">
                     <Frame Grid.Row="0" HasShadow="True" CornerRadius="10" Margin="0,0,0,-50" Padding="0" HeightRequest="80" WidthRequest="60" VerticalOptions="Start">
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                             <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
@@ -45,6 +45,39 @@
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding ConnectCommand}"/>
                                 </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                    <Frame Grid.Row="0" HasShadow="True" CornerRadius="10" Margin="0,0,0,-50" Padding="0" HeightRequest="80" WidthRequest="60" VerticalOptions="Start">
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                            <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                                <Image Source="google.png" HeightRequest="25" HorizontalOptions="Center"/>
+                                <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
+                                    <Label Text="Google" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                </StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ConnectGoogleCommand}"/>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Spacing="0" Margin="0,150" Orientation="Horizontal" HorizontalOptions="Center">
+                    <Frame Grid.Row="0" BackgroundColor="IndianRed" HasShadow="True" CornerRadius="10" Margin="0,0,0,0" Padding="0" HeightRequest="80" WidthRequest="350" VerticalOptions="Start">
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                            <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="CenterAndExpand">
+                                <Image Source="username.png" HeightRequest="25" HorizontalOptions="Center"/>
+                                <Entry Placeholder="Nombre de usuario" WidthRequest="300" Text="{Binding Username}" PlaceholderColor="FloralWhite" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Spacing="0" Margin="0,-90" Orientation="Horizontal" HorizontalOptions="Center">
+                    <Frame Grid.Row="0" BackgroundColor="IndianRed" HasShadow="True" CornerRadius="10" Margin="0,0,0,0" Padding="0" HeightRequest="80" WidthRequest="350" VerticalOptions="Start">
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                            <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="CenterAndExpand">
+                                <Image Source="password.png" HeightRequest="25" HorizontalOptions="Center"/>
+                                <Entry Placeholder="Contraseña" WidthRequest="300" Text="{Binding Password}" PlaceholderColor="WhiteSmoke" IsPassword="True" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
                             </StackLayout>
                         </Grid>
                     </Frame>

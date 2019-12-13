@@ -19,15 +19,21 @@
             <Image Source="company.jpg" WidthRequest="63" HeightRequest="65" HorizontalOptions="Start" VerticalOptions="Center" />
         </StackLayout>
         <StackLayout Spacing="25" Orientation="Vertical" Margin="0,90" HorizontalOptions="Center" VerticalOptions="Center">
-            <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
-                <Entry Placeholder="Nombre" Text="{Binding Name}" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center"/>
-            </StackLayout>
-            <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
-                <DatePicker Date="{Binding FoundationDate}" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
-            </StackLayout>
-            <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
-                <Label Text="Imagen" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
-            </StackLayout>
+            <Frame Grid.Row="0" BackgroundColor="DodgerBlue" BorderColor="WhiteSmoke" HasShadow="True" CornerRadius="10" Margin="0,0,0,0" Padding="0" HeightRequest="45" WidthRequest="350" VerticalOptions="Start">
+                <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
+                    <Entry Placeholder="Nombre" Text="{Binding Name}" PlaceholderColor="FloralWhite" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center"/>
+                </StackLayout>
+            </Frame>
+            <Frame Grid.Row="0" BackgroundColor="DodgerBlue" BorderColor="WhiteSmoke" HasShadow="True" CornerRadius="10" Margin="0,0,0,0" Padding="0" HeightRequest="45" WidthRequest="350" VerticalOptions="Start">
+                <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
+                    <DatePicker Date="{Binding FoundationDate}" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
+                </StackLayout>
+            </Frame>
+            <Frame Grid.Row="0" BackgroundColor="DodgerBlue" BorderColor="WhiteSmoke" HasShadow="True" CornerRadius="10" Margin="0,0,0,0" Padding="0" HeightRequest="45" WidthRequest="350" VerticalOptions="Start">
+                <StackLayout Spacing="30" Padding="10" Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label Text="Imagen" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
+                </StackLayout>
+            </Frame>
         </StackLayout>
         <Frame Grid.Row="1" HasShadow="True" CornerRadius="10" Margin="20,-40,20,0" Padding="0" HeightRequest="120" VerticalOptions="Start">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
