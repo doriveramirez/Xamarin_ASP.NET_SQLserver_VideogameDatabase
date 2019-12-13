@@ -21,10 +21,10 @@ namespace APIvgd.Models
         }
     
         public string Id { get; set; }
-        public string Nombre { get; set; }
-        public Nullable<System.DateTime> FechaFundacion { get; set; }
-        public Nullable<int> NumeroUsuarios { get; set; }
-        public byte[] Imagen { get; set; }
+        public string Name { get; set; }
+        public Nullable<System.DateTime> FoundationDate { get; set; }
+        public Nullable<int> NumberOfUsers { get; set; }
+        public byte[] Picture { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Usuario> Usuario { get; set; }

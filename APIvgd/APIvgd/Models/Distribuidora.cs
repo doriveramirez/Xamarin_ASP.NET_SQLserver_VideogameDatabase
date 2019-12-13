@@ -21,9 +21,9 @@ namespace APIvgd.Models
         }
     
         public string Id { get; set; }
-        public string Nombre { get; set; }
-        public int NumeroJuegosPublicados { get; set; }
-        public byte[] Imagen { get; set; }
+        public string Name { get; set; }
+        public int NumberOfGamePublished { get; set; }
+        public byte[] Picture { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Videojuego> Videojuego { get; set; }

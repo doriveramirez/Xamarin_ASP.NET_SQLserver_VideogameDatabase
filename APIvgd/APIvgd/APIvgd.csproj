@@ -216,14 +216,35 @@
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Company.cs">
-      <DependentUpon>test.tt</DependentUpon>
+      <DependentUpon>db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\db.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>db.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\db.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\db.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>db.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Distribuidora.cs">
-      <DependentUpon>test.tt</DependentUpon>
+      <DependentUpon>db.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Platforms.cs">
+      <DependentUpon>db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Review.cs">
+      <DependentUpon>db.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>test.tt</DependentUpon>
+      <DependentUpon>db.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\test.Context.cs">
       <AutoGen>True</AutoGen>
@@ -241,10 +262,10 @@
       <DependentUpon>test.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuario.cs">
-      <DependentUpon>test.tt</DependentUpon>
+      <DependentUpon>db.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Videojuego.cs">
-      <DependentUpon>test.tt</DependentUpon>
+      <DependentUpon>db.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -260,6 +281,16 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Models\db.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>db.edmx</DependentUpon>
+      <LastGenOutput>db.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\db.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>db.edmx</DependentUpon>
+      <LastGenOutput>db.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\test.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>test.edmx</DependentUpon>
@@ -297,6 +328,13 @@
     </EntityDeploy>
     <Content Include="Models\test.edmx.diagram">
       <DependentUpon>test.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\db.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>db.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\db.edmx.diagram">
+      <DependentUpon>db.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

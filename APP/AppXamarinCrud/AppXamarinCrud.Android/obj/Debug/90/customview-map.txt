@@ -29,6 +29,7 @@ FrameLayout;E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\ob
 item;E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\lp\41\jl\res\values\styles.xml
 item;obj\Debug\90\res\values\styles.xml
 LinearLayout;E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\lp\41\jl\res\layout\bottomtablayout.xml
+md58432a647068b097f9637064b8985a5e0.FormsViewPager;E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\lp\41\jl\res\layout\rootlayout.xml
 paths;E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\lp\40\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 resources;E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\lp\41\jl\res\values\styles.xml
 resources;obj\Debug\90\res\values\colors.xml

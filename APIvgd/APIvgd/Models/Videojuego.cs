@@ -14,16 +14,27 @@ namespace APIvgd.Models
     
     public partial class Videojuego
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Videojuego()
+        {
+            this.Review = new HashSet<Review>();
+            this.Platforms = new HashSet<Platforms>();
+        }
+    
         public string Id { get; set; }
-        public string Nombre { get; set; }
-        public Nullable<System.DateTime> FechaPublicacion { get; set; }
-        public Nullable<int> VentasGenerados { get; set; }
-        public Nullable<int> NumeroPlataformasDisponibles { get; set; }
-        public string UsuarioID { get; set; }
-        public string DistribuidoraID { get; set; }
-        public byte[] Imagen { get; set; }
+        public string Name { get; set; }
+        public Nullable<System.DateTime> ReleaseDate { get; set; }
+        public Nullable<int> SoldUnits { get; set; }
+        public Nullable<int> NumberOfAvailablePlatforms { get; set; }
+        public string UserID { get; set; }
+        public string DistributorID { get; set; }
+        public byte[] Picture { get; set; }
     
         public virtual Distribuidora Distribuidora { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Review> Review { get; set; }
         public virtual Usuario Usuario { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Platforms> Platforms { get; set; }
     }
 }
