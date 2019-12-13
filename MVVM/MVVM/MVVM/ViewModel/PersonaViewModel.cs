@@ -1,4 +1,5 @@
-﻿using MVVM.Model;
+﻿
+using MVVM.Model;
 using MVVM.Service;
 using MVVM.View;
 using System;
@@ -10,22 +11,20 @@ using Xamarin.Forms;
 
 namespace MVVM.ViewModel
 {
-    public class PersonaViewModel: PersonaModel
+    public class PersonaViewModel : PersonaModel
     {
-        public ObservableCollection<Distribuidora> distribuidora { get; set; }
+        public ObservableCollection<PersonaModel> Personas { get; set; }
 
         PersonaService servicio = new PersonaService();
 
         PersonaModel modelo;
 
-        Distribuidora distribuidora;
-
         PersonaPage personaPage;
 
         public PersonaViewModel()
         {
-            distribuidora = conexion.ObtenerDistribuidora();
-            GuardarCommand = new Command(async()=> await Guardar(), ()=>!IsBusy);
+            Personas = servicio.Consultar();
+            GuardarCommand = new Command(async () => await Guardar(), () => !IsBusy);
             ModificarCommand = new Command(async () => await Modificar(), () => !IsBusy);
             EliminarCommand = new Command(async () => await Eliminar(), () => !IsBusy);
             LimpiarCommand = new Command(Limpiar, () => !IsBusy);
@@ -47,18 +46,13 @@ namespace MVVM.ViewModel
         private async Task Guardar()
         {
             IsBusy = true;
-            //Guid IdPersona = Guid.NewGuid();
-            //modelo = new PersonaModel()
-            //{
-            //    Nombre = Nombre,
-            //    Apellido = Apellido,
-            //    Edad = Edad,
-            //    Id = IdPersona.ToString()
-            //};
-            distribuidora = new Distribuidora()
+            Guid IdPersona = Guid.NewGuid();
+            modelo = new PersonaModel()
             {
                 Nombre = Nombre,
-                NumeroJuegosPublicados = NumeroJuegosPublicados
+                Apellido = Apellido,
+                Edad = Edad,
+                Id = IdPersona.ToString()
             };
             servicio.Guardar(modelo);
             await Task.Delay(2000);
@@ -101,7 +95,8 @@ namespace MVVM.ViewModel
             if (IrBool == false)
             {
                 IrBool = true;
-            } else
+            }
+            else
             {
                 IrBool = false;
             }

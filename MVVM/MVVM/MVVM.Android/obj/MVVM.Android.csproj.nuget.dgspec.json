@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Tarde\\Clase\\Class\\Proyecto\\MVVM\\MVVM\\MVVM.Android\\MVVM.Android.csproj": {}
+    "E:\\Tarde\\Clase\\Proyecto\\MVVM\\MVVM\\MVVM.Android\\MVVM.Android.csproj": {}
   },
   "projects": {
-    "E:\\Tarde\\Clase\\Class\\Proyecto\\MVVM\\MVVM\\MVVM.Android\\MVVM.Android.csproj": {
+    "E:\\Tarde\\Clase\\Proyecto\\MVVM\\MVVM\\MVVM.Android\\MVVM.Android.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Tarde\\Clase\\Class\\Proyecto\\MVVM\\MVVM\\MVVM.Android\\MVVM.Android.csproj",
+        "projectUniqueName": "E:\\Tarde\\Clase\\Proyecto\\MVVM\\MVVM\\MVVM.Android\\MVVM.Android.csproj",
         "projectName": "MVVM.Android",
-        "projectPath": "E:\\Tarde\\Clase\\Class\\Proyecto\\MVVM\\MVVM\\MVVM.Android\\MVVM.Android.csproj",
+        "projectPath": "E:\\Tarde\\Clase\\Proyecto\\MVVM\\MVVM\\MVVM.Android\\MVVM.Android.csproj",
         "packagesPath": "C:\\Users\\AlumnadoTarde\\.nuget\\packages\\",
-        "outputPath": "E:\\Tarde\\Clase\\Class\\Proyecto\\MVVM\\MVVM\\MVVM.Android\\obj\\",
+        "outputPath": "E:\\Tarde\\Clase\\Proyecto\\MVVM\\MVVM\\MVVM.Android\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -32,8 +32,8 @@
         "frameworks": {
           "monoandroid90": {
             "projectReferences": {
-              "E:\\Tarde\\Clase\\Class\\Proyecto\\MVVM\\MVVM\\MVVM\\MVVM.csproj": {
-                "projectPath": "E:\\Tarde\\Clase\\Class\\Proyecto\\MVVM\\MVVM\\MVVM\\MVVM.csproj"
+              "E:\\Tarde\\Clase\\Proyecto\\MVVM\\MVVM\\MVVM\\MVVM.csproj": {
+                "projectPath": "E:\\Tarde\\Clase\\Proyecto\\MVVM\\MVVM\\MVVM\\MVVM.csproj"
               }
             }
           }
@@ -82,14 +82,14 @@
         }
       }
     },
-    "E:\\Tarde\\Clase\\Class\\Proyecto\\MVVM\\MVVM\\MVVM\\MVVM.csproj": {
+    "E:\\Tarde\\Clase\\Proyecto\\MVVM\\MVVM\\MVVM\\MVVM.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Tarde\\Clase\\Class\\Proyecto\\MVVM\\MVVM\\MVVM\\MVVM.csproj",
+        "projectUniqueName": "E:\\Tarde\\Clase\\Proyecto\\MVVM\\MVVM\\MVVM\\MVVM.csproj",
         "projectName": "MVVM",
-        "projectPath": "E:\\Tarde\\Clase\\Class\\Proyecto\\MVVM\\MVVM\\MVVM\\MVVM.csproj",
+        "projectPath": "E:\\Tarde\\Clase\\Proyecto\\MVVM\\MVVM\\MVVM\\MVVM.csproj",
         "packagesPath": "C:\\Users\\AlumnadoTarde\\.nuget\\packages\\",
-        "outputPath": "E:\\Tarde\\Clase\\Class\\Proyecto\\MVVM\\MVVM\\MVVM\\obj\\",
+        "outputPath": "E:\\Tarde\\Clase\\Proyecto\\MVVM\\MVVM\\MVVM\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",

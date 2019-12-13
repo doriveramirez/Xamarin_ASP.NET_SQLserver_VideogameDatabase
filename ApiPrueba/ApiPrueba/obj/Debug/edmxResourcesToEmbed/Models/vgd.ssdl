@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="vgdModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'vgd.dbo.Distributors' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Distributors">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="NumberOfGamesPublished" />
+    </Key>
+    <Property Name="Id" Type="nchar" MaxLength="32" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NumberOfGamesPublished" Type="int" Nullable="false" />
+    <Property Name="Picture" Type="image" />
+  </EntityType>
+  <EntityContainer Name="vgdModelStoreContainer">
+    <EntitySet Name="Distributors" EntityType="Self.Distributors" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Distributors].[Id] AS [Id], 
+    [Distributors].[Name] AS [Name], 
+    [Distributors].[NumberOfGamesPublished] AS [NumberOfGamesPublished], 
+    [Distributors].[Picture] AS [Picture]
+    FROM [dbo].[Distributors] AS [Distributors]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

@@ -17,19 +17,22 @@ namespace MVCCrudAPI.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Usuario()
         {
+            this.Review = new HashSet<Review>();
             this.Videojuego = new HashSet<Videojuego>();
         }
     
         public string Id { get; set; }
-        public string Nombre { get; set; }
-        public Nullable<System.DateTime> FechaNac { get; set; }
+        public string Name { get; set; }
+        public Nullable<System.DateTime> Birthday { get; set; }
         public string Dni { get; set; }
         public string Password { get; set; }
-        public string Usuario1 { get; set; }
+        public string Username { get; set; }
         public string CompanyID { get; set; }
-        public byte[] Imagen { get; set; }
+        public byte[] Picture { get; set; }
     
         public virtual Company Company { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Review> Review { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Videojuego> Videojuego { get; set; }
     }

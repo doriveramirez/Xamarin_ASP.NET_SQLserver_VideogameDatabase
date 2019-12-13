@@ -14,7 +14,7 @@ namespace MVCCrudAPI.Controllers
 {
     public class DistribuidorasController : ApiController
     {
-        private PublicacionEntities db = new PublicacionEntities();
+        private PublicacionesEntities db = new PublicacionesEntities();
 
         // GET: api/Distribuidoras
         public IQueryable<Distribuidora> GetDistribuidora()

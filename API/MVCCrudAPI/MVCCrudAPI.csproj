@@ -164,9 +164,15 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\bicyclesController.cs" />
+    <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\DistribuidorasController.cs" />
+    <Compile Include="Controllers\DistributorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PlatformsController.cs" />
+    <Compile Include="Controllers\ReviewsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\VideogamesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -189,34 +195,91 @@
       <DependentUpon>Bicycle.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Company.cs">
-      <DependentUpon>db.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\db.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>db.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\db.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>db.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\db.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>db.edmx</DependentUpon>
+      <DependentUpon>VideogamesDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Distribuidora.cs">
-      <DependentUpon>db.tt</DependentUpon>
+      <DependentUpon>VideogamesDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MSreplication_options.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Platforms.cs">
+      <DependentUpon>VideogamesDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Publicaciones.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Publicaciones.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Publicaciones.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Publicaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Publicaciones.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Publicaciones.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Review.cs">
+      <DependentUpon>VideogamesDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spt_fallback_db.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spt_fallback_dev.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spt_fallback_usg.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spt_monitor.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>VideogamesDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>VideogamesDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>db.tt</DependentUpon>
+      <DependentUpon>VideogamesDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuario.cs">
-      <DependentUpon>db.tt</DependentUpon>
+      <DependentUpon>VideogamesDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VideogamesDatabase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VideogamesDatabase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VideogamesDatabase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VideogamesDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VideogamesDatabase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VideogamesDatabase.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Videojuego.cs">
-      <DependentUpon>db.tt</DependentUpon>
+      <DependentUpon>VideogamesDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -239,15 +302,35 @@
       <DependentUpon>Bicycle.edmx</DependentUpon>
       <LastGenOutput>Bicycle.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\db.Context.tt">
+    <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>db.edmx</DependentUpon>
-      <LastGenOutput>db.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\db.tt">
+    <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>db.edmx</DependentUpon>
-      <LastGenOutput>db.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Publicaciones.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Publicaciones.edmx</DependentUpon>
+      <LastGenOutput>Publicaciones.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Publicaciones.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Publicaciones.edmx</DependentUpon>
+      <LastGenOutput>Publicaciones.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\VideogamesDatabase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>VideogamesDatabase.edmx</DependentUpon>
+      <LastGenOutput>VideogamesDatabase.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\VideogamesDatabase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>VideogamesDatabase.edmx</DependentUpon>
+      <LastGenOutput>VideogamesDatabase.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -277,12 +360,26 @@
     <Content Include="Models\Bicycle.edmx.diagram">
       <DependentUpon>Bicycle.edmx</DependentUpon>
     </Content>
-    <EntityDeploy Include="Models\db.edmx">
+    <EntityDeploy Include="Models\Publicaciones.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>db.Designer.cs</LastGenOutput>
+      <LastGenOutput>Publicaciones.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\db.edmx.diagram">
-      <DependentUpon>db.edmx</DependentUpon>
+    <Content Include="Models\Publicaciones.edmx.diagram">
+      <DependentUpon>Publicaciones.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\VideogamesDatabase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>VideogamesDatabase.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\VideogamesDatabase.edmx.diagram">
+      <DependentUpon>VideogamesDatabase.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

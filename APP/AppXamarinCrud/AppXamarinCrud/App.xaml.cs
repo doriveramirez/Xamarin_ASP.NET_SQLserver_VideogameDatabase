@@ -1,4 +1,5 @@
-﻿using MVVM.View;
+﻿using AppXamarinCrud.View;
+using MVVM.View;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,7 +12,7 @@ namespace AppXamarinCrud
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new DistribuidoraPage());
+            MainPage = new NavigationPage(new Main());
         }
 
         protected override void OnStart()

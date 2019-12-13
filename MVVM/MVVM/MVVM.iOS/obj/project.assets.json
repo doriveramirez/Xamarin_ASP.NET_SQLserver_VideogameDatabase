@@ -1012,11 +1012,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Tarde\\Clase\\Class\\Proyecto\\MVVM\\MVVM\\MVVM.iOS\\MVVM.iOS.csproj",
+      "projectUniqueName": "E:\\Tarde\\Clase\\Proyecto\\MVVM\\MVVM\\MVVM.iOS\\MVVM.iOS.csproj",
       "projectName": "MVVM.iOS",
-      "projectPath": "E:\\Tarde\\Clase\\Class\\Proyecto\\MVVM\\MVVM\\MVVM.iOS\\MVVM.iOS.csproj",
+      "projectPath": "E:\\Tarde\\Clase\\Proyecto\\MVVM\\MVVM\\MVVM.iOS\\MVVM.iOS.csproj",
       "packagesPath": "C:\\Users\\AlumnadoTarde\\.nuget\\packages\\",
-      "outputPath": "E:\\Tarde\\Clase\\Class\\Proyecto\\MVVM\\MVVM\\MVVM.iOS\\obj\\",
+      "outputPath": "E:\\Tarde\\Clase\\Proyecto\\MVVM\\MVVM\\MVVM.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -1037,8 +1037,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "E:\\Tarde\\Clase\\Class\\Proyecto\\MVVM\\MVVM\\MVVM\\MVVM.csproj": {
-              "projectPath": "E:\\Tarde\\Clase\\Class\\Proyecto\\MVVM\\MVVM\\MVVM\\MVVM.csproj"
+            "E:\\Tarde\\Clase\\Proyecto\\MVVM\\MVVM\\MVVM\\MVVM.csproj": {
+              "projectPath": "E:\\Tarde\\Clase\\Proyecto\\MVVM\\MVVM\\MVVM\\MVVM.csproj"
             }
           }
         }

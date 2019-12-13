@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="AppXamarinCrud.View.Reviews">
+    <Grid VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Image Source="overlayReviews.png" Aspect="Fill" HeightRequest="300" VerticalOptions="StartAndExpand"/>
+        <StackLayout Orientation="Horizontal" Spacing="60" HorizontalOptions="Start" VerticalOptions="Start" Margin="20,10">
+            <ImageButton Command="{Binding BackCommand}" Source="back.png" WidthRequest="23" HeightRequest="25" HorizontalOptions="Start" VerticalOptions="Center" />
+            <Label Text="Análisis" FontSize="22" VerticalOptions="Center" TextColor="White"/>
+            <Image Source="reviews.png" WidthRequest="63" HeightRequest="65" HorizontalOptions="Start" VerticalOptions="Center" />
+        </StackLayout>
+        <StackLayout Spacing="25" Orientation="Vertical" Margin="0,90" HorizontalOptions="Center" VerticalOptions="Center">
+            <Frame Grid.Row="0" BackgroundColor="MediumPurple" BorderColor="WhiteSmoke" HasShadow="True" CornerRadius="10" Margin="0,0,0,0" Padding="0" HeightRequest="45" WidthRequest="350" VerticalOptions="Start">
+                <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
+                    <CheckBox x:Name="Played" VerticalOptions="Center"/>
+                    <Label Text="¿Jugado?" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
+                    <Entry Placeholder="Nota" Text="{Binding Mark}" Keyboard="Numeric" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center"/>
+                </StackLayout>
+            </Frame>
+            <Frame Grid.Row="0" BackgroundColor="MediumPurple" BorderColor="WhiteSmoke" HasShadow="True" CornerRadius="10" Margin="0,0,0,0" Padding="0" HeightRequest="45" WidthRequest="350" VerticalOptions="Start">
+                <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
+                    <Entry Placeholder="Nombre de la plataforma" Text="{Binding Name}" PlaceholderColor="WhiteSmoke" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center"/>
+                    <Entry Placeholder="Descripción" Text="{Binding Description}" PlaceholderColor="WhiteSmoke" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center"/>
+                </StackLayout>
+            </Frame>
+            <Frame Grid.Row="0" BackgroundColor="MediumPurple" BorderColor="WhiteSmoke" HasShadow="True" CornerRadius="10" Margin="0,0,0,0" Padding="0" HeightRequest="45" WidthRequest="350" VerticalOptions="Start">
+                <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
+                    <Button Command="{Binding ChangeUserIDCommand}" HeightRequest="10" WidthRequest="30"/>
+                    <Entry Placeholder="UserID" Text="{Binding UserID}" PlaceholderColor="WhiteSmoke" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
+                    <Button Command="{Binding ChangeVideogameIDCommand}" HeightRequest="10" WidthRequest="30"/>
+                    <Entry Placeholder="VideogameID" Text="{Binding VideogameID}" PlaceholderColor="WhiteSmoke" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+        <Frame Grid.Row="1" HasShadow="True" CornerRadius="10" Margin="20,-40,20,0" Padding="0" HeightRequest="120" VerticalOptions="Start">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                    <Image Source="save.png" HeightRequest="25" HorizontalOptions="Center"/>
+                    <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Guardar" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SaveCommand}"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <StackLayout Grid.Column="1" Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                    <Image Source="modify.png" HeightRequest="25" HorizontalOptions="Center"/>
+                    <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Modificar" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ModifyCommand}"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <StackLayout Grid.Column="2" Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                    <Image Source="delete.png" HeightRequest="25" HorizontalOptions="Center"/>
+                    <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Borrar" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DeleteCommand}"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <StackLayout Grid.Column="3" Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                    <Image Source="clear.png" HeightRequest="25" HorizontalOptions="Center"/>
+                    <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Limpiar" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CleanCommand}"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </Grid>
+        </Frame>
+        <StackLayout Grid.Row="2" BackgroundColor="Transparent" Orientation="Horizontal" Margin="20" HorizontalOptions="End">
+            <Label Text="{Binding Id}" TextColor="#7D7D7D" FontSize="11" HorizontalOptions="Center"/>
+            <ImageButton x:Name="ListBtn" Source="listColor.png" WidthRequest="15" HeightRequest="15" />
+            <ImageButton x:Name="GridBtn" Source="grid.png" WidthRequest="15" HeightRequest="15"/>
+        </StackLayout>
+        <ListView x:Name="LvReviews" ItemsSource="{Binding Reviews}" SeparatorVisibility="None"
+                  Grid.Row="3" Margin="20,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate >
+                    <ViewCell>
+                        <Frame BackgroundColor="White" BorderColor="#F0F0F0" Padding="5" Margin="0,0,0,5" HasShadow="False">
+                            <Grid HeightRequest="50" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Name}" TextColor="#757575" FontSize="12" VerticalOptions="Center" Margin="20,0"/>
+                                <Image Grid.Column="1" Source="{Binding Icon}" WidthRequest="38" HeightRequest="38" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <StackLayout Grid.Column="2" Orientation="Horizontal" Margin="20,0" HorizontalOptions="End" VerticalOptions="Center">
+                                    <Label Text="{Binding Mark}" TextColor="Black" FontSize="25" FontAttributes="Bold" VerticalOptions="Center"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>

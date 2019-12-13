@@ -8,7 +8,6 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using System.Data.Entity;
 
 namespace MVCCrudAPI
 {
@@ -27,11 +26,6 @@ namespace MVCCrudAPI
 
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.MediaTypeMappings.Add(
                 new QueryStringMapping("type", "xml", new MediaTypeHeaderValue("application/xml")));
-
-            GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings
-            .ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-            GlobalConfiguration.Configuration.Formatters
-                .Remove(GlobalConfiguration.Configuration.Formatters.XmlFormatter);
         }
     }
 }
