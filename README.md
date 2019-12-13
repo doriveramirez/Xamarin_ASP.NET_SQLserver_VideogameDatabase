@@ -25,7 +25,7 @@ What things you need to install the software and how to install them
 First you will need to install [Visual Studio 2019](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&rel=16)
 
 Next, you have to install the dependencies:
-[alt](https://image.prntscr.com/image/J0otTId-Si27uL_5k6he-Q.png)
+![alt](https://image.prntscr.com/image/J0otTId-Si27uL_5k6he-Q.png)
 
 ```
 
