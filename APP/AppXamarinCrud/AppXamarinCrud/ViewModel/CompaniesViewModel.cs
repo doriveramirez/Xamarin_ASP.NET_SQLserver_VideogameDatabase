@@ -23,10 +23,12 @@ namespace MVVM.ViewModel
 
         Company model;
 
-        CompaniesService servicio = new CompaniesService();
+        CompaniesService service = new CompaniesService();
 
         public CompaniesViewModel()
         {
+            FoundationDate = DateTime.Now;
+            ListView();
             ListViewAsync();
             SaveCommand = new Command(async () => await Save(), () => !IsBusy);
             ModifyCommand = new Command(async () => await Modify(), () => !IsBusy);
@@ -36,10 +38,19 @@ namespace MVVM.ViewModel
             BackCommand = new Command(Back, () => !IsBusy);
         }
 
-        private async Task ListViewAsync()
+        private void ListView()
         {
             Companies = new ObservableCollection<Company>();
-            CompaniesTask = servicio.Consult();
+            CompaniesAux = service.ConsultLocal();
+            for (int i = 0; i < CompaniesAux.Count; i++)
+            {
+                Companies.Add(CompaniesAux[i]);
+            }
+        }
+
+        private async Task ListViewAsync()
+        {
+            CompaniesTask = service.Consult();
             CompaniesAux = await CompaniesTask;
             for (int i = 0; i < CompaniesAux.Count; i++)
             {
@@ -69,7 +80,7 @@ namespace MVVM.ViewModel
             {
                 Name = Name,
                 FoundationDate = FoundationDate,
-                Picture = Picture,
+                //Picture = Picture,
                 Id = idCompany.ToString()
             };
             if (string.IsNullOrEmpty(model.Name))
@@ -78,12 +89,10 @@ namespace MVVM.ViewModel
             }
             else
             {
-                var sent = await servicio.Save(model);
-                if (sent)
-                {
-                    Companies.Add(model);
-                    Clean();
-                }
+                service.Save(model);
+                service.SaveLocal(model);
+                Companies.Add(model);
+                Clean();
             }
             await Task.Delay(2000);
             IsBusy = false;
@@ -96,21 +105,19 @@ namespace MVVM.ViewModel
             {
                 Name = Name,
                 FoundationDate = FoundationDate,
-                Picture = Picture,
+                //Picture = Picture,
                 Id = Id
             };
-            var sent = await servicio.Modify(model);
-            if (sent)
+            service.Modify(model);
+            service.ModifyLocal(model);
+            var item = Companies.FirstOrDefault(i => i.Id == model.Id);
+            if (item != null)
             {
-                var item = Companies.FirstOrDefault(i => i.Id == model.Id);
-                if (item != null)
-                {
-                    item.Name = model.Name;
-                    item.FoundationDate = model.FoundationDate;
-                    item.Picture = model.Picture;
-                }
-                Clean();
+                item.Name = model.Name;
+                item.FoundationDate = model.FoundationDate;
+                //item.Picture = model.Picture;
             }
+            Clean();
             await Task.Delay(2000);
             IsBusy = false;
         }
@@ -122,16 +129,14 @@ namespace MVVM.ViewModel
             {
                 Name = Name,
                 FoundationDate = FoundationDate,
-                Picture = Picture,
+                //Picture = Picture,
                 Id = Id
             };
-            var sent = await servicio.Delete(model.Id);
-            if (sent)
-            {
-                var item = Companies.FirstOrDefault(i => i.Id == model.Id);
-                Companies.Remove(item);
-                Clean();
-            }
+            service.DeleteLocal(model);
+            service.Delete(model.Id);
+            var item = Companies.FirstOrDefault(i => i.Id == model.Id);
+            Companies.Remove(item);
+            Clean();
             await Task.Delay(2000);
             IsBusy = false;
         }
@@ -139,8 +144,8 @@ namespace MVVM.ViewModel
         private void Clean()
         {
             Name = "";
-            FoundationDate = new DateTime(0000,00,00);
-            Picture = null;
+            FoundationDate = DateTime.Now;
+            //Picture = null;
             Id = "";
         }
 

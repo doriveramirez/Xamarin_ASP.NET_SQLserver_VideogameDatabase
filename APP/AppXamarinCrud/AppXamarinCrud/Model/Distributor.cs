@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,8 +21,10 @@ namespace AppXamarinCrud.Model
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
+        
         private string id;
 
+        [PrimaryKey]
         public string Id
         {
             get { return id; }
@@ -57,17 +60,17 @@ namespace AppXamarinCrud.Model
         }
 
 
-        private Image picture;
+        //private Image picture;
 
-        public Image Picture
-        {
-            get { return picture; }
-            set
-            {
-                picture = value;
-                OnPropertyChanged();
-            }
-        }
+        //public Image Picture
+        //{
+        //    get { return picture; }
+        //    set
+        //    {
+        //        picture = null;
+        //        OnPropertyChanged();
+        //    }
+        //}
 
         private bool isBusy = false;
 
@@ -81,6 +84,5 @@ namespace AppXamarinCrud.Model
             }
         }
 
-        public static Distributor[] FromJson(string json) => JsonConvert.DeserializeObject<Distributor[]>(json, AppXamarinCrud.Converter.Settings);
     }
 }

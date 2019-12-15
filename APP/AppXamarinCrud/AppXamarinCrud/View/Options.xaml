@@ -20,7 +20,27 @@
                 <Label Text="Opciones" FontSize="22" VerticalOptions="Center" TextColor="White"/>
                 <Image Source="options.png" WidthRequest="63" HeightRequest="65" HorizontalOptions="Start" VerticalOptions="Center" />
             </StackLayout>
-            <StackLayout Spacing="0" Orientation="Vertical" Margin="0,90" HorizontalOptions="Center" VerticalOptions="Center">
+            <StackLayout Spacing="20" Margin="0,100" Orientation="Horizontal" HorizontalOptions="Center">
+                <Frame Grid.Row="0" BackgroundColor="IndianRed" HasShadow="True" CornerRadius="10" Margin="0,0,30,0" Padding="0" HeightRequest="80" WidthRequest="175" VerticalOptions="Start">
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                        <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="CenterAndExpand">
+                            <Image Source="web.jpg" HeightRequest="25" HorizontalOptions="Center"/>
+                            <Entry Placeholder="Dirección web" Text="{Binding Url}" WidthRequest="105" PlaceholderColor="FloralWhite" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+                <Frame Grid.Row="0" BackgroundColor="IndianRed" HasShadow="True" CornerRadius="10" Margin="0,10,0,0" Padding="0" HeightRequest="60" WidthRequest="60" VerticalOptions="Start">
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                        <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="CenterAndExpand">
+                            <Image Source="tick.png" HorizontalOptions="Center"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SaveCommand}"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+            </StackLayout>
+            <StackLayout Spacing="0" Orientation="Vertical" Margin="0,160" HorizontalOptions="Center" VerticalOptions="Center">
                 <StackLayout Spacing="50" Margin="0,40" Orientation="Horizontal" HorizontalOptions="Center">
                     <Frame Grid.Row="0" HasShadow="True" CornerRadius="10" Margin="0,0,0,-50" Padding="0" HeightRequest="80" WidthRequest="60" VerticalOptions="Start">
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
@@ -62,8 +82,8 @@
                         </Grid>
                     </Frame>
                 </StackLayout>
-                <StackLayout Spacing="0" Margin="0,150" Orientation="Horizontal" HorizontalOptions="Center">
-                    <Frame Grid.Row="0" BackgroundColor="IndianRed" HasShadow="True" CornerRadius="10" Margin="0,0,0,0" Padding="0" HeightRequest="80" WidthRequest="350" VerticalOptions="Start">
+                <StackLayout Spacing="0" Margin="0,100" Orientation="Horizontal" HorizontalOptions="Center">
+                    <Frame Grid.Row="0" BackgroundColor="IndianRed" HasShadow="True" CornerRadius="10" Margin="0,-40,0,0" Padding="0" HeightRequest="80" WidthRequest="350" VerticalOptions="Start">
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                             <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="CenterAndExpand">
                                 <Image Source="username.png" HeightRequest="25" HorizontalOptions="Center"/>
@@ -73,7 +93,7 @@
                     </Frame>
                 </StackLayout>
                 <StackLayout Spacing="0" Margin="0,-90" Orientation="Horizontal" HorizontalOptions="Center">
-                    <Frame Grid.Row="0" BackgroundColor="IndianRed" HasShadow="True" CornerRadius="10" Margin="0,0,0,0" Padding="0" HeightRequest="80" WidthRequest="350" VerticalOptions="Start">
+                    <Frame Grid.Row="0" BackgroundColor="IndianRed" HasShadow="True" CornerRadius="10" Margin="0,50,0,0" Padding="0" HeightRequest="80" WidthRequest="350" VerticalOptions="Start">
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                             <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="CenterAndExpand">
                                 <Image Source="password.png" HeightRequest="25" HorizontalOptions="Center"/>

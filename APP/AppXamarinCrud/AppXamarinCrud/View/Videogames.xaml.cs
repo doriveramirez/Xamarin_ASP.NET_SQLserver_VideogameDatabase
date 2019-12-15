@@ -41,7 +41,7 @@ namespace AppXamarinCrud.View
                 Context.SoldUnits = model.SoldUnits;
                 Context.UserID = model.UserID;
                 Context.DistributorID = model.DistributorID;
-                Context.Picture = model.Picture;
+                //Context.Picture = model.Picture;
                 Context.Description = model.Description;
                 Context.Id = model.Id;
             }

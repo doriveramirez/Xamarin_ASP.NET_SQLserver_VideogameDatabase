@@ -23,10 +23,11 @@ namespace MVVM.ViewModel
 
         Distributor model;
 
-        DistributorsService servicio = new DistributorsService();
+        DistributorsService service = new DistributorsService();
 
         public DistributorsViewModel()
         {
+            ListView();
             ListViewAsync();
             SaveCommand = new Command(async () => await Save(), () => !IsBusy);
             ModifyCommand = new Command(async () => await Modify(), () => !IsBusy);
@@ -36,14 +37,27 @@ namespace MVVM.ViewModel
             BackCommand = new Command(Back, () => !IsBusy);
         }
 
-        private async Task ListViewAsync()
+        private void ListView()
         {
             Distributors = new ObservableCollection<Distributor>();
-            DistributorsTask = servicio.Consult();
-            DistributorsAux = await DistributorsTask;
+            DistributorsAux = service.ConsultLocal();
             for (int i = 0; i < DistributorsAux.Count; i++)
             {
                 Distributors.Add(DistributorsAux[i]);
+            }
+        }
+
+        private async Task ListViewAsync()
+        {
+            DistributorsTask = service.Consult();
+            DistributorsAux = await DistributorsTask;
+            if (DistributorsAux.Count > 0)
+            {
+                Distributors.Clear();
+                for (int i = 0; i < DistributorsAux.Count; i++)
+                {
+                    Distributors.Add(DistributorsAux[i]);
+                }
             }
         }
 
@@ -69,7 +83,7 @@ namespace MVVM.ViewModel
             {
                 Name = Name,
                 NumberOfGamesPublished = NumberOfGamesPublished,
-                Picture = Picture,
+                //Picture = Picture,
                 Id = idDistributor.ToString()
             };
             if (string.IsNullOrEmpty(model.Name))
@@ -78,12 +92,10 @@ namespace MVVM.ViewModel
             }
             else
             {
-                var sent = await servicio.Save(model);
-                if (sent)
-                {
-                    Distributors.Add(model);
-                    Clean();
-                }
+                service.SaveLocal(model);
+                service.Save(model);
+                Distributors.Add(model);
+                Clean();
             }
             await Task.Delay(2000);
             IsBusy = false;
@@ -96,21 +108,19 @@ namespace MVVM.ViewModel
             {
                 Name = Name,
                 NumberOfGamesPublished = NumberOfGamesPublished,
-                Picture = Picture,
+                //Picture = Picture,
                 Id = Id
             };
-            var sent = await servicio.Modify(model);
-            if (sent)
+            service.Modify(model);
+            service.ModifyLocal(model);
+            var item = Distributors.FirstOrDefault(i => i.Id == model.Id);
+            if (item != null)
             {
-                var item = Distributors.FirstOrDefault(i => i.Id == model.Id);
-                if (item != null)
-                {
-                    item.Name = model.Name;
-                    item.NumberOfGamesPublished = model.NumberOfGamesPublished;
-                    item.Picture = model.Picture;
-                }
-                Clean();
+                item.Name = model.Name;
+                item.NumberOfGamesPublished = model.NumberOfGamesPublished;
+                //item.Picture = model.Picture;
             }
+            Clean();
             await Task.Delay(2000);
             IsBusy = false;
         }
@@ -122,16 +132,14 @@ namespace MVVM.ViewModel
             {
                 Name = Name,
                 NumberOfGamesPublished = NumberOfGamesPublished,
-                Picture = Picture,
+                //Picture = Picture,
                 Id = Id
             };
-            var sent = await servicio.Delete(model.Id);
-            if (sent)
-            {
-                var item = Distributors.FirstOrDefault(i => i.Id == model.Id);
-                Distributors.Remove(item);
-                Clean();
-            }
+            service.DeleteLocal(model);
+            service.Delete(model.Id);
+            var item = Distributors.FirstOrDefault(i => i.Id == model.Id);
+            Distributors.Remove(item);
+            Clean();
             await Task.Delay(2000);
             IsBusy = false;
         }
@@ -140,7 +148,7 @@ namespace MVVM.ViewModel
         {
             Name = "";
             NumberOfGamesPublished = 0;
-            Picture = null;
+            //Picture = null;
             Id = "";
         }
 

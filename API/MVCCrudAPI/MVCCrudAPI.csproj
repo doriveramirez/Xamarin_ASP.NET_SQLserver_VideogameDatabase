@@ -455,9 +455,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51325</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://192.168.103.68:40089/</IISUrl>
+          <IISUrl>http://192.168.1.180:40089/</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://192.168.103.68:40089/</IISAppRootUrl>
+          <IISAppRootUrl>http://192.168.1.180:40089/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

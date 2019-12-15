@@ -31,7 +31,7 @@
             </Frame>
             <Frame Grid.Row="0" BackgroundColor="DodgerBlue" BorderColor="WhiteSmoke" HasShadow="True" CornerRadius="10" Margin="0,0,0,0" Padding="0" HeightRequest="45" WidthRequest="350" VerticalOptions="Start">
                 <StackLayout Spacing="30" Padding="10" Orientation="Horizontal" HorizontalOptions="Center">
-                    <Label Text="Imagen" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
+                    <Label Text="Imagen" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
                 </StackLayout>
             </Frame>
         </StackLayout>
@@ -93,14 +93,9 @@
                     <ViewCell>
                         <Frame BackgroundColor="White" BorderColor="#F0F0F0" Padding="5" Margin="0,0,0,5" HasShadow="False">
                             <Grid HeightRequest="50" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Label Text="{Binding Name}" TextColor="#757575" FontSize="12" VerticalOptions="Center" Margin="20,0"/>
+                                <Label Text="{Binding Name}" TextColor="#757575" FontSize="25" VerticalOptions="Center" Margin="5,-5,0,0"/>
                                 <Image Grid.Column="1" Source="{Binding Picture}" WidthRequest="38" HeightRequest="38" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <StackLayout Grid.Column="2" Orientation="Horizontal" Margin="20,0" HorizontalOptions="End" VerticalOptions="Center">
+                                <StackLayout Grid.Column="2" Orientation="Horizontal" Margin="-25,0" HorizontalOptions="End" VerticalOptions="Center">
                                     <Label Text="{Binding FoundationDate}" TextColor="Black" FontSize="25" FontAttributes="Bold" VerticalOptions="Center"/>
                                 </StackLayout>
                             </Grid>

@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Xamarin.Forms;
+using SQLite;
 
 namespace AppXamarinCrud.Model
 {
@@ -22,6 +23,7 @@ namespace AppXamarinCrud.Model
 
         private string id;
 
+        [PrimaryKey]
         public string Id
         {
             get { return id; }
@@ -54,17 +56,17 @@ namespace AppXamarinCrud.Model
             }
         }
 
-        private Image picture;
+        //private Image picture;
 
-        public Image Picture
-        {
-            get { return picture; }
-            set
-            {
-                picture = value;
-                OnPropertyChanged();
-            }
-        }
+        //public Image Picture
+        //{
+        //    get { return picture; }
+        //    set
+        //    {
+        //        picture = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
 
         private bool isBusy = false;
 

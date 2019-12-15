@@ -8,21 +8,26 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using VideogameDatabase.Service;
 
 namespace MVVM.Service
 {
     public class CompaniesService
     {
         public ObservableCollection<Company> Companies { get; set; }
-        private const string apiUrl = "http://192.168.103.68:40089/api/Companies";
+        private string apiUrl;
 
         public CompaniesService()
         {
+            using (var data = new DataAccess())
+            {
+                apiUrl = data.GetConnection().Url + "/api/Companies";
+            }
             if (Companies == null)
             {
                 Companies = new ObservableCollection<Company>();
             }
-        }
+        } 
 
         public async System.Threading.Tasks.Task<ObservableCollection<Company>> Consult()
         {
@@ -47,16 +52,26 @@ namespace MVVM.Service
             }
         }
 
-        public async System.Threading.Tasks.Task<bool> Save(Company modelo)
+        public ObservableCollection<Company> ConsultLocal()
         {
-            bool sent = false;
+            using (var data = new DataAccess())
+            {
+                var list = data.GetCompanies();
+                foreach (var item in list)
+                    Companies.Add(item);
+            }
+            return Companies;
+        }
+
+        public async void Save(Company model)
+        {
             try
             {
                 HttpClient client;
                 using (client = new HttpClient())
                 {
                     client = CreateClient();
-                    var send = Newtonsoft.Json.JsonConvert.SerializeObject(modelo,
+                    var send = Newtonsoft.Json.JsonConvert.SerializeObject(model,
                             Newtonsoft.Json.Formatting.None,
                             new JsonSerializerSettings
                             {
@@ -65,12 +80,7 @@ namespace MVVM.Service
                     HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "");
                     request.Content = new StringContent(send, Encoding.UTF8, "application/json");//CONTENT-TYPE header
                     HttpResponseMessage response = await client.SendAsync(request);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        sent = true;
-                    }
                 }
-                return sent;
             }
             catch (Exception)
             {
@@ -78,26 +88,28 @@ namespace MVVM.Service
             }
         }
 
-        public async System.Threading.Tasks.Task<bool> Modify(Company modelo)
+        public void SaveLocal(Company model)
         {
-            bool sent = false;
+            using (var data = new DataAccess())
+            {
+                data.InsertCompany(model);
+            }
+        }
+
+        public async void Modify(Company model)
+        {
             try
             {
                 HttpClient client;
                 using (client = new HttpClient())
                 {
                     client = CreateClient();
-                    var json = JsonConvert.SerializeObject(modelo);
+                    var json = JsonConvert.SerializeObject(model);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
-                    Uri apiUrl2 = new Uri(string.Format("http://192.168.103.68:40089/api/Companies/{0}", modelo.Id));
+                    Uri apiUrl2 = new Uri(string.Format(apiUrl + "/{0}", model.Id));
                     HttpResponseMessage response = await client.PutAsync(apiUrl2, content);
                     Console.WriteLine(response.IsSuccessStatusCode);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        sent = true;
-                    }
                 }
-                return sent;
             }
             catch (Exception)
             {
@@ -105,9 +117,16 @@ namespace MVVM.Service
             }
         }
 
-        public async System.Threading.Tasks.Task<bool> Delete(string idCompany)
+        public void ModifyLocal(Company model)
         {
-            bool sent = false;
+            using (var data = new DataAccess())
+            {
+                data.ModifyCompany(model);
+            }
+        }
+
+        public async void Delete(string idCompany)
+        {
             try
             {
                 HttpClient client;
@@ -115,16 +134,19 @@ namespace MVVM.Service
                 {
                     client = CreateClient();
                     HttpResponseMessage response = await client.DeleteAsync(apiUrl + "/" + idCompany);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        sent = true;
-                    }
                 }
-                return sent;
             }
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        public void DeleteLocal(Company model)
+        {
+            using (var data = new DataAccess())
+            {
+                data.DeleteCompany(model);
             }
         }
 

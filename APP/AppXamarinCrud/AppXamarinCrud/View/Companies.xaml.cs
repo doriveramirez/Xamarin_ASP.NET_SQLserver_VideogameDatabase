@@ -38,7 +38,7 @@ namespace AppXamarinCrud.View
                 }
                 Context.Name = model.Name;
                 Context.FoundationDate = model.FoundationDate;
-                Context.Picture = model.Picture;
+                //Context.Picture = model.Picture;
                 Context.Id = model.Id;
             }
         }

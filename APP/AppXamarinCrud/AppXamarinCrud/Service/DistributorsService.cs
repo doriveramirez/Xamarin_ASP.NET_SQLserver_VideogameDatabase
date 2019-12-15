@@ -8,16 +8,21 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using VideogameDatabase.Service;
 
 namespace MVVM.Service
 {
     public class DistributorsService
     {
-        public ObservableCollection<Distributor> Distributors { get; set; }
-        private const string apiUrl = "http://192.168.103.68:40089/api/Distributors";
+        private ObservableCollection<Distributor> Distributors;
+        private string apiUrl;
 
         public DistributorsService()
         {
+            using (var data = new DataAccess())
+            {
+                apiUrl = data.GetConnection().Url + "/api/Distributors";
+            }
             if (Distributors == null)
             {
                 Distributors = new ObservableCollection<Distributor>();
@@ -37,7 +42,7 @@ namespace MVVM.Service
                     {
                         var result = await response.Content.ReadAsStringAsync();
                         Distributors = JsonConvert.DeserializeObject<ObservableCollection<Distributor>>(result);
-                    }
+                    } 
                 }
                 return Distributors;
             }
@@ -47,16 +52,26 @@ namespace MVVM.Service
             }
         }
 
-        public async System.Threading.Tasks.Task<bool> Save(Distributor modelo)
+        public ObservableCollection<Distributor> ConsultLocal()
         {
-            bool sent = false;
+            using (var data = new DataAccess())
+            {
+                var list = data.GetDistributors();
+                foreach (var item in list)
+                    Distributors.Add(item);
+            }
+            return Distributors;
+        }
+
+        public async void Save(Distributor model)
+        {
             try
             {
                 HttpClient client;
                 using (client = new HttpClient())
                 {
                     client = CreateClient();
-                    var send = Newtonsoft.Json.JsonConvert.SerializeObject(modelo,
+                    var send = Newtonsoft.Json.JsonConvert.SerializeObject(model,
                             Newtonsoft.Json.Formatting.None,
                             new JsonSerializerSettings
                             {
@@ -65,12 +80,7 @@ namespace MVVM.Service
                     HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "");
                     request.Content = new StringContent(send, Encoding.UTF8, "application/json");//CONTENT-TYPE header
                     HttpResponseMessage response = await client.SendAsync(request);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        sent = true;
-                    }
                 }
-                return sent;
             }
             catch (Exception)
             {
@@ -78,26 +88,27 @@ namespace MVVM.Service
             }
         }
 
-        public async System.Threading.Tasks.Task<bool> Modify(Distributor modelo)
+        public void SaveLocal(Distributor model)
         {
-            bool sent = false;
+            using (var data = new DataAccess())
+            {
+                data.InsertDistributor(model);
+            }
+        }
+
+        public async void Modify(Distributor model)
+        {
             try
             {
                 HttpClient client;
                 using (client = new HttpClient())
                 {
                     client = CreateClient();
-                    var json = JsonConvert.SerializeObject(modelo);
+                    var json = JsonConvert.SerializeObject(model);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
-                    Uri apiUrl2 = new Uri(string.Format("http://192.168.103.68:40089/api/Distributors/{0}", modelo.Id));
+                    Uri apiUrl2 = new Uri(string.Format(apiUrl + "/{0}", model.Id));
                     HttpResponseMessage response = await client.PutAsync(apiUrl2, content);
-                    Console.WriteLine(response.IsSuccessStatusCode);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        sent = true;
-                    }
                 }
-                return sent;
             }
             catch (Exception)
             {
@@ -105,9 +116,17 @@ namespace MVVM.Service
             }
         }
 
-        public async System.Threading.Tasks.Task<bool> Delete(string idDistributor)
+
+        public void ModifyLocal(Distributor model)
         {
-            bool sent = false;
+            using (var data = new DataAccess())
+            {
+                data.ModifyDistributor(model);
+            }
+        }
+
+        public async void Delete(string idDistributor)
+        {
             try
             {
                 HttpClient client;
@@ -115,16 +134,19 @@ namespace MVVM.Service
                 {
                     client = CreateClient();
                     HttpResponseMessage response = await client.DeleteAsync(apiUrl + "/" + idDistributor);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        sent = true;
-                    }
                 }
-                return sent;
             }
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        public void DeleteLocal(Distributor model)
+        {
+            using (var data = new DataAccess())
+            {
+                data.DeleteDistributor(model);
             }
         }
 

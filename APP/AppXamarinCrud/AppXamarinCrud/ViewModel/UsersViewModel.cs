@@ -27,10 +27,12 @@ namespace MVVM.ViewModel
 
         User model;
 
-        UsersService servicio = new UsersService();
+        UsersService service = new UsersService();
 
         public UsersViewModel()
         {
+            Birthday = DateTime.Now;
+            ListView();
             ListViewAsync();
             SaveCommand = new Command(async () => await Save(), () => !IsBusy);
             ModifyCommand = new Command(async () => await Modify(), () => !IsBusy);
@@ -41,17 +43,32 @@ namespace MVVM.ViewModel
             ChangeCompanyIDCommand = new Command(ChangeCompanyID, () => !IsBusy);
         }
 
-        private async Task ListViewAsync()
+        private void ListView()
         {
             Users = new ObservableCollection<User>();
-            UsersTask = servicio.Consult();
+            UsersAux = service.ConsultLocal();
+            for (int i = 0; i < UsersAux.Count; i++)
+            {
+                Users.Add(UsersAux[i]);
+            }
+            Companies = new List<Company>();
+            CompaniesAux = service.ConsultCompanyLocal();
+            for (int i = 0; i < CompaniesAux.Count; i++)
+            {
+                Companies.Add(CompaniesAux[i]);
+            }
+        }
+
+        private async Task ListViewAsync()
+        {
+            UsersTask = service.Consult();
             UsersAux = await UsersTask;
             for (int i = 0; i < UsersAux.Count; i++)
             {
                 Users.Add(UsersAux[i]);
             }
             Companies = new List<Company>();
-            CompaniesTask = servicio.ConsultCompany();
+            CompaniesTask = service.ConsultCompany();
             CompaniesAux = await CompaniesTask;
             for (int i = 0; i < CompaniesAux.Count; i++)
             {
@@ -89,7 +106,7 @@ namespace MVVM.ViewModel
                 Password = Password,
                 Username = Username,
                 CompanyID = CompanyID,
-                Picture = Picture,
+                //Picture = Picture,
                 Id = idUser.ToString()
             };
             if (string.IsNullOrEmpty(model.Name))
@@ -98,12 +115,10 @@ namespace MVVM.ViewModel
             }
             else
             {
-                var sent = await servicio.Save(model);
-                if (sent)
-                {
-                    Users.Add(model);
-                    Clean();
-                }
+                service.SaveLocal(model);
+                service.Save(model);
+                Users.Add(model);
+                Clean();
             }
             await Task.Delay(2000);
             IsBusy = false;
@@ -120,25 +135,23 @@ namespace MVVM.ViewModel
                 Password = Password,
                 Username = Username,
                 CompanyID = CompanyID,
-                Picture = Picture,
+                //Picture = Picture,
                 Id = Id
             };
-            var sent = await servicio.Modify(model);
-            if (sent)
+            service.ModifyLocal(model);
+            service.Modify(model);
+            var item = Users.FirstOrDefault(i => i.Id == model.Id);
+            if (item != null)
             {
-                var item = Users.FirstOrDefault(i => i.Id == model.Id);
-                if (item != null)
-                {
-                    item.Name = model.Name;
-                    item.Birthday = model.Birthday;
-                    item.Dni = model.Dni;
-                    item.Password = model.Password;
-                    item.Username = model.Username;
-                    item.CompanyID = model.CompanyID;
-                    item.Picture = model.Picture;
-                }
-                Clean();
+                item.Name = model.Name;
+                item.Birthday = model.Birthday;
+                item.Dni = model.Dni;
+                item.Password = model.Password;
+                item.Username = model.Username;
+                item.CompanyID = model.CompanyID;
+                //item.Picture = model.Picture;
             }
+            Clean();
             await Task.Delay(2000);
             IsBusy = false;
         }
@@ -154,16 +167,14 @@ namespace MVVM.ViewModel
                 Password = Password,
                 Username = Username,
                 CompanyID = CompanyID,
-                Picture = Picture,
+                //Picture = Picture,
                 Id = Id
             };
-            var sent = await servicio.Delete(model.Id);
-            if (sent)
-            {
-                var item = Users.FirstOrDefault(i => i.Id == model.Id);
-                Users.Remove(item);
-                Clean();
-            }
+            service.DeleteLocal(model);
+            service.Delete(model.Id);
+            var item = Users.FirstOrDefault(i => i.Id == model.Id);
+            Users.Remove(item);
+            Clean();
             await Task.Delay(2000);
             IsBusy = false;
         }
@@ -171,12 +182,12 @@ namespace MVVM.ViewModel
         private void Clean()
         {
             Name = "";
-            Birthday = new DateTime(1900, 01, 01);
+            Birthday = DateTime.Now;
             Dni = "";
             Password = "";
             Username = "";
             CompanyID = "";
-            Picture = null;
+            //Picture = null;
             Id = "";
         }
 

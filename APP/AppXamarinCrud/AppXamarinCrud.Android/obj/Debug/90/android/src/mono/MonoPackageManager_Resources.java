@@ -1,21 +1,28 @@
 package mono;
 public class MonoPackageManager_Resources {
 	public static String[] Assemblies = new String[]{
-		/* We need to ensure that "AppXamarinCrud.Android.dll" comes first in this list. */
-		"AppXamarinCrud.Android.dll",
-		"AppXamarinCrud.dll",
+		/* We need to ensure that "VideogameDatabase.Android.dll" comes first in this list. */
+		"VideogameDatabase.Android.dll",
 		"FormsViewGroup.dll",
 		"Microsoft.IdentityModel.Logging.dll",
 		"Microsoft.IdentityModel.Protocols.dll",
 		"Microsoft.IdentityModel.Tokens.dll",
 		"Newtonsoft.Json.dll",
 		"NLog.dll",
+		"SQLite-net.dll",
+		"SQLite.Net.dll",
+		"SQLitePCLRaw.batteries_green.dll",
+		"SQLitePCLRaw.batteries_v2.dll",
+		"SQLitePCLRaw.core.dll",
+		"SQLitePCLRaw.lib.e_sqlite3.dll",
+		"SQLitePCLRaw.provider.e_sqlite3.dll",
 		"System.Configuration.ConfigurationManager.dll",
 		"System.Net.Http.Extensions.dll",
 		"System.Net.Http.Primitives.dll",
 		"System.Security.AccessControl.dll",
 		"System.Security.Permissions.dll",
 		"System.Security.Principal.Windows.dll",
+		"VideogameDatabase.dll",
 		"Xamarin.Android.Arch.Core.Common.dll",
 		"Xamarin.Android.Arch.Core.Runtime.dll",
 		"Xamarin.Android.Arch.Lifecycle.Common.dll",

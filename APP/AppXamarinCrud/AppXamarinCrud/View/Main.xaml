@@ -8,7 +8,7 @@
              BackgroundImage="background.jpg">
     <ContentPage.Content>
         <StackLayout>
-            <Frame Grid.Row="1" HasShadow="True" CornerRadius="10" Margin="35,10,35,10" Padding="5" HeightRequest="150">
+            <Frame Grid.Row="1" HasShadow="True" CornerRadius="10" Margin="35,60,35,10" Padding="5" HeightRequest="150">
                 <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                     <Image Source="Videogames.jpg"/>
                 </Grid>

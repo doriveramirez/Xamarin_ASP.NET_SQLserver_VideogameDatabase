@@ -27,14 +27,17 @@ namespace MVVM.ViewModel
 
         private Task<ObservableCollection<Distributor>> DistributorsTask { get; set; }
         private ObservableCollection<Distributor> DistributorsAux { get; set; }
-        public ObservableCollection<Distributor> Distributors { get; set; }
+        public List<Distributor> Distributors { get; set; }
 
         Videogame model;
 
-        VideogamesService servicio = new VideogamesService();
+        VideogamesService service = new VideogamesService();
 
         public VideogamesViewModel()
         {
+            ReleaseDate = DateTime.Now;
+            Videogames = new ObservableCollection<Videogame>();
+            ListView();
             ListViewAsync();
             SaveCommand = new Command(async () => await Save(), () => !IsBusy);
             ModifyCommand = new Command(async () => await Modify(), () => !IsBusy);
@@ -46,24 +49,44 @@ namespace MVVM.ViewModel
             ChangeDistributorIDCommand = new Command(ChangeDistributorID, () => !IsBusy);
         }
 
+        private void ListView()
+        {
+
+            VideogamesAux = service.ConsultLocal();
+            for (int i = 0; i < VideogamesAux.Count; i++)
+            {
+                Videogames.Add(VideogamesAux[i]);
+            }
+            Users = new List<User>();
+            UsersAux = service.ConsultUserLocal();
+            for (int i = 0; i < UsersAux.Count; i++)
+            {
+                Users.Add(UsersAux[i]);
+            }
+            Distributors = new List<Distributor>();
+            DistributorsAux = service.ConsultDistributorLocal();
+            for (int i = 0; i < DistributorsAux.Count; i++)
+            {
+                Distributors.Add(DistributorsAux[i]);
+            }
+        }
+
         private async Task ListViewAsync()
         {
-            Videogames = new ObservableCollection<Videogame>();
-            VideogamesTask = servicio.Consult();
+            VideogamesTask = service.Consult();
             VideogamesAux = await VideogamesTask;
             for (int i = 0; i < VideogamesAux.Count; i++)
             {
                 Videogames.Add(VideogamesAux[i]);
             }
             Users = new List<User>();
-            UsersTask = servicio.ConsultUser();
+            UsersTask = service.ConsultUser();
             UsersAux = await UsersTask;
             for (int i = 0; i < UsersAux.Count; i++)
             {
                 Users.Add(UsersAux[i]);
             }
-            Distributors = new ObservableCollection<Distributor>();
-            DistributorsTask = servicio.ConsultDistributor();
+            DistributorsTask = service.ConsultDistributor();
             DistributorsAux = await DistributorsTask;
             for (int i = 0; i < DistributorsAux.Count; i++)
             {
@@ -103,7 +126,7 @@ namespace MVVM.ViewModel
                 SoldUnits = SoldUnits,
                 UserID = UserID,
                 DistributorID = DistributorID,
-                Picture = Picture,
+                //Picture = Picture,
                 Description = Description,
                 Id = idVideogame.ToString()
             };
@@ -113,12 +136,10 @@ namespace MVVM.ViewModel
             }
             else
             {
-                var sent = await servicio.Save(model);
-                if (sent)
-                {
-                    Videogames.Add(model);
-                    Clean();
-                }
+                service.SaveLocal(model);
+                service.Save(model);
+                Videogames.Add(model);
+                Clean();
             }
             await Task.Delay(2000);
             IsBusy = false;
@@ -134,28 +155,25 @@ namespace MVVM.ViewModel
                 SoldUnits = SoldUnits,
                 UserID = UserID,
                 DistributorID = DistributorID,
-                Picture = Picture,
+                //Picture = Picture,
                 Description = Description,
                 Id = Id
             };
-            var sent = await servicio.Modify(model);
-            if (sent)
+            service.ModifyLocal(model);
+            service.Modify(model);
+            var item = Videogames.FirstOrDefault(i => i.Id == model.Id);
+            if (item != null)
             {
-                var item = Videogames.FirstOrDefault(i => i.Id == model.Id);
-                if (item != null)
-                {
-                    item.Name = model.Name;
-                    item.ReleaseDate = model.ReleaseDate;
-                    item.SoldUnits = model.SoldUnits;
-                    item.UserID = model.UserID;
-                    item.DistributorID = model.DistributorID;
-                    item.Picture = model.Picture;
-                    item.Description = model.Description;
-                    item.Picture = model.Picture;
-                    item.Id = model.Id;
-                }
-                Clean();
+                item.Name = model.Name;
+                item.ReleaseDate = model.ReleaseDate;
+                item.SoldUnits = model.SoldUnits;
+                item.UserID = model.UserID;
+                item.DistributorID = model.DistributorID;
+                //item.Picture = model.Picture;
+                item.Description = model.Description;
+                item.Id = model.Id;
             }
+            Clean();
             await Task.Delay(2000);
             IsBusy = false;
         }
@@ -170,17 +188,15 @@ namespace MVVM.ViewModel
                 SoldUnits = SoldUnits,
                 UserID = UserID,
                 DistributorID = DistributorID,
-                Picture = Picture,
+                //Picture = Picture,
                 Description = Description,
                 Id = Id
             };
-            var sent = await servicio.Delete(model.Id);
-            if (sent)
-            {
-                var item = Videogames.FirstOrDefault(i => i.Id == model.Id);
-                Videogames.Remove(item);
-                Clean();
-            }
+            service.DeleteLocal(model);
+            service.Delete(model.Id);
+            var item = Videogames.FirstOrDefault(i => i.Id == model.Id);
+            Videogames.Remove(item);
+            Clean();
             await Task.Delay(2000);
             IsBusy = false;
         }
@@ -192,7 +208,7 @@ namespace MVVM.ViewModel
             SoldUnits = 0;
             UserID = "";
             DistributorID = "";
-            Picture = null;
+            //Picture = null;
             Description = "";
             Id = "";
         }
@@ -216,7 +232,7 @@ namespace MVVM.ViewModel
 
         private void ChangeUserID()
         {
-            if(UserID == Users[UsersID].Id)
+            if (UserID == Users[UsersID].Id)
             {
                 if (UsersID + 1 >= Users.Count)
                 {
@@ -240,7 +256,7 @@ namespace MVVM.ViewModel
                     UsersID++;
                 }
             }
-            
+
         }
 
         private void ChangeDistributorID()

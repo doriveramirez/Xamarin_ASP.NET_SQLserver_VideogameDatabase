@@ -42,7 +42,7 @@ namespace AppXamarinCrud.View
                 Context.Password = model.Password;
                 Context.Username = model.Username;
                 Context.CompanyID = model.CompanyID;
-                Context.Picture = model.Picture;
+                //Context.Picture = model.Picture;
                 Context.Id = model.Id;
             }
         }
