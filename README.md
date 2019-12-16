@@ -20,7 +20,7 @@ What things you need to install the software and how to install them
 •	ORM: Entity Framework
 ```
 
-### Installing the application
+### Installing the APP
 
 First you will need to install [Visual Studio 2019](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&rel=16)
 
@@ -40,14 +40,14 @@ Once you have opened the file, you will need to create an android emulator if yo
 
 And then you will be able to run the application
 
-### Installing the server
+### Installing the API
 
 First you will need to install [SQL server](https://go.microsoft.com/fwlink/?linkid=853016)
 
 Next, you have to install the management studio [SQL server Management Studio](https://aka.ms/ssmsfullsetup)
 
 Once you have installed it, you will need to connect to Database Engine, and then add a new query.
-Drag and drop the "VideogamesDB.sql" file that is on the "Inicio folder" in the SQL server Management Studio and execute it.
+Drag and drop the "admin.sql" and "VideogamesDB.sql" files that are on the "Inicio" folder to the SQL server Management Studio and execute them.
 ![alt](https://image.prntscr.com/image/4z4gVjFsTX_HGp-nXTOCgg.png)
 
 Now, you have to modify two files in the API folder.
@@ -58,3 +58,14 @@ API\MVCCrudAPI\MVCCrudAPI.csproj
 ![alt](https://image.prntscr.com/image/93KAFOj6T16GiorKyca6Zg.png)
 
 Now you are able to run the server.
+
+### Connecting the APP to the API
+
+You just need to execute the APP, and then go to options and select an IP.
+![alt](https://image.prntscr.com/image/9sJKt1SsQe6n9P6wocpGJg.png)
+
+### Register and Login (APIvgd)
+
+The methods are not implemented in the APP, but there's a second API folder (called APIvgd) that contains every methods that will be implemented in the future.
+
+![alt](https://image.prntscr.com/image/-_HROMKFS_Oytg5mUSotHA.png)
