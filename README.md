@@ -47,7 +47,7 @@ First you will need to install [SQL server](https://go.microsoft.com/fwlink/?lin
 Next, you have to install the management studio [SQL server Management Studio](https://aka.ms/ssmsfullsetup)
 
 Once you have installed it, you will need to connect to Database Engine, and then add a new query.
-Drag and drop the "VideogamesDB.sql" file that is on the "Inicio folder" in the SQL server Management Studio and execute it.
+Drag and drop the "admin.sql" and "VideogamesDB.sql" files that are on the "Inicio" folder to the SQL server Management Studio and execute them.
 ![alt](https://image.prntscr.com/image/4z4gVjFsTX_HGp-nXTOCgg.png)
 
 Now, you have to modify two files in the API folder.
