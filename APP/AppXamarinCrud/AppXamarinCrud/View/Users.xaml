@@ -37,7 +37,7 @@
                     <!--<Picker Title="" TextColor="White" FontSize="12" HorizontalOptions="Center"/>-->
                     <Button Command="{Binding ChangeCompanyIDCommand}" HeightRequest="10" WidthRequest="30"/>
                     <Entry Placeholder="CompanyID" Text="{Binding CompanyID}" PlaceholderColor="WhiteSmoke" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
-                    <Label Text="Imagen" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
+                    <Label Text="Imagen" Padding="10" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
                 </StackLayout>
             </Frame>
         </StackLayout>

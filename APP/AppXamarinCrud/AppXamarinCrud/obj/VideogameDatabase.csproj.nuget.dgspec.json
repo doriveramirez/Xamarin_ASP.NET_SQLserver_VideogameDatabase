@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Documentos\\Proyecto\\APP\\AppXamarinCrud\\AppXamarinCrud\\VideogameDatabase.csproj": {}
+    "E:\\Tarde\\Clase\\Proyecto\\APP\\AppXamarinCrud\\AppXamarinCrud\\VideogameDatabase.csproj": {}
   },
   "projects": {
-    "D:\\Documentos\\Proyecto\\APP\\AppXamarinCrud\\AppXamarinCrud\\VideogameDatabase.csproj": {
+    "E:\\Tarde\\Clase\\Proyecto\\APP\\AppXamarinCrud\\AppXamarinCrud\\VideogameDatabase.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Documentos\\Proyecto\\APP\\AppXamarinCrud\\AppXamarinCrud\\VideogameDatabase.csproj",
+        "projectUniqueName": "E:\\Tarde\\Clase\\Proyecto\\APP\\AppXamarinCrud\\AppXamarinCrud\\VideogameDatabase.csproj",
         "projectName": "VideogameDatabase",
-        "projectPath": "D:\\Documentos\\Proyecto\\APP\\AppXamarinCrud\\AppXamarinCrud\\VideogameDatabase.csproj",
-        "packagesPath": "C:\\Users\\David\\.nuget\\packages\\",
-        "outputPath": "D:\\Documentos\\Proyecto\\APP\\AppXamarinCrud\\AppXamarinCrud\\obj\\",
+        "projectPath": "E:\\Tarde\\Clase\\Proyecto\\APP\\AppXamarinCrud\\AppXamarinCrud\\VideogameDatabase.csproj",
+        "packagesPath": "C:\\Users\\AlumnadoTarde\\.nuget\\packages\\",
+        "outputPath": "E:\\Tarde\\Clase\\Proyecto\\APP\\AppXamarinCrud\\AppXamarinCrud\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\David\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\AlumnadoTarde\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -95,7 +96,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,7 @@ namespace AppXamarinCrud.Model
 
         private string id;
 
+        [PrimaryKey]
         public string Id
         {
             get { return id; }

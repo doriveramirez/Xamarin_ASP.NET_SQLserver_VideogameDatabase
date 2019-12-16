@@ -18,10 +18,11 @@ namespace VideogameDatabase.Service
         {
             var config = DependencyService.Get<IConfig>();
             connection = new SQLiteConnection(Path.Combine(config.DirDB, "VideogamesDB.db3"), false);
+            connection.CreateTable<Connection>();
             connection.CreateTable<Distributor>();
             connection.CreateTable<Company>();
-            //connection.CreateTable<Platform>();
-            //connection.CreateTable<Review>();
+            connection.CreateTable<Platform>();
+            connection.CreateTable<Review>();
             connection.CreateTable<User>();
             connection.CreateTable<Videogame>();
         }
@@ -178,12 +179,19 @@ namespace VideogameDatabase.Service
 
         public Connection GetConnection()
         {
-            return connection.Table<Connection>().FirstOrDefault(c => c.Id.Equals(0));
+            if (connection.Table<Connection>().ToList().Count > 0)
+            {
+                return connection.Table<Connection>().FirstOrDefault(c => c.Id.Equals(0));
+            }
+            return new Connection();
         }
 
         public void InsertConnection(Connection con)
         {
-            connection.Delete(connection.Table<Connection>().FirstOrDefault(c => c.Id.Equals(0)));
+            if (connection.Table<Connection>().ToList().Count > 0)
+            {
+                connection.Delete(connection.Table<Connection>().FirstOrDefault(c => c.Id.Equals(0)));
+            }
             connection.Insert(con);
         }
 

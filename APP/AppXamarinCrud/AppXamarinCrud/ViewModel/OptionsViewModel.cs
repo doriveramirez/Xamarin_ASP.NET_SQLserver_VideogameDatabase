@@ -38,7 +38,6 @@ namespace MVVM.ViewModel
 
         private void Update()
         {
-
             Url = service.ConsultLocal().Url;
         }
 

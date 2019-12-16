@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VideogamesDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="36" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FoundationDate" Type="DateTime" Precision="0" />
+    <Property Name="NumberOfUsers" Type="Int32" />
+    <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_Company" FromRole="Company" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Distribuidora">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="36" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NumberOfGamePublished" Type="Int32" Nullable="false" />
+    <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Videojuego" Relationship="Self.FK_Videojuego_Distribuidora" FromRole="Distribuidora" ToRole="Videojuego" />
+  </EntityType>
+  <EntityType Name="Platforms">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="36" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ReleaseDate" Type="DateTime" Precision="0" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SoldUnits" Type="Int32" />
+    <NavigationProperty Name="Videojuego" Relationship="Self.Videogame_Platforms" FromRole="Platforms" ToRole="Videojuego" />
+  </EntityType>
+  <EntityType Name="Review">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="36" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Played" Type="Boolean" />
+    <Property Name="Mark" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="UserID" Type="String" MaxLength="36" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="VideogameID" Type="String" MaxLength="36" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK_Review_Usuario" FromRole="Review" ToRole="Usuario" />
+    <NavigationProperty Name="Videojuego" Relationship="Self.FK_Review_Videojuego" FromRole="Review" ToRole="Videojuego" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="36" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Birthday" Type="DateTime" Precision="0" />
+    <Property Name="Dni" Type="String" MaxLength="9" FixedLength="true" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="Username" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="CompanyID" Type="String" MaxLength="36" FixedLength="true" Unicode="true" />
+    <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_Usuario_Company" FromRole="Usuario" ToRole="Company" />
+    <NavigationProperty Name="Review" Relationship="Self.FK_Review_Usuario" FromRole="Usuario" ToRole="Review" />
+    <NavigationProperty Name="Videojuego" Relationship="Self.FK_Videojuego_Usuario" FromRole="Usuario" ToRole="Videojuego" />
+  </EntityType>
+  <EntityType Name="Videojuego">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="36" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ReleaseDate" Type="DateTime" Precision="0" />
+    <Property Name="SoldUnits" Type="Int32" />
+    <Property Name="NumberOfAvailablePlatforms" Type="Int32" />
+    <Property Name="UserID" Type="String" MaxLength="36" FixedLength="true" Unicode="true" />
+    <Property Name="DistributorID" Type="String" MaxLength="36" FixedLength="true" Unicode="true" />
+    <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Distribuidora" Relationship="Self.FK_Videojuego_Distribuidora" FromRole="Videojuego" ToRole="Distribuidora" />
+    <NavigationProperty Name="Review" Relationship="Self.FK_Review_Videojuego" FromRole="Videojuego" ToRole="Review" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK_Videojuego_Usuario" FromRole="Videojuego" ToRole="Usuario" />
+    <NavigationProperty Name="Platforms" Relationship="Self.Videogame_Platforms" FromRole="Videojuego" ToRole="Platforms" />
+  </EntityType>
+  <Association Name="FK_Usuario_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="CompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Videojuego_Distribuidora">
+    <End Role="Distribuidora" Type="Self.Distribuidora" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Videojuego" Type="Self.Videojuego" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Distribuidora">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Videojuego">
+        <PropertyRef Name="DistributorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Review_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Review" Type="Self.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Review_Videojuego">
+    <End Role="Videojuego" Type="Self.Videojuego" Multiplicity="1" />
+    <End Role="Review" Type="Self.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Videojuego">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="VideogameID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Videojuego_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Videojuego" Type="Self.Videojuego" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Videojuego">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Videogame_Platforms">
+    <End Role="Platforms" Type="Self.Platforms" Multiplicity="*" />
+    <End Role="Videojuego" Type="Self.Videojuego" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="VideogamesDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Company" EntityType="Self.Company" />
+    <EntitySet Name="Distribuidora" EntityType="Self.Distribuidora" />
+    <EntitySet Name="Platforms" EntityType="Self.Platforms" />
+    <EntitySet Name="Review" EntityType="Self.Review" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <EntitySet Name="Videojuego" EntityType="Self.Videojuego" />
+    <AssociationSet Name="FK_Usuario_Company" Association="Self.FK_Usuario_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Videojuego_Distribuidora" Association="Self.FK_Videojuego_Distribuidora">
+      <End Role="Distribuidora" EntitySet="Distribuidora" />
+      <End Role="Videojuego" EntitySet="Videojuego" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Review_Usuario" Association="Self.FK_Review_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Review" EntitySet="Review" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Review_Videojuego" Association="Self.FK_Review_Videojuego">
+      <End Role="Videojuego" EntitySet="Videojuego" />
+      <End Role="Review" EntitySet="Review" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Videojuego_Usuario" Association="Self.FK_Videojuego_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Videojuego" EntitySet="Videojuego" />
+    </AssociationSet>
+    <AssociationSet Name="Videogame_Platforms" Association="Self.Videogame_Platforms">
+      <End Role="Platforms" EntitySet="Platforms" />
+      <End Role="Videojuego" EntitySet="Videojuego" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

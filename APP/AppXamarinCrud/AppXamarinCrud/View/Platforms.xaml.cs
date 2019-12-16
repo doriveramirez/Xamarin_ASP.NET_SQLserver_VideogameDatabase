@@ -40,7 +40,7 @@ namespace AppXamarinCrud.View
                 Context.ReleaseDate = model.ReleaseDate;
                 Context.SoldUnits = model.SoldUnits;
                 Context.Description = model.Description;
-                Context.Picture = model.Picture;
+                //Context.Picture = model.Picture;
                 Context.Author = model.Author;
                 Context.Id = model.Id;
             }

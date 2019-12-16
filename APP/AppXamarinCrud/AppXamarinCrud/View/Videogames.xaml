@@ -32,7 +32,7 @@
                     <!--<Picker Title="Set user" ItemsSource="{Binding Users}" ItemDisplayBinding="{Binding Dni}"/>-->
                     <Button Command="{Binding ChangeUserIDCommand}" HeightRequest="10" WidthRequest="30"/>
                     <Entry Placeholder="UserID" Text="{Binding UserID}" PlaceholderColor="WhiteSmoke" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
-                    <Label Text="Imagen" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
+                    <Label Text="Imagen" Padding="10" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
                 </StackLayout>
             </Frame>
             <Frame Grid.Row="0" BackgroundColor="ForestGreen" BorderColor="WhiteSmoke" HasShadow="True" CornerRadius="10" Margin="0,0,0,0" Padding="0" HeightRequest="45" WidthRequest="350" VerticalOptions="Start">

@@ -2509,24 +2509,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\David\\.nuget\\packages\\": {},
+    "C:\\Users\\AlumnadoTarde\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Documentos\\Proyecto\\APP\\AppXamarinCrud\\AppXamarinCrud.iOS\\VideogameDatabase.iOS.csproj",
+      "projectUniqueName": "E:\\Tarde\\Clase\\Proyecto\\APP\\AppXamarinCrud\\AppXamarinCrud.iOS\\VideogameDatabase.iOS.csproj",
       "projectName": "VideogameDatabase.iOS",
-      "projectPath": "D:\\Documentos\\Proyecto\\APP\\AppXamarinCrud\\AppXamarinCrud.iOS\\VideogameDatabase.iOS.csproj",
-      "packagesPath": "C:\\Users\\David\\.nuget\\packages\\",
-      "outputPath": "D:\\Documentos\\Proyecto\\APP\\AppXamarinCrud\\AppXamarinCrud.iOS\\obj\\",
+      "projectPath": "E:\\Tarde\\Clase\\Proyecto\\APP\\AppXamarinCrud\\AppXamarinCrud.iOS\\VideogameDatabase.iOS.csproj",
+      "packagesPath": "C:\\Users\\AlumnadoTarde\\.nuget\\packages\\",
+      "outputPath": "E:\\Tarde\\Clase\\Proyecto\\APP\\AppXamarinCrud\\AppXamarinCrud.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\David\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\AlumnadoTarde\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -2540,8 +2540,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "D:\\Documentos\\Proyecto\\APP\\AppXamarinCrud\\AppXamarinCrud\\VideogameDatabase.csproj": {
-              "projectPath": "D:\\Documentos\\Proyecto\\APP\\AppXamarinCrud\\AppXamarinCrud\\VideogameDatabase.csproj"
+            "E:\\Tarde\\Clase\\Proyecto\\APP\\AppXamarinCrud\\AppXamarinCrud\\VideogameDatabase.csproj": {
+              "projectPath": "E:\\Tarde\\Clase\\Proyecto\\APP\\AppXamarinCrud\\AppXamarinCrud\\VideogameDatabase.csproj"
             }
           }
         }

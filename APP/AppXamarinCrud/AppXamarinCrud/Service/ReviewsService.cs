@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using VideogameDatabase.Service;
 
 namespace MVVM.Service
 {
@@ -18,10 +19,16 @@ namespace MVVM.Service
         public ObservableCollection<Videogame> Videogames { get; set; }
 
 
-        private const string apiUrl = "http://192.168.1.180:40089/api/Reviews";
+        private string apiUrl, apiUrl3, apiUrl4;
 
         public ReviewsService()
         {
+            using (var data = new DataAccess())
+            {
+                apiUrl = data.GetConnection().Url + "/api/Reviews";
+                apiUrl3 = data.GetConnection().Url + "/api/Users";
+                apiUrl4 = data.GetConnection().Url + "/api/Videogames";
+            }
             if (Reviews == null)
             {
                 Reviews = new ObservableCollection<Review>();
@@ -59,6 +66,17 @@ namespace MVVM.Service
             }
         }
 
+        public ObservableCollection<Review> ConsultLocal()
+        {
+            using (var data = new DataAccess())
+            {
+                var list = data.GetReviews();
+                foreach (var item in list)
+                    Reviews.Add(item);
+            }
+            return Reviews;
+        }
+
         public async System.Threading.Tasks.Task<ObservableCollection<User>> ConsultUser()
         {
             try
@@ -67,7 +85,7 @@ namespace MVVM.Service
                 using (client = new HttpClient())
                 {
                     client = CreateClient();
-                    HttpResponseMessage response = await client.GetAsync("http://192.168.103.68:40089/api/Users");
+                    HttpResponseMessage response = await client.GetAsync(apiUrl3);
                     if (response.IsSuccessStatusCode)
                     {
                         var result = await response.Content.ReadAsStringAsync();
@@ -82,6 +100,17 @@ namespace MVVM.Service
             }
         }
 
+        public ObservableCollection<User> ConsultUserLocal()
+        {
+            using (var data = new DataAccess())
+            {
+                var list = data.GetUsers();
+                foreach (var item in list)
+                    Users.Add(item);
+            }
+            return Users;
+        }
+
         public async System.Threading.Tasks.Task<ObservableCollection<Videogame>> ConsultVideogame()
         {
             try
@@ -90,7 +119,7 @@ namespace MVVM.Service
                 using (client = new HttpClient())
                 {
                     client = CreateClient();
-                    HttpResponseMessage response = await client.GetAsync("http://192.168.103.68:40089/api/Videogames");
+                    HttpResponseMessage response = await client.GetAsync(apiUrl4);
                     if (response.IsSuccessStatusCode)
                     {
                         var result = await response.Content.ReadAsStringAsync();
@@ -105,9 +134,19 @@ namespace MVVM.Service
             }
         }
 
-        public async System.Threading.Tasks.Task<bool> Save(Review modelo)
+        public ObservableCollection<Videogame> ConsultVideogameLocal()
         {
-            bool sent = false;
+            using (var data = new DataAccess())
+            {
+                var list = data.GetVideogames();
+                foreach (var item in list)
+                    Videogames.Add(item);
+            }
+            return Videogames;
+        }
+
+        public async void Save(Review modelo)
+        {
             try
             {
                 HttpClient client;
@@ -123,12 +162,7 @@ namespace MVVM.Service
                     HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "");
                     request.Content = new StringContent(send, Encoding.UTF8, "application/json");//CONTENT-TYPE header
                     HttpResponseMessage response = await client.SendAsync(request);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        sent = true;
-                    }
                 }
-                return sent;
             }
             catch (Exception)
             {
@@ -136,9 +170,16 @@ namespace MVVM.Service
             }
         }
 
-        public async System.Threading.Tasks.Task<bool> Modify(Review modelo)
+        public void SaveLocal(Review model)
         {
-            bool sent = false;
+            using (var data = new DataAccess())
+            {
+                data.InsertReview(model);
+            }
+        }
+
+        public async void Modify(Review modelo)
+        {
             try
             {
                 HttpClient client;
@@ -150,12 +191,7 @@ namespace MVVM.Service
                     Uri apiUrl2 = new Uri(string.Format("http://192.168.103.68:40089/api/Reviews/{0}", modelo.Id));
                     HttpResponseMessage response = await client.PutAsync(apiUrl2, content);
                     Console.WriteLine(response.IsSuccessStatusCode);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        sent = true;
-                    }
                 }
-                return sent;
             }
             catch (Exception)
             {
@@ -163,9 +199,16 @@ namespace MVVM.Service
             }
         }
 
-        public async System.Threading.Tasks.Task<bool> Delete(string idReview)
+        public void ModifyLocal(Review model)
         {
-            bool sent = false;
+            using (var data = new DataAccess())
+            {
+                data.ModifyReview(model);
+            }
+        }
+
+        public async void Delete(string idReview)
+        {
             try
             {
                 HttpClient client;
@@ -173,16 +216,19 @@ namespace MVVM.Service
                 {
                     client = CreateClient();
                     HttpResponseMessage response = await client.DeleteAsync(apiUrl + "/" + idReview);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        sent = true;
-                    }
                 }
-                return sent;
             }
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        public void DeleteLocal(Review model)
+        {
+            using (var data = new DataAccess())
+            {
+                data.DeleteReview(model);
             }
         }
 

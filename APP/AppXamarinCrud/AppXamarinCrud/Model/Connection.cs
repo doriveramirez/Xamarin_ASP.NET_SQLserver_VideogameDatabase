@@ -16,10 +16,6 @@ namespace VideogameDatabase.Model
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
-
-
-        private string url;
-
         
         private int id;
         [PrimaryKey]
@@ -32,6 +28,8 @@ namespace VideogameDatabase.Model
             }
         }
 
+
+        private string url;
 
         public string Url
         {

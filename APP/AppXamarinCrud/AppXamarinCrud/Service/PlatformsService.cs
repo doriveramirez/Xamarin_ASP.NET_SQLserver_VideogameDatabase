@@ -8,16 +8,21 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using VideogameDatabase.Service;
 
 namespace MVVM.Service
 {
     public class PlatformsService
     {
         public ObservableCollection<Platform> Platforms { get; set; }
-        private const string apiUrl = "http://192.168.1.180:40089/api/Platforms";
+        private string apiUrl;
 
         public PlatformsService()
         {
+            using (var data = new DataAccess())
+            {
+                apiUrl = data.GetConnection().Url + "/api/Distributors";
+            }
             if (Platforms == null)
             {
                 Platforms = new ObservableCollection<Platform>();
@@ -47,9 +52,19 @@ namespace MVVM.Service
             }
         }
 
-        public async System.Threading.Tasks.Task<bool> Save(Platform modelo)
+        public ObservableCollection<Platform> ConsultLocal()
         {
-            bool sent = false;
+            using (var data = new DataAccess())
+            {
+                var list = data.GetPlatforms();
+                foreach (var item in list)
+                    Platforms.Add(item);
+            }
+            return Platforms;
+        }
+
+        public async void Save(Platform modelo)
+        {
             try
             {
                 HttpClient client;
@@ -65,12 +80,7 @@ namespace MVVM.Service
                     HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "");
                     request.Content = new StringContent(send, Encoding.UTF8, "application/json");//CONTENT-TYPE header
                     HttpResponseMessage response = await client.SendAsync(request);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        sent = true;
-                    }
                 }
-                return sent;
             }
             catch (Exception)
             {
@@ -78,9 +88,16 @@ namespace MVVM.Service
             }
         }
 
-        public async System.Threading.Tasks.Task<bool> Modify(Platform modelo)
+        public void SaveLocal(Platform model)
         {
-            bool sent = false;
+            using (var data = new DataAccess())
+            {
+                data.InsertPlatform(model);
+            }
+        }
+
+        public async void Modify(Platform modelo)
+        {
             try
             {
                 HttpClient client;
@@ -89,15 +106,9 @@ namespace MVVM.Service
                     client = CreateClient();
                     var json = JsonConvert.SerializeObject(modelo);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
-                    Uri apiUrl2 = new Uri(string.Format("http://192.168.103.68:40089/api/Platforms/{0}", modelo.Id));
+                    Uri apiUrl2 = new Uri(string.Format(apiUrl + "/{0}", modelo.Id));
                     HttpResponseMessage response = await client.PutAsync(apiUrl2, content);
-                    Console.WriteLine(response.IsSuccessStatusCode);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        sent = true;
-                    }
                 }
-                return sent;
             }
             catch (Exception)
             {
@@ -105,9 +116,16 @@ namespace MVVM.Service
             }
         }
 
-        public async System.Threading.Tasks.Task<bool> Delete(string idPlatform)
+        public void ModifyLocal(Platform model)
         {
-            bool sent = false;
+            using (var data = new DataAccess())
+            {
+                data.ModifyPlatform(model);
+            }
+        }
+
+        public async void Delete(string idPlatform)
+        {
             try
             {
                 HttpClient client;
@@ -115,16 +133,19 @@ namespace MVVM.Service
                 {
                     client = CreateClient();
                     HttpResponseMessage response = await client.DeleteAsync(apiUrl + "/" + idPlatform);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        sent = true;
-                    }
                 }
-                return sent;
             }
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        public void DeleteLocal(Platform model)
+        {
+            using (var data = new DataAccess())
+            {
+                data.DeletePlatform(model);
             }
         }
 

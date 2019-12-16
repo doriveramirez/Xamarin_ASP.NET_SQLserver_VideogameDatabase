@@ -83,7 +83,6 @@ namespace MVCCrudAPI.Controllers
 
             try
             {
-                Console.WriteLine("Id" + platforms.Id + "Nombre" + platforms.Name + "ReleaseDate" + platforms.ReleaseDate + "Descripción" + platforms.Description + "Sold units" + platforms.SoldUnits);
                 db.SaveChanges();
             }
             catch (DbUpdateException)

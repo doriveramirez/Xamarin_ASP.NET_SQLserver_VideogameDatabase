@@ -31,10 +31,11 @@ namespace MVVM.ViewModel
 
         Review model;
 
-        ReviewsService servicio = new ReviewsService();
+        ReviewsService service = new ReviewsService();
 
         public ReviewsViewModel()
         {
+            ListView();
             ListViewAsync();
             SaveCommand = new Command(async () => await Save(), () => !IsBusy);
             ModifyCommand = new Command(async () => await Modify(), () => !IsBusy);
@@ -46,32 +47,48 @@ namespace MVVM.ViewModel
             ChangeUserIDCommand = new Command(ChangeUserID, () => !IsBusy);
         }
 
-        private async Task ListViewAsync()
+        private void ListView()
         {
             Reviews = new ObservableCollection<Review>();
-            ReviewsTask = servicio.Consult();
-            ReviewsAux = await ReviewsTask;
+            ReviewsAux = service.ConsultLocal();
             for (int i = 0; i < ReviewsAux.Count; i++)
             {
                 Reviews.Add(ReviewsAux[i]);
             }
             Videogames = new ObservableCollection<Videogame>();
-            VideogamesTask = servicio.ConsultVideogame();
-            VideogamesAux = await VideogamesTask;
+            VideogamesAux = service.ConsultVideogameLocal();
             for (int i = 0; i < VideogamesAux.Count; i++)
             {
-                Console.WriteLine("hola" + VideogamesAux[i].Name);
                 Videogames.Add(VideogamesAux[i]);
             }
             Users = new ObservableCollection<User>();
-            UsersTask = servicio.ConsultUser();
+            UsersAux = service.ConsultUserLocal();
+            for (int i = 0; i < UsersAux.Count; i++)
+            {
+                Users.Add(UsersAux[i]);
+            }
+        }
+
+        private async Task ListViewAsync()
+        {
+            ReviewsTask = service.Consult();
+            ReviewsAux = await ReviewsTask;
+            for (int i = 0; i < ReviewsAux.Count; i++)
+            {
+                Reviews.Add(ReviewsAux[i]);
+            }
+            VideogamesTask = service.ConsultVideogame();
+            VideogamesAux = await VideogamesTask;
+            for (int i = 0; i < VideogamesAux.Count; i++)
+            {
+                Videogames.Add(VideogamesAux[i]);
+            }
+            UsersTask = service.ConsultUser();
             UsersAux = await UsersTask;
             for (int i = 0; i < UsersAux.Count; i++)
             {
-                Console.WriteLine("hola" + UsersAux[i].Dni);
                 Users.Add(UsersAux[i]);
             }
-            Console.WriteLine("adios");
         }
 
         public bool GoBool { get; set; }
@@ -109,12 +126,10 @@ namespace MVVM.ViewModel
                 VideogameID = VideogameID,
                 Id = idReview.ToString()
             };
-            var sent = await servicio.Save(model);
-            if (sent)
-            {
-                Reviews.Add(model);
-                Clean();
-            }
+            service.SaveLocal(model);
+            //service.Save(model);
+            Reviews.Add(model);
+            Clean();
             await Task.Delay(2000);
             IsBusy = false;
         }
@@ -131,21 +146,19 @@ namespace MVVM.ViewModel
                 VideogameID = VideogameID,
                 Id = Id
             };
-            var sent = await servicio.Modify(model);
-            if (sent)
+            service.ModifyLocal(model);
+            //service.Modify(model);
+            var item = Reviews.FirstOrDefault(i => i.Id == model.Id);
+            if (item != null)
             {
-                var item = Reviews.FirstOrDefault(i => i.Id == model.Id);
-                if (item != null)
-                {
 
-                    item.Played = model.Played;
-                    item.Mark = model.Mark;
-                    item.Description = model.Description;
-                    item.UserID = model.UserID;
-                    item.VideogameID = model.VideogameID;
-                }
-                Clean();
+                item.Played = model.Played;
+                item.Mark = model.Mark;
+                item.Description = model.Description;
+                item.UserID = model.UserID;
+                item.VideogameID = model.VideogameID;
             }
+            Clean();
             await Task.Delay(2000);
             IsBusy = false;
         }
@@ -162,13 +175,11 @@ namespace MVVM.ViewModel
                 VideogameID = VideogameID,
                 Id = Id
             };
-            var sent = await servicio.Delete(model.Id);
-            if (sent)
-            {
-                var item = Reviews.FirstOrDefault(i => i.Id == model.Id);
-                Reviews.Remove(item);
-                Clean();
-            }
+            service.DeleteLocal(model);
+            //service.Delete(model.Id);
+            var item = Reviews.FirstOrDefault(i => i.Id == model.Id);
+            Reviews.Remove(item);
+            Clean();
             await Task.Delay(2000);
             IsBusy = false;
         }

@@ -23,10 +23,12 @@ namespace MVVM.ViewModel
 
         Platform model;
 
-        PlatformsService servicio = new PlatformsService();
+        PlatformsService service = new PlatformsService();
 
         public PlatformsViewModel()
         {
+            ReleaseDate = DateTime.Now;
+            ListView();
             ListViewAsync();
             SaveCommand = new Command(async () => await Save(), () => !IsBusy);
             ModifyCommand = new Command(async () => await Modify(), () => !IsBusy);
@@ -36,14 +38,27 @@ namespace MVVM.ViewModel
             BackCommand = new Command(Back, () => !IsBusy);
         }
 
-        private async Task ListViewAsync()
+        private void ListView()
         {
             Platforms = new ObservableCollection<Platform>();
-            PlatformsTask = servicio.Consult();
-            PlatformsAux = await PlatformsTask;
+            PlatformsAux = service.ConsultLocal();
             for (int i = 0; i < PlatformsAux.Count; i++)
             {
                 Platforms.Add(PlatformsAux[i]);
+            }
+        }
+
+        private async Task ListViewAsync()
+        {
+            PlatformsTask = service.Consult();
+            PlatformsAux = await PlatformsTask;
+            if (PlatformsAux.Count > 0)
+            {
+                Platforms.Clear();
+                for (int i = 0; i < PlatformsAux.Count; i++)
+                {
+                    Platforms.Add(PlatformsAux[i]);
+                }
             }
         }
 
@@ -71,7 +86,7 @@ namespace MVVM.ViewModel
                 ReleaseDate = ReleaseDate,
                 SoldUnits = SoldUnits,
                 Description = Description,
-                Picture = Picture,
+                //Picture = Picture,
                 Author = Author,
                 Id = idPlatform.ToString()
             };
@@ -81,12 +96,10 @@ namespace MVVM.ViewModel
             }
             else
             {
-                var sent = await servicio.Save(model);
-                if (sent)
-                {
-                    Platforms.Add(model);
-                    Clean();
-                }
+                service.SaveLocal(model);
+                //service.Save(model);
+                Platforms.Add(model);
+                Clean();
             }
             await Task.Delay(2000);
             IsBusy = false;
@@ -101,26 +114,23 @@ namespace MVVM.ViewModel
                 ReleaseDate = ReleaseDate,
                 SoldUnits = SoldUnits,
                 Description = Description,
-                Picture = Picture,
+                //Picture = Picture,
                 Author = Author,
                 Id = Id
             };
-            var sent = await servicio.Modify(model);
-            if (sent)
+            service.ModifyLocal(model);
+            //service.Modify(model);
+            var item = Platforms.FirstOrDefault(i => i.Id == model.Id);
+            if (item != null)
             {
-                var item = Platforms.FirstOrDefault(i => i.Id == model.Id);
-                if (item != null)
-                {
-                    item.Name = model.Name;
-                    item.ReleaseDate = model.ReleaseDate;
-                    item.SoldUnits = model.SoldUnits;
-                    item.Description = model.Description;
-                    item.Picture = model.Picture;
-                    item.Author = model.Author;
-                    item.Picture = model.Picture;
-                }
-                Clean();
+                item.Name = model.Name;
+                item.ReleaseDate = model.ReleaseDate;
+                item.SoldUnits = model.SoldUnits;
+                item.Description = model.Description;
+                //item.Picture = model.Picture;
+                item.Author = model.Author;
             }
+            Clean();
             await Task.Delay(2000);
             IsBusy = false;
         }
@@ -134,17 +144,15 @@ namespace MVVM.ViewModel
                 ReleaseDate = ReleaseDate,
                 SoldUnits = SoldUnits,
                 Description = Description,
-                Picture = Picture,
+                //Picture = Picture,
                 Author = Author,
                 Id = Id
             };
-            var sent = await servicio.Delete(model.Id);
-            if (sent)
-            {
-                var item = Platforms.FirstOrDefault(i => i.Id == model.Id);
-                Platforms.Remove(item);
-                Clean();
-            }
+            service.DeleteLocal(model);
+            //service.Delete(model.Id);
+            var item = Platforms.FirstOrDefault(i => i.Id == model.Id);
+            Platforms.Remove(item);
+            Clean();
             await Task.Delay(2000);
             IsBusy = false;
         }
@@ -152,12 +160,11 @@ namespace MVVM.ViewModel
         private void Clean()
         {
             Name = "";
-            ReleaseDate = new DateTime(0000, 00, 00);
+            ReleaseDate = DateTime.Now;
             SoldUnits = 0;
             Description = "";
-            Picture = Picture;
-            Author = Author;
-            Picture = null;
+            Author = "";
+            //Picture = null;
             Id = "";
         }
 

@@ -29,7 +29,7 @@
             <Frame Grid.Row="0" BackgroundColor="DodgerBlue" BorderColor="WhiteSmoke" HasShadow="True" CornerRadius="10" Margin="0,0,0,0" Padding="0" HeightRequest="45" WidthRequest="350" VerticalOptions="Start">
                 <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="Center">
                     <Entry Placeholder="Descripción" PlaceholderColor="WhiteSmoke" Text="{Binding Description}" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center"/>
-                    <Label Text="Imagen" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
+                    <Label Text="Imagen" Padding="10" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
                     <Entry Placeholder="Autor" PlaceholderColor="WhiteSmoke" Text="{Binding Author}"/>
                 </StackLayout>
             </Frame>

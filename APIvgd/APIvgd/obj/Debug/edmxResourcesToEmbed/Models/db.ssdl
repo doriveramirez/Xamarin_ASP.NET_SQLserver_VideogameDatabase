@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VideogamesDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nchar" MaxLength="36" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="FoundationDate" Type="date" />
+    <Property Name="NumberOfUsers" Type="int" />
+    <Property Name="Picture" Type="image" />
+  </EntityType>
+  <EntityType Name="Distribuidora">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nchar" MaxLength="36" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NumberOfGamePublished" Type="int" Nullable="false" />
+    <Property Name="Picture" Type="image" />
+  </EntityType>
+  <EntityType Name="Platforms">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nchar" MaxLength="36" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="ReleaseDate" Type="date" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="SoldUnits" Type="int" />
+  </EntityType>
+  <EntityType Name="Review">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nchar" MaxLength="36" Nullable="false" />
+    <Property Name="Played" Type="bit" />
+    <Property Name="Mark" Type="int" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="UserID" Type="nchar" MaxLength="36" Nullable="false" />
+    <Property Name="VideogameID" Type="nchar" MaxLength="36" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nchar" MaxLength="36" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="50" />
+    <Property Name="Birthday" Type="date" />
+    <Property Name="Dni" Type="nchar" MaxLength="9" />
+    <Property Name="Password" Type="nchar" MaxLength="20" />
+    <Property Name="Username" Type="nchar" MaxLength="20" />
+    <Property Name="CompanyID" Type="nchar" MaxLength="36" />
+    <Property Name="Picture" Type="image" />
+  </EntityType>
+  <EntityType Name="Videogame_Platforms">
+    <Key>
+      <PropertyRef Name="PlatformID" />
+      <PropertyRef Name="VideogameID" />
+    </Key>
+    <Property Name="PlatformID" Type="nchar" MaxLength="36" Nullable="false" />
+    <Property Name="VideogameID" Type="nchar" MaxLength="36" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Videojuego">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nchar" MaxLength="36" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReleaseDate" Type="date" />
+    <Property Name="SoldUnits" Type="int" />
+    <Property Name="NumberOfAvailablePlatforms" Type="int" />
+    <Property Name="UserID" Type="nchar" MaxLength="36" />
+    <Property Name="DistributorID" Type="nchar" MaxLength="36" />
+    <Property Name="Picture" Type="image" />
+  </EntityType>
+  <Association Name="FK_Review_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Review" Type="Self.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Review_Videojuego">
+    <End Role="Videojuego" Type="Self.Videojuego" Multiplicity="1" />
+    <End Role="Review" Type="Self.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Videojuego">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="VideogameID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="CompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Videogame_Platforms_Platforms">
+    <End Role="Platforms" Type="Self.Platforms" Multiplicity="1" />
+    <End Role="Videogame_Platforms" Type="Self.Videogame_Platforms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Platforms">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Videogame_Platforms">
+        <PropertyRef Name="PlatformID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Videogame_Platforms_Videojuego">
+    <End Role="Videojuego" Type="Self.Videojuego" Multiplicity="1" />
+    <End Role="Videogame_Platforms" Type="Self.Videogame_Platforms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Videojuego">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Videogame_Platforms">
+        <PropertyRef Name="VideogameID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Videojuego_Distribuidora">
+    <End Role="Distribuidora" Type="Self.Distribuidora" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Videojuego" Type="Self.Videojuego" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Distribuidora">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Videojuego">
+        <PropertyRef Name="DistributorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Videojuego_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Videojuego" Type="Self.Videojuego" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Videojuego">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VideogamesDBModelStoreContainer">
+    <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Distribuidora" EntityType="Self.Distribuidora" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Platforms" EntityType="Self.Platforms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Review" EntityType="Self.Review" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Videogame_Platforms" EntityType="Self.Videogame_Platforms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Videojuego" EntityType="Self.Videojuego" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Review_Usuario" Association="Self.FK_Review_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Review" EntitySet="Review" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Review_Videojuego" Association="Self.FK_Review_Videojuego">
+      <End Role="Videojuego" EntitySet="Videojuego" />
+      <End Role="Review" EntitySet="Review" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Company" Association="Self.FK_Usuario_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Videogame_Platforms_Platforms" Association="Self.FK_Videogame_Platforms_Platforms">
+      <End Role="Platforms" EntitySet="Platforms" />
+      <End Role="Videogame_Platforms" EntitySet="Videogame_Platforms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Videogame_Platforms_Videojuego" Association="Self.FK_Videogame_Platforms_Videojuego">
+      <End Role="Videojuego" EntitySet="Videojuego" />
+      <End Role="Videogame_Platforms" EntitySet="Videogame_Platforms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Videojuego_Distribuidora" Association="Self.FK_Videojuego_Distribuidora">
+      <End Role="Distribuidora" EntitySet="Distribuidora" />
+      <End Role="Videojuego" EntitySet="Videojuego" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Videojuego_Usuario" Association="Self.FK_Videojuego_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Videojuego" EntitySet="Videojuego" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
