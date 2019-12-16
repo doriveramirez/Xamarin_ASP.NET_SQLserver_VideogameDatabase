@@ -67,4 +67,5 @@ You just need to execute the APP, and then go to options and select an IP.
 ### Register and Login
 
 The methods are not implemented in the APP, but there's a second API folder that contains every methods that will be implemented in the future.
+
 ![alt](https://image.prntscr.com/image/-_HROMKFS_Oytg5mUSotHA.png)
