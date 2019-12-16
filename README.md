@@ -69,3 +69,6 @@ You just need to execute the APP, and then go to options and select an IP.
 The methods are not implemented in the APP, but there's a second API folder (called APIvgd) that contains every methods that will be implemented in the future.
 
 ![alt](https://image.prntscr.com/image/-_HROMKFS_Oytg5mUSotHA.png)
+
+### POSTMAN TEST
+[API DOCUMENTATION](https://asdgdsgsagd.postman.co/collections/8886235-b1da850a-35bf-491d-9cad-cb6665e0b613?version=latest&workspace=54ad114d-cf16-4e12-8269-8b1b9d9f85f0)
