@@ -556,7 +556,6 @@ D:\Documentos\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\fl
 D:\Documentos\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\flata\C2EE8E4FB7E8FC51.flata
 D:\Documentos\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\flata\26B85D3FA304D49D.flata
 D:\Documentos\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\flata\FA655141CA048735.flata
-D:\Documentos\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\obj\Debug\90\stamp\SetupDependenciesForDesigner.stamp
 E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\bin\Debug\VideogameDatabase.Android.dll
 E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\bin\Debug\VideogameDatabase.Android.pdb
 E:\Tarde\Clase\Proyecto\APP\AppXamarinCrud\AppXamarinCrud.Android\bin\Debug\com.companyname.videogamedatabase.apk
