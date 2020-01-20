@@ -1,4 +1,4 @@
-﻿namespace winRdlc
+﻿namespace Reportview
 {
     partial class Form1
     {
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            //Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.label1 = new System.Windows.Forms.Label();
             this.t1 = new System.Windows.Forms.TextBox();
             this.dt1 = new System.Windows.Forms.DateTimePicker();
@@ -37,11 +37,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.b1 = new System.Windows.Forms.Button();
-            this.visor = new Microsoft.Reporting.WinForms.ReportViewer();
+            //this.visor = new Microsoft.Reporting.WinForms.ReportViewer();
             this.dtsEjemploBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dtsEjemplo = new winRdlc.dtsEjemplo();
+            //this.dtsEjemplo = new winRdlc.dtsEjemplo();
             ((System.ComponentModel.ISupportInitialize)(this.dtsEjemploBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtsEjemplo)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(this.dtsEjemplo)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -104,29 +104,29 @@
             this.b1.TabIndex = 7;
             this.b1.Text = "Imprimir";
             this.b1.UseVisualStyleBackColor = true;
-            this.b1.Click += new System.EventHandler(this.b1_Click);
+            //this.b1.Click += new System.EventHandler(this.b1_Click);
             // 
             // visor
             // 
-            this.visor.Cursor = System.Windows.Forms.Cursors.SizeAll;
-            reportDataSource1.Name = "dtsEjemplo";
-            reportDataSource1.Value = this.dtsEjemploBindingSource;
-            this.visor.LocalReport.DataSources.Add(reportDataSource1);
-            this.visor.LocalReport.ReportEmbeddedResource = "winRdlc.infEjemplo.rdlc";
-            this.visor.Location = new System.Drawing.Point(12, 61);
-            this.visor.Name = "visor";
-            this.visor.Size = new System.Drawing.Size(784, 417);
-            this.visor.TabIndex = 0;
+            //this.visor.Cursor = System.Windows.Forms.Cursors.SizeAll;
+            //reportDataSource1.Name = "dtsEjemplo";
+            //reportDataSource1.Value = this.dtsEjemploBindingSource;
+            //this.visor.LocalReport.DataSources.Add(reportDataSource1);
+            //this.visor.LocalReport.ReportEmbeddedResource = "winRdlc.infEjemplo.rdlc";
+            //this.visor.Location = new System.Drawing.Point(12, 61);
+            //this.visor.Name = "visor";
+            //this.visor.Size = new System.Drawing.Size(784, 417);
+            //this.visor.TabIndex = 0;
             // 
             // dtsEjemploBindingSource
             // 
             this.dtsEjemploBindingSource.DataMember = "dtsEjemplo";
-            this.dtsEjemploBindingSource.DataSource = this.dtsEjemplo;
+            //this.dtsEjemploBindingSource.DataSource = this.dtsEjemplo;
             // 
             // dtsEjemplo
             // 
-            this.dtsEjemplo.DataSetName = "dtsEjemplo";
-            this.dtsEjemplo.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            //this.dtsEjemplo.DataSetName = "dtsEjemplo";
+            //this.dtsEjemplo.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // Form1
             // 
@@ -140,12 +140,12 @@
             this.Controls.Add(this.dt1);
             this.Controls.Add(this.t1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.visor);
+            //this.Controls.Add(this.visor);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            //this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtsEjemploBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtsEjemplo)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.dtsEjemplo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,8 +160,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button b1;
         private System.Windows.Forms.BindingSource dtsEjemploBindingSource;
-        private dtsEjemplo dtsEjemplo;
-        private Microsoft.Reporting.WinForms.ReportViewer visor;
+        //private dtsEjemplo dtsEjemplo;
+        //private Microsoft.Reporting.WinForms.ReportViewer visor;
     }
 }
 

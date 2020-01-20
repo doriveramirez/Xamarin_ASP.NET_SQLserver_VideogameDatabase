@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using Microsoft.Reporting.WinForms;
 
 namespace winRdlc
@@ -85,16 +86,6 @@ namespace winRdlc
             visor.Height = 600;
             visor.Visible = true;
             visor.RefreshReport();
-
-        }
-
-        private void t1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dtsEjemploBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
 
         }
     }
